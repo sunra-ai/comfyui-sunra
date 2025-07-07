@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "comfyui-sunra"
+version = "0.0.1"
+description = "Professional ComfyUI plugin for Sunra.ai's FLUX.1 Kontext and Seedance models with enhanced UI"
+authors = [
+    {name = "ComfyUI Sunra Plugin", email = "support@sunra.ai"},
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "sunra-client>=0.1.2",
+    "requests>=2.28.0",
+    "pillow>=9.0.0",
+    "numpy>=1.21.0",
+    "torch>=1.12.0",
+    "opencv-python>=4.5.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/sunra-ai/comfyui-sunra"
+Repository = "https://github.com/sunra-ai/comfyui-sunra"
+Documentation = "https://docs.sunra.ai"
+Issues = "https://github.com/sunra-ai/comfyui-sunra/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "mypy>=0.950",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"] 
