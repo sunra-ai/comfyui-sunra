@@ -10,10 +10,18 @@ import io
 import base64
 import hashlib
 import json
-from typing import Dict, Any, List, Optional, Tuple, Union
+from typing import Dict, Any, Optional, Tuple
 from PIL import Image
 import torch
 import numpy as np
+
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    # dotenv is optional, continue without it
+    pass
 
 # Import dependencies
 try:
@@ -113,6 +121,212 @@ def create_request_hash(*args) -> str:
     # Convert all arguments to strings and create hash
     content = json.dumps(args, sort_keys=True, default=str)
     return hashlib.sha256(content.encode()).hexdigest()[:16]
+
+
+def extract_request_id_from_response(response: Any) -> Optional[str]:
+    """Extract x-request-id from response object or headers."""
+    request_id = None
+    try:
+        # Try to get request_id from response object directly
+        if hasattr(response, 'headers') and response.headers:
+            request_id = response.headers.get('x-request-id')
+        elif isinstance(response, dict):
+            # Try to get from response dict
+            if 'headers' in response:
+                request_id = response['headers'].get('x-request-id')
+            elif 'request_id' in response:
+                request_id = response['request_id']
+            elif 'x-request-id' in response:
+                request_id = response['x-request-id']
+    except Exception:
+        # If we can't extract request_id, continue without it
+        pass
+    
+    return request_id
+
+
+def format_error_with_request_id(error_msg: str, request_id: Optional[str] = None) -> str:
+    """Format error message with request ID if available."""
+    if request_id:
+        return f"{error_msg} (Request ID: {request_id})"
+    return error_msg
+
+
+
+class SunraFluxKontextDevNode:
+    """
+    FLUX Kontext Dev is a 12B image editing model that enables precise text- and image-guided edits while preserving character consistency.
+    """
+    
+    @classmethod
+    def INPUT_TYPES(cls) -> Dict[str, Any]:
+        return {
+            "required": {
+                "prompt": ("STRING", {
+                    "multiline": True, 
+                    "default": "a beautiful landscape, highly detailed, cinematic lighting"
+                }),
+                "model": ([
+                    "flux-kontext-dev", 
+                ], {"default": "flux-kontext-dev"}),
+                "aspect_ratio": ([
+                    "None",
+                    "1:1",
+                    "2:3",
+                    "3:2",
+                    "3:4",
+                    "4:3",
+                    "16:9",
+                    "9:16",
+                    "21:9",
+                    "9:21"
+                ], {"default": "None"}),
+                "number_of_steps": ("INT", {
+                    "default": 28, "min": 1, "max": 100, "step": 1
+                }),
+                "guidance_scale": ("FLOAT", {
+                    "default": 2.5, "min": 0.0, "max": 10.0, "step": 0.1
+                }),
+                "seed": ("INT", {
+                    "default": 0.0, "min": 0.0, "max": 2147483647.0, "step": 1
+                }),
+                "output_format": (["jpg", "png", "webp"], {"default": "jpg"}),
+                "output_quality": ("INT", {
+                    "default": 80, "min": 1, "max": 100, "step": 1
+                }),
+            },
+            "optional": {
+                "input_image": ("IMAGE",),
+                "enable_safety_checker": ("BOOLEAN", {"default": True}),
+                "enable_base64_output": ("BOOLEAN", {"default": False}),
+            }
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("images",)
+    FUNCTION = "generate_image"
+    CATEGORY = "Sunra.ai/FLUX Kontext"
+    
+    @classmethod
+    def IS_CHANGED(cls, prompt: str, model: str, aspect_ratio: str, number_of_steps: int,
+                   guidance_scale: float, seed: int, output_format: str,
+                   output_quality: int, input_image: Optional[torch.Tensor] = None,
+                   enable_safety_checker: bool = True, enable_base64_output: bool = False) -> str:
+        """
+        Determine if the node should be re-executed based on input changes.
+        Returns a hash of the inputs for caching optimization.
+        """
+        # Create hash of all parameters that affect the output
+        input_hash = None
+        if input_image is not None:
+            # Create a hash of the input image
+            image_np = input_image.cpu().numpy()
+            input_hash = hashlib.sha256(image_np.tobytes()).hexdigest()[:16]
+        
+        return create_request_hash(
+            prompt, model, aspect_ratio, number_of_steps, guidance_scale,
+            seed, output_format, output_quality, input_hash,
+            enable_safety_checker, enable_base64_output
+        )
+
+    def generate_image(self, prompt: str, model: str, aspect_ratio: str, number_of_steps: int, 
+                      guidance_scale: float, seed: int, output_format: str, 
+                      output_quality: int, input_image: Optional[torch.Tensor] = None,
+                      enable_safety_checker: bool = True, enable_base64_output: bool = False) -> Tuple[torch.Tensor]:
+        """
+        Generate images using FLUX.1 Kontext models.
+        
+        Args:
+            prompt: Text description for image generation
+            model: FLUX Kontext model variant to use
+            aspect_ratio: Output image aspect ratio
+            number_of_steps: Number of denoising steps
+            guidance_scale: Prompt adherence strength
+            seed: Random seed for reproducibility
+            output_format: Image format (jpeg, png, webp)
+            output_quality: Compression quality for lossy formats
+            input_image: Optional input image for image-to-image generation
+            enable_safety_checker: Whether to check content safety
+            enable_base64_output: Whether to return base64 encoded images
+            
+        Returns:
+            Tuple containing generated images as tensor
+        """
+        response = None
+        try:
+            # Validate API key
+            validate_api_key()
+            
+            # Prepare arguments for API call
+            arguments = {
+                "prompt": prompt,
+                "num_inference_steps": number_of_steps,
+                "guidance_scale": guidance_scale,
+                "output_format": output_format,
+                "output_quality": output_quality,
+                "enable_safety_checker": enable_safety_checker,
+                "enable_base64_output": enable_base64_output,
+            }
+            
+            # Add aspect ratio if specified
+            if aspect_ratio != "None":
+                arguments["aspect_ratio"] = aspect_ratio
+            
+            # Add seed if specified
+            if seed != -1:
+                arguments["seed"] = seed
+            
+            # Handle input image for image-to-image generation
+            if input_image is not None:
+                pil_image = tensor_to_pil(input_image)
+                # Upload image using sunra_client
+                image_url = sunra_client.upload_image(pil_image, format="png")
+                arguments["image"] = image_url
+                
+            # Make API call
+            response = sunra_client.subscribe(
+                f"black-forest-labs/{model}/image-to-image",
+                arguments=arguments,
+                with_logs=True,
+                on_enqueue=print,
+                on_queue_update=print,
+            )
+            
+            print(response)
+            # Process response
+            image = None
+            if "image" in response and response["image"]:
+                img_data = response["image"]
+                try:
+                    if "url" in img_data:
+                        # Download image from URL
+                        image = download_image_from_url(img_data["url"])
+                    elif "base64" in img_data:
+                        # Decode base64 image
+                        img_bytes = base64.b64decode(img_data["base64"])
+                        image = Image.open(io.BytesIO(img_bytes))
+                    else:
+                        print(f"Warning: Skipping image data without URL or base64: {img_data}")
+                        
+                except Exception as img_error:
+                    print(f"Warning: Failed to process image: {str(img_error)}")
+            
+            if not image:
+                raise ValueError("No valid image returned from Sunra.ai API")
+            
+            # Convert to tensor and return single image
+            image_tensor = pil_to_tensor(image)
+            return (image_tensor,)
+            
+        except ValueError as ve:
+            # Re-raise validation errors as-is
+            raise ve
+        except Exception as e:
+            # Wrap other errors with context
+            request_id = extract_request_id_from_response(response)
+            raise RuntimeError(format_error_with_request_id(f"FLUX Kontext generation failed: {str(e)}", request_id))
+
+
 
 class SunraFluxContextNode:
     """
@@ -214,6 +428,7 @@ class SunraFluxContextNode:
         Returns:
             Tuple containing generated images as tensor
         """
+        response = None
         try:
             # Validate API key
             validate_api_key()
@@ -241,10 +456,18 @@ class SunraFluxContextNode:
             # Handle input image for image-to-image generation
             if input_image is not None:
                 pil_image = tensor_to_pil(input_image)
-                arguments["image"] = image_to_base64(pil_image)
+                # Upload image using sunra_client
+                image_url = sunra_client.upload_image(pil_image, format="png")
+                arguments["image"] = image_url
                 
             # Make API call
-            response = sunra_client.subscribe(model, arguments=arguments)
+            response = sunra_client.subscribe(
+                f"black-forest-labs/{model}/image-to-image",
+                arguments=arguments,
+                with_logs=True,
+                on_enqueue=print,
+                on_queue_update=print,
+            )
             
             # Process response
             images = []
@@ -282,7 +505,8 @@ class SunraFluxContextNode:
             raise ve
         except Exception as e:
             # Wrap other errors with context
-            raise RuntimeError(f"FLUX Kontext generation failed: {str(e)}")
+            request_id = extract_request_id_from_response(response)
+            raise RuntimeError(format_error_with_request_id(f"FLUX Kontext generation failed: {str(e)}", request_id))
 
 class SunraSeedanceNode:
     """
@@ -377,6 +601,7 @@ class SunraSeedanceNode:
         Returns:
             Tuple containing video URL and preview frames tensor
         """
+        response = None
         try:
             # Validate API key
             validate_api_key()
@@ -401,7 +626,9 @@ class SunraSeedanceNode:
             # Handle reference image
             if reference_image is not None:
                 pil_image = tensor_to_pil(reference_image)
-                arguments["reference_image"] = image_to_base64(pil_image)
+                # Upload image using sunra_client
+                image_url = sunra_client.upload_image(pil_image, format="png")
+                arguments["reference_image"] = image_url
                 
             # Make API call
             response = sunra_client.subscribe(model, arguments=arguments)
@@ -453,7 +680,8 @@ class SunraSeedanceNode:
             raise ve
         except Exception as e:
             # Wrap other errors with context
-            raise RuntimeError(f"Seedance video generation failed: {str(e)}")
+            request_id = extract_request_id_from_response(response)
+            raise RuntimeError(format_error_with_request_id(f"Seedance video generation failed: {str(e)}", request_id))
 
 class SunraImageEditNode:
     """
@@ -546,18 +774,19 @@ class SunraImageEditNode:
         Returns:
             Tuple containing the edited image tensor
         """
+        response = None
         try:
             # Validate API key
             validate_api_key()
             
-            # Convert image to base64
+            # Upload image using sunra_client
             pil_image = tensor_to_pil(image)
-            img_str = image_to_base64(pil_image)
+            image_url = sunra_client.upload_image(pil_image, format="png")
             
             # Prepare arguments for API call
             arguments = {
                 "prompt": edit_prompt,
-                "image": img_str,
+                "image": image_url,
                 "edit_strength": edit_strength,
                 "num_inference_steps": num_inference_steps,
                 "guidance_scale": guidance_scale,
@@ -576,8 +805,9 @@ class SunraImageEditNode:
                     mask_np = (mask_np * 255).astype(np.uint8)
                 
                 mask_pil = Image.fromarray(mask_np, mode='L')
-                mask_str = image_to_base64(mask_pil)
-                arguments["mask"] = mask_str
+                # Upload mask using sunra_client
+                mask_url = sunra_client.upload_image(mask_pil, format="png")
+                arguments["mask"] = mask_url
                 
             # Make API call
             response = sunra_client.subscribe(model, arguments=arguments)
@@ -609,7 +839,8 @@ class SunraImageEditNode:
             raise ve
         except Exception as e:
             # Wrap other errors with context
-            raise RuntimeError(f"FLUX Kontext image editing failed: {str(e)}")
+            request_id = extract_request_id_from_response(response)
+            raise RuntimeError(format_error_with_request_id(f"FLUX Kontext image editing failed: {str(e)}", request_id))
 
 class SunraQueueStatusNode:
     """
@@ -652,6 +883,7 @@ class SunraQueueStatusNode:
         if not request_id or not request_id.strip():
             return ("error", "No request ID provided", 0.0)
         
+        status_response = None
         try:
             # Validate API key
             validate_api_key()
@@ -673,12 +905,14 @@ class SunraQueueStatusNode:
             return ("error", str(ve), 0.0)
         except Exception as e:
             # Other errors (network, parsing, etc.)
-            return ("error", f"Failed to check status: {str(e)}", 0.0)
+            req_id = extract_request_id_from_response(status_response)
+            return ("error", format_error_with_request_id(f"Failed to check status: {str(e)}", req_id), 0.0)
 
 
 # Node mappings for ComfyUI registration
 NODE_CLASS_MAPPINGS = {
     "SunraFluxContext": SunraFluxContextNode,
+    "SunraFluxKontextDevNode": SunraFluxKontextDevNode,
     "SunraSeedance": SunraSeedanceNode,
     "SunraImageEdit": SunraImageEditNode,
     "SunraQueueStatus": SunraQueueStatusNode,
@@ -687,6 +921,7 @@ NODE_CLASS_MAPPINGS = {
 # Display names for the ComfyUI interface
 NODE_DISPLAY_NAME_MAPPINGS = {
     "SunraFluxContext": "FLUX.1 Kontext Generator",
+    "SunraFluxKontextDevNode": "FLUX.1 Kontext Dev",
     "SunraSeedance": "Seedance Video Generator",
     "SunraImageEdit": "FLUX.1 Kontext Image Editor", 
     "SunraQueueStatus": "Sunra Queue Monitor",
