@@ -1,0 +1,62 @@
+[
+  {
+    "name": "flux-kontext-dev-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/black-forest-labs/flux-kontext-dev/latest.json",
+    "endpoint": "/black-forest-labs/flux-kontext-dev/image-to-image",
+    "overrides": {
+      "model_id": "flux-kontext-dev-image-to-image",
+      "name": "FLUX Kontext Dev - Image to Image",
+      "display_name": "FLUX.1 Kontext Dev - Image to Image",
+      "description": "FLUX Kontext Dev is a 12B image editing model that enables precise text- and image-guided edits while preserving character consistency.",
+      "category": "Sunra.ai/FLUX Kontext"
+    }
+  },
+  {
+    "name": "flux-kontext-pro-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/black-forest-labs/flux-kontext-pro/latest.json",
+    "endpoint": "/black-forest-labs/flux-kontext-pro/image-to-image",
+    "overrides": {
+      "model_id": "flux-kontext-pro-image-to-image",
+      "name": "FLUX Kontext Pro - Image to Image",
+      "display_name": "FLUX.1 Kontext Pro - Image to Image",
+      "description": "A unified model delivering local editing, generative modifications, and text-to-image generation in FLUX.1 quality. Processes text and image inputs for precise regional edits or full scene transformations at breakthrough speeds, pioneering iterative workflows that maintain character consistency across multiple editing turns.",
+      "category": "Sunra.ai/FLUX Kontext"
+    }
+  },
+  {
+    "name": "flux-kontext-pro-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/black-forest-labs/flux-kontext-pro/latest.json",
+    "endpoint": "/black-forest-labs/flux-kontext-pro/text-to-image",
+    "overrides": {
+      "model_id": "flux-kontext-pro-text-to-image",
+      "name": "FLUX Kontext Pro - Text to Image",
+      "display_name": "FLUX.1 Kontext Pro - Text to Image",
+      "description": "A unified model delivering local editing, generative modifications, and text-to-image generation in FLUX.1 quality. Processes text and image inputs for precise regional edits or full scene transformations at breakthrough speeds, pioneering iterative workflows that maintain character consistency across multiple editing turns.",
+      "category": "Sunra.ai/FLUX Kontext"
+    }
+  },
+  {
+    "name": "seedance-1.0-pro-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/doubao/seedance-1.0-pro/latest.json",
+    "endpoint": "/doubao/seedance-1.0-pro/text-to-video",
+    "overrides": {
+      "model_id": "seedance-1.0-pro-text-to-video",
+      "name": "Seedance 1.0 Pro - Text to Video",
+      "display_name": "Seedance 1.0 Pro - Text to Video",
+      "description": "Seedance 1.0 Pro is a 12B video generation model that enables precise text- and image-guided edits while preserving character consistency.",
+      "category": "Sunra.ai/Seedance"
+    }
+  },
+  {
+    "name": "seedance-1.0-pro-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/doubao/seedance-1.0-pro/latest.json",
+    "endpoint": "/doubao/seedance-1.0-pro/image-to-video",
+    "overrides": {
+      "model_id": "seedance-1.0-pro-image-to-video",
+      "name": "Seedance 1.0 Pro - Image to Video",
+      "display_name": "Seedance 1.0 Pro - Image to Video",
+      "description": "Seedance 1.0 Pro is a 12B video generation model that enables precise text- and image-guided edits while preserving character consistency.",
+      "category": "Sunra.ai/Seedance"
+    }
+  }
+]

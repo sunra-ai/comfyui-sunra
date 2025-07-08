@@ -1,0 +1,65 @@
+{
+  "model_id": "flux-kontext-pro-image-to-image",
+  "name": "FLUX Kontext Pro - Image to Image",
+  "api_endpoint": "black-forest-labs/flux-kontext-pro/image-to-image",
+  "display_name": "FLUX.1 Kontext Pro - Image to Image",
+  "description": "A unified model delivering local editing, generative modifications, and text-to-image generation in FLUX.1 quality. Processes text and image inputs for precise regional edits or full scene transformations at breakthrough speeds, pioneering iterative workflows that maintain character consistency across multiple editing turns.",
+  "category": "Sunra.ai/FLUX Kontext",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for image generation.",
+        "multiline": true,
+        "order": 200
+      },
+      "image": {
+        "type": "image",
+        "description": "Image URL to use for image-to-image generation.",
+        "order": 301
+      }
+    },
+    "optional": {
+      "prompt_enhancer": {
+        "type": "boolean",
+        "description": "Whether to perform enhancer on the prompt. If active, automatically modifies the prompt for more creative generation.",
+        "default": false,
+        "order": 201
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Seed for reproducibility.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 202
+      },
+      "output_format": {
+        "type": "string",
+        "description": "Output format for the generated image. Can be 'jpeg' or 'png'.",
+        "enum": [
+          "jpeg",
+          "png"
+        ],
+        "default": "jpeg",
+        "order": 404
+      },
+      "safety_tolerance": {
+        "type": "integer",
+        "description": "Tolerance level for input and output moderation. Between 0 and 100, 0 being most strict, and this endpoint has maximum tolerance of 40",
+        "default": 40,
+        "min": 0.0,
+        "max": 40.0,
+        "step": 1,
+        "order": 500
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

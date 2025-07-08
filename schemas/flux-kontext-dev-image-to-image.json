@@ -1,0 +1,108 @@
+{
+  "model_id": "flux-kontext-dev-image-to-image",
+  "name": "FLUX Kontext Dev - Image to Image",
+  "api_endpoint": "black-forest-labs/flux-kontext-dev/image-to-image",
+  "display_name": "FLUX.1 Kontext Dev - Image to Image",
+  "description": "FLUX Kontext Dev is a 12B image editing model that enables precise text- and image-guided edits while preserving character consistency.",
+  "category": "Sunra.ai/FLUX Kontext",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text description of what you want to generate, or the instruction on how to edit the given image.",
+        "multiline": true,
+        "order": 201
+      },
+      "image": {
+        "type": "image",
+        "description": "Image to use as reference. Must be jpeg, png, gif, or webp.",
+        "order": 301
+      }
+    },
+    "optional": {
+      "number_of_steps": {
+        "type": "integer",
+        "description": "Number of inference steps",
+        "default": 28,
+        "min": 4.0,
+        "max": 50.0,
+        "step": 1,
+        "order": 203
+      },
+      "guidance_scale": {
+        "type": "float",
+        "description": "Guidance scale for generation",
+        "default": 2.5,
+        "min": 0.0,
+        "max": 10.0,
+        "step": 0.1,
+        "order": 204
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Random seed for reproducible generation. Leave blank for random.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 205
+      },
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Aspect ratio of the generated image. 'None' means follow the input image's aspect ratio.",
+        "enum": [
+          "None",
+          "1:1",
+          "2:3",
+          "3:2",
+          "3:4",
+          "4:3",
+          "16:9",
+          "9:16",
+          "21:9",
+          "9:21"
+        ],
+        "default": "None",
+        "order": 401
+      },
+      "output_format": {
+        "type": "string",
+        "description": "Output image format",
+        "enum": [
+          "webp",
+          "jpg",
+          "png"
+        ],
+        "default": "webp",
+        "order": 402
+      },
+      "output_quality": {
+        "type": "integer",
+        "description": "Quality when saving the output images, from 0 to 100. 100 is best quality, 0 is lowest quality. Not relevant for .png outputs",
+        "default": 80,
+        "min": 0.0,
+        "max": 100.0,
+        "step": 1,
+        "order": 403
+      },
+      "disable_safety_checker": {
+        "type": "boolean",
+        "description": "Disable NSFW safety checker",
+        "default": false,
+        "order": 501
+      },
+      "fast_mode": {
+        "type": "boolean",
+        "description": "Make the model go fast, output quality may be slightly degraded for more difficult prompts",
+        "default": true,
+        "order": 502
+      }
+    }
+  },
+  "outputs": {
+    "image": {
+      "type": "image",
+      "description": "Generated image"
+    }
+  }
+}

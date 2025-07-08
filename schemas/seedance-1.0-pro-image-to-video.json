@@ -1,0 +1,61 @@
+{
+  "model_id": "seedance-1.0-pro-image-to-video",
+  "name": "Seedance 1.0 Pro - Image to Video",
+  "api_endpoint": "doubao/seedance-1.0-pro/image-to-video",
+  "display_name": "Seedance 1.0 Pro - Image to Video",
+  "description": "Seedance 1.0 Pro is a 12B video generation model that enables precise text- and image-guided edits while preserving character consistency.",
+  "category": "Sunra.ai/Seedance",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for video generation",
+        "multiline": true,
+        "order": 200
+      },
+      "start_image": {
+        "type": "image",
+        "description": "URL of the image to use as the first frame",
+        "order": 301
+      }
+    },
+    "optional": {
+      "resolution": {
+        "type": "string",
+        "description": "Video resolution",
+        "enum": [
+          "480p",
+          "1080p"
+        ],
+        "default": "1080p",
+        "order": 401
+      },
+      "duration": {
+        "type": "integer",
+        "description": "Duration of the video in seconds",
+        "enum": [
+          5,
+          10
+        ],
+        "default": 5,
+        "step": 1,
+        "order": 403
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Seed of the video generation",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 404
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}
