@@ -279,6 +279,10 @@ def schema_to_comfyui_node_spec(schema: Dict[str, Any]) -> Dict[str, Any]:
     # Add optional node attributes
     if schema.get("output_node", False):
         node_spec["output_node"] = True
+    
+    # Automatically mark nodes with video outputs as OUTPUT_NODE
+    if "VIDEO" in return_types:
+        node_spec["output_node"] = True
 
     return node_spec
 

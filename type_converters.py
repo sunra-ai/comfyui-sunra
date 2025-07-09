@@ -229,6 +229,54 @@ def process_image_output(data: Union[str, Dict, List]) -> torch.Tensor:
     return pil_to_tensor(image)
 
 
+def process_video_output(data: Union[str, Dict]) -> Any:
+    """
+    Process video output from Sunra API.
+    Downloads video and returns it as ComfyUI VideoFromFile.
+    """
+    import os
+    import tempfile
+    from pathlib import Path
+    from comfy_api.input_impl.video_types import VideoFromFile
+    
+    # Extract video URL from various formats
+    video_url = data
+    if isinstance(data, dict):
+        video_url = data.get("url") or data.get("file_url") or str(data)
+    
+    if not isinstance(video_url, str) or not video_url.startswith(("http://", "https://")):
+        raise ValueError(f"Invalid video URL: {video_url}")
+    
+    # Create temp directory for videos if it doesn't exist
+    output_dir = Path(tempfile.gettempdir()) / "comfyui_sunra_videos"
+    output_dir.mkdir(exist_ok=True)
+    
+    # Extract filename from URL or generate one
+    filename = video_url.split("/")[-1].split("?")[0]
+    if not filename.endswith((".mp4", ".webm", ".mov", ".avi")):
+        filename = f"video_{hash(video_url)}.mp4"
+    
+    output_path = output_dir / filename
+    
+    # Download video if not already cached
+    if not output_path.exists():
+        try:
+            response = requests.get(video_url, timeout=60, stream=True)
+            response.raise_for_status()
+            
+            with open(output_path, "wb") as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    f.write(chunk)
+        except requests.RequestException as e:
+            raise RuntimeError(f"Failed to download video from {video_url}: {str(e)}")
+    
+    # Read video file into memory and return as VideoFromFile
+    with open(output_path, "rb") as f:
+        video_bytes = f.read()
+    video_io = io.BytesIO(video_bytes)
+    return VideoFromFile(video_io)
+
+
 def infer_type_from_name(name: str) -> Optional[str]:
     """
     Infer type from parameter name.

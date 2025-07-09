@@ -18,7 +18,7 @@ SCHEMA_TO_COMFY_TYPE_MAP = {
     "image": "IMAGE",
     "mask": "MASK",
     "audio": "AUDIO",
-    "video": "STRING",  # Video URLs
+    "video": "VIDEO",  # Video files
 }
 
 # Type mappings from OpenAPI to schema format

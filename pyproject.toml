@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "comfyui-sunra"
-version = "0.0.2"
-description = "Professional ComfyUI plugin for Sunra.ai's FLUX.1 Kontext and Seedance models with enhanced UI"
+version = "0.0.4"
+description = "Official ComfyUI nodes for [Sunra AI](https://sunra.ai) models."
 authors = [
-    {name = "ComfyUI Sunra Plugin", email = "support@sunra.ai"},
+    {name = "Sunra AI", email = "support@sunra.ai"},
 ]
 license = {text = "MIT"}
 readme = "README.md"
@@ -51,3 +51,8 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"] 
+
+[tool.comfy]
+PublisherId = "sunra"
+DisplayName = "ComfyUI Sunra AI"
+Icon = "https://sunra.ai/favicon.ico"

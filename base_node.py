@@ -8,10 +8,11 @@ Sunra nodes inherit from.
 import time
 import hashlib
 import json
+import io
 from typing import Dict, Any, Tuple, List
 import torch
 
-from .type_converters import process_image_input, process_image_output, validate_value
+from .type_converters import process_image_input, process_image_output, process_video_output, validate_value
 
 
 class SunraBaseNode:
@@ -257,6 +258,7 @@ class SunraBaseNode:
         type_converters = {
             "image": process_image_output,
             "mask": process_image_output,
+            "video": process_video_output,
             "string": str,
             "integer": int,
             "float": float,
@@ -268,6 +270,12 @@ class SunraBaseNode:
 
     def _get_default_output(self, output_type: str) -> Any:
         """Get default value for an output type."""
+        if output_type == "video":
+            from comfy_api.input_impl.video_types import VideoFromFile
+            # Create empty video bytes
+            empty_video = io.BytesIO()
+            return VideoFromFile(empty_video)
+        
         defaults = {
             "image": torch.zeros(1, 3, 512, 512),
             "mask": torch.zeros(1, 1, 512, 512),
@@ -275,7 +283,6 @@ class SunraBaseNode:
             "integer": 0,
             "float": 0.0,
             "boolean": False,
-            "video": "",
             "audio": None,
         }
         return defaults.get(output_type, None)
