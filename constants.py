@@ -19,6 +19,8 @@ SCHEMA_TO_COMFY_TYPE_MAP = {
     "mask": "MASK",
     "audio": "AUDIO",
     "video": "VIDEO",  # Video files
+    "3d": "STRING",    # 3D model file paths
+    "model": "STRING", # Alternative name for 3D model file paths
 }
 
 # Type mappings from OpenAPI to schema format
@@ -52,8 +54,10 @@ TYPE_DEFAULTS = {
     "boolean": False,
     "image": None,
     "mask": None,
-    "audio": None,
+    "audio": {"waveform": None, "sample_rate": 44100},  # ComfyUI AUDIO dict format
     "video": None,
+    "3d": "",     # Empty path for 3D models
+    "model": "",  # Alternative name for 3D models
 }
 
 # ComfyUI specific constants

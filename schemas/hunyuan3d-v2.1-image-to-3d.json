@@ -1,0 +1,71 @@
+{
+  "model_id": "hunyuan3d-v2.1-image-to-3d",
+  "name": "Hunyuan3D v2.1 - Image to 3D",
+  "api_endpoint": "tencent-hunyuan/hunyuan3d-v2.1/image-to-3d",
+  "display_name": "Hunyuan3D v2.1 - Image to 3D",
+  "description": "Hunyuan3D V2.1 is a new model that generate a 3D model from a single image in ~5 minutes. It produces higher quality geometry and textures, and it is more robust to different camera angles and object poses.",
+  "category": "Sunra.ai/Hunyuan3D",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "image": {
+        "type": "image",
+        "description": "URL of image to use while generating the 3D model",
+        "order": 301
+      }
+    },
+    "optional": {
+      "seed": {
+        "type": "integer",
+        "description": "The same seed and the same prompt given to the same version of the model will output the same output every time",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 310
+      },
+      "number_of_steps": {
+        "type": "integer",
+        "description": "Number of inference steps to perform",
+        "default": 50,
+        "min": 1.0,
+        "max": 50.0,
+        "step": 1,
+        "order": 311
+      },
+      "guidance_scale": {
+        "type": "float",
+        "description": "Guidance scale for the model",
+        "default": 7.5,
+        "min": 0.0,
+        "max": 20.0,
+        "step": 0.1,
+        "order": 312
+      },
+      "octree_resolution": {
+        "type": "integer",
+        "description": "Octree resolution for the model",
+        "default": 256,
+        "min": 1.0,
+        "max": 1024.0,
+        "step": 1,
+        "order": 401
+      },
+      "shape_only": {
+        "type": "boolean",
+        "description": "If set false, textured mesh will be generated and the price charged would be 3 times that of shape only",
+        "default": true,
+        "order": 402
+      }
+    }
+  },
+  "outputs": {
+    "model": {
+      "type": "model",
+      "description": "Generated 3D model"
+    },
+    "model_archive": {
+      "type": "model",
+      "description": "The archive file containing the full model files"
+    }
+  }
+}

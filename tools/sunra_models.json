@@ -58,5 +58,149 @@
       "description": "Seedance 1.0 Pro is a 12B video generation model that enables precise text- and image-guided edits while preserving character consistency.",
       "category": "Sunra.ai/Seedance"
     }
+  },
+  {
+    "name": "flux.1-depth-pro-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/black-forest-labs/flux.1-depth-pro/latest.json",
+    "endpoint": "/black-forest-labs/flux.1-depth-pro/image-to-image",
+    "overrides": {
+      "model_id": "flux.1-depth-pro-image-to-image",
+      "name": "FLUX.1 Depth Pro - Image to Image",
+      "display_name": "FLUX.1 Depth Pro - Image to Image",
+      "description": "FLUX.1 Depth Pro is a new state-of-the-art text-to-image model that generates images based on depth map conditioning.",
+      "category": "Sunra.ai/FLUX Depth"
+    }
+  },
+  {
+    "name": "flux.1-depth-dev-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/black-forest-labs/flux.1-depth-dev/latest.json",
+    "endpoint": "/black-forest-labs/flux.1-depth-dev/image-to-image",
+    "overrides": {
+      "model_id": "flux.1-depth-dev-image-to-image",
+      "name": "FLUX.1 Depth Dev - Image to Image",
+      "display_name": "FLUX.1 Depth Dev - Image to Image",
+      "description": "FLUX.1 Depth Dev is a new state-of-the-art text-to-image model that generates images based on depth map conditioning.",
+      "category": "Sunra.ai/FLUX Depth"
+    }
+  },
+  {
+    "name": "hunyuan3d-v2.1-image-to-3d",
+    "openapi_url": "https://openapi.sunra.ai/main/tencent-hunyuan/hunyuan3d-v2.1/latest.json",
+    "endpoint": "/tencent-hunyuan/hunyuan3d-v2.1/image-to-3d",
+    "overrides": {
+      "model_id": "hunyuan3d-v2.1-image-to-3d",
+      "name": "Hunyuan3D v2.1 - Image to 3D",
+      "display_name": "Hunyuan3D v2.1 - Image to 3D",
+      "description": "Hunyuan3D V2.1 is a new model that generate a 3D model from a single image in ~5 minutes. It produces higher quality geometry and textures, and it is more robust to different camera angles and object poses.",
+      "category": "Sunra.ai/Hunyuan3D"
+    }
+  },
+  {
+    "name": "hunyuan3d-v2-turbo-image-to-3d",
+    "openapi_url": "https://openapi.sunra.ai/main/tencent-hunyuan/hunyuan3d-v2-turbo/latest.json",
+    "endpoint": "/tencent-hunyuan/hunyuan3d-v2-turbo/image-to-3d",
+    "overrides": {
+      "model_id": "hunyuan3d-v2-turbo-image-to-3d",
+      "name": "Hunyuan3D v2 Turbo - Image to 3D",
+      "display_name": "Hunyuan3D v2 Turbo - Image to 3D",
+      "description": "Hunyuan3D V2 Turbo is a new model that generate a 3D model from a single image in ~2.5 minutes. It produces good quality geometry and textures, and it is more robust to different camera angles and object poses.",
+      "category": "Sunra.ai/Hunyuan3D"
+    }
+  },
+  {
+    "name": "hunyuan3d-v2-multi-view-image-to-3d",
+    "openapi_url": "https://openapi.sunra.ai/main/tencent-hunyuan/hunyuan3d-v2-multi-view/latest.json",
+    "endpoint": "/tencent-hunyuan/hunyuan3d-v2-multi-view/image-to-3d",
+    "overrides": {
+      "model_id": "hunyuan3d-v2-multi-view-image-to-3d",
+      "name": "Hunyuan3D v2 Multi-view - Image to 3D",
+      "display_name": "Hunyuan3D v2 Multi-view - Image to 3D",
+      "description": "Hunyuan3D V2 Multi-view is a new model that generate a 3D model from a 4 view images in ~2.5 minutes. It produces higher quality geometry and textures, and it is more robust to different camera angles and object poses.",
+      "category": "Sunra.ai/Hunyuan3D"
+    }
+  },
+  {
+    "name": "elevenlabs-sound-effects-text-to-sound-effects",
+    "openapi_url": "https://openapi.sunra.ai/main/elevenlabs/sound-effects/latest.json",
+    "endpoint": "/elevenlabs/sound-effects/text-to-sound-effects",
+    "overrides": {
+      "model_id": "elevenlabs-sound-effects-text-to-sound-effects",
+      "name": "ElevenLabs - Sound Effects",
+      "display_name": "ElevenLabs - Sound Effects",
+      "description": "Generate sound effects from text using ElevenLabs Sound Effects model. This model is ideal for creating short sound effects for games, movies, and other applications.",
+      "category": "Sunra.ai/ElevenLabs"
+    }
+  },
+  {
+    "name": "elevenlabs-multilingual-v2-text-to-speech",
+    "openapi_url": "https://openapi.sunra.ai/main/elevenlabs/multilingual-v2/latest.json",
+    "endpoint": "/elevenlabs/multilingual-v2/text-to-speech",
+    "overrides": {
+      "model_id": "elevenlabs-multilingual-v2-text-to-speech",
+      "name": "ElevenLabs - Multilingual v2",
+      "display_name": "ElevenLabs - Multilingual v2",
+      "description": "Convert text into audio in 29 languages using ElevenLabs Multilingual V2 model. This model is ideal for creating audiobooks, podcasts, and other applications.",
+      "category": "Sunra.ai/ElevenLabs"
+    }
+  },
+  {
+    "name": "minimax-hailuo-02-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/hailuo-02/latest.json",
+    "endpoint": "/minimax/hailuo-02/text-to-video",
+    "overrides": {
+      "model_id": "minimax-hailuo-02-text-to-video",
+      "name": "MiniMax Hailuo-02 - Text to Video",
+      "display_name": "MiniMax Hailuo-02 - Text to Video",
+      "description": "MiniMax Hailuo‑02 generates cinematic 1080p videos (up to 10s) with smooth motion, strong prompt adherence, and advanced camera control.",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "minimax-hailuo-02-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/hailuo-02/latest.json",
+    "endpoint": "/minimax/hailuo-02/image-to-video",
+    "overrides": {
+      "model_id": "minimax-hailuo-02-image-to-video",
+      "name": "MiniMax Hailuo-02 - Image to Video",
+      "display_name": "MiniMax Hailuo-02 - Image to Video",
+      "description": "MiniMax Hailuo‑02 generates cinematic 1080p videos (up to 10s) with smooth motion, strong prompt adherence, and advanced camera control.",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "minimax-speech-02-hd-text-to-speech",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/speech-02-hd/latest.json",
+    "endpoint": "/minimax/speech-02-hd/text-to-speech",
+    "overrides": {
+      "model_id": "minimax-speech-02-hd-text-to-speech",
+      "name": "MiniMax Speech-02 HD - Text to Speech",
+      "display_name": "MiniMax Speech-02 HD - Text to Speech",
+      "description": "Audiobook-grade speech synthesis with higher bitrate and richer expressiveness.",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "minimax-speech-02-turbo-text-to-speech",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/speech-02-turbo/latest.json",
+    "endpoint": "/minimax/speech-02-turbo/text-to-speech",
+    "overrides": {
+      "model_id": "minimax-speech-02-turbo-text-to-speech",
+      "name": "MiniMax Speech-02 Turbo - Text to Speech",
+      "display_name": "MiniMax Speech-02 Turbo - Text to Speech",
+      "description": "Low-latency TTS tuned for chat UIs—realistic emotion, multi-voice, tiny delay.",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "minimax-voice-cloning",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/voice-cloning/latest.json",
+    "endpoint": "/minimax/voice-cloning/voice-cloning",
+    "overrides": {
+      "model_id": "minimax-voice-cloning",
+      "name": "MiniMax Voice Cloning",
+      "display_name": "MiniMax Voice Cloning",
+      "description": "Zero-shot voice clone from 10 s of audio, producing lifelike speech in 32 languages.",
+      "category": "Sunra.ai/MiniMax"
+    }
   }
 ]

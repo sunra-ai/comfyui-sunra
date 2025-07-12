@@ -12,7 +12,7 @@ import io
 from typing import Dict, Any, Tuple, List
 import torch
 
-from .type_converters import process_image_input, process_image_output, process_video_output, validate_value
+from .type_converters import process_image_input, process_image_output, process_video_output, process_audio_output, process_audio_path_output, process_3d_output, validate_value
 
 
 class SunraBaseNode:
@@ -231,22 +231,44 @@ class SunraBaseNode:
         """
         output_schema = self.schema.get("outputs", {})
         return_names = self.__class__.RETURN_NAMES
+        return_types = self.__class__.RETURN_TYPES
 
         outputs = []
-        for name in return_names:
+        audio_data_cache = {}  # Cache to store audio data for path outputs
+        
+        for i, name in enumerate(return_names):
+            # Check if this is an automatically added audio_path output
+            if name.endswith("_path") and i > 0:
+                audio_name = name[:-5]  # Remove '_path' suffix
+                # Check if previous output was the corresponding audio
+                if i > 0 and return_names[i-1] == audio_name and return_types[i-1] == "AUDIO":
+                    # Use cached audio file path
+                    if audio_name in audio_data_cache:
+                        outputs.append(audio_data_cache[audio_name])
+                    else:
+                        outputs.append("")  # Default empty path
+                    continue
+            
             output_config = output_schema.get(name, {})
             output_type = output_config.get("type", "string")
 
             # Extract value from response
             if isinstance(response, dict):
                 value = response.get(name, self._get_default_output(output_type))
-            elif len(return_names) == 1:
+            elif len(output_schema) == 1:  # Use original schema length, not return_names
                 value = response  # Single output, response is the value
             else:
                 value = self._get_default_output(output_type)
 
             # Process and convert to appropriate type
-            outputs.append(self._convert_output_value(value, output_type))
+            if output_type == "audio" and name not in audio_data_cache:
+                # Process audio and get path from global variable
+                audio_dict = self._convert_output_value(value, output_type)
+                audio_path = process_audio_path_output(value)
+                outputs.append(audio_dict)
+                audio_data_cache[name] = audio_path
+            else:
+                outputs.append(self._convert_output_value(value, output_type))
 
         return outputs
 
@@ -259,6 +281,9 @@ class SunraBaseNode:
             "image": process_image_output,
             "mask": process_image_output,
             "video": process_video_output,
+            "audio": process_audio_output,
+            "3d": process_3d_output,
+            "model": process_3d_output,  # Alternative name for 3D outputs
             "string": str,
             "integer": int,
             "float": float,
@@ -283,6 +308,8 @@ class SunraBaseNode:
             "integer": 0,
             "float": 0.0,
             "boolean": False,
-            "audio": None,
+            "audio": {"waveform": torch.zeros(1, 1, 44100), "sample_rate": 44100},  # Empty 1-second mono audio
+            "3d": "",     # Empty path for 3D models
+            "model": "",  # Alternative name for 3D outputs
         }
         return defaults.get(output_type, None)

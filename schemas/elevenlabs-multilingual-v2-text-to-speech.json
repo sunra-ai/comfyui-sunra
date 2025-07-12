@@ -1,0 +1,161 @@
+{
+  "model_id": "elevenlabs-multilingual-v2-text-to-speech",
+  "name": "ElevenLabs - Multilingual v2",
+  "api_endpoint": "elevenlabs/multilingual-v2/text-to-speech",
+  "display_name": "ElevenLabs - Multilingual v2",
+  "description": "Convert text into audio in 29 languages using ElevenLabs Multilingual V2 model. This model is ideal for creating audiobooks, podcasts, and other applications.",
+  "category": "Sunra.ai/ElevenLabs",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "text": {
+        "type": "string",
+        "description": "The text that will get converted into speech.",
+        "multiline": true,
+        "order": 201
+      }
+    },
+    "optional": {
+      "voice": {
+        "type": "audio",
+        "description": "Voice from provided_voices",
+        "enum": [
+          "Rachel (american accent, young, female)",
+          "Drew (american accent, middle_aged, male)",
+          "Clyde (american accent, middle_aged, male)",
+          "Paul (american accent, middle_aged, male)",
+          "Aria (american accent, middle_aged, female)",
+          "Domi (american accent, young, female)",
+          "Dave (british accent, young, male)",
+          "Roger (middle_aged, male)",
+          "Fin (irish accent, old, male)",
+          "Sarah (american accent, young, female)",
+          "Antoni (american accent, young, male)",
+          "Laura (american accent, young, female)",
+          "Thomas (american accent, young, male)",
+          "Charlie (australian accent, young, male)",
+          "George (british accent, middle_aged, male)",
+          "Emily (american accent, young, female)",
+          "Elli (american accent, young, female)",
+          "Callum (middle_aged, male)",
+          "Patrick (american accent, middle_aged, male)",
+          "River (american accent, middle_aged, neutral)",
+          "Harry (american accent, young, male)",
+          "Liam (american accent, young, male)",
+          "Dorothy (british accent, young, female)",
+          "Josh (american accent, young, male)",
+          "Arnold (american accent, middle_aged, male)",
+          "Charlotte (swedish accent, young, female)",
+          "Alice (british accent, middle_aged, female)",
+          "Matilda (american accent, middle_aged, female)",
+          "James (australian accent, old, male)",
+          "Joseph (british accent, middle_aged, male)",
+          "Will (young, male)",
+          "Jeremy (irish accent, young, male)",
+          "Jessica (american accent, young, female)",
+          "Eric (american accent, middle_aged, male)",
+          "Michael (american accent, old, male)",
+          "Ethan (american accent, young, male)",
+          "Chris (american accent, middle_aged, male)",
+          "Gigi (american accent, young, female)",
+          "Freya (american accent, young, female)",
+          "Santa Claus (american accent, old, male)",
+          "Brian (american accent, middle_aged, male)",
+          "Grace (us-southern accent, young, female)",
+          "Daniel (british accent, middle_aged, male)",
+          "Lily (british accent, middle_aged, female)",
+          "Serena (american accent, middle_aged, female)",
+          "Adam ( accent, middle_aged, male)",
+          "Nicole (american accent, young, female)",
+          "Bill (american accent, old, male)",
+          "Jessie (american accent, old, male)",
+          "Sam (american accent, young, male)",
+          "Glinda (american accent, middle_aged, female)",
+          "Giovanni (italian accent, young, male)",
+          "Mimi (swedish accent, young, female)"
+        ],
+        "default": "Rachel (american accent, young, female)",
+        "order": 301
+      },
+      "output_format": {
+        "type": "string",
+        "description": "Output format from output_format_list",
+        "enum": [
+          "mp3_22050_32",
+          "mp3_44100_32",
+          "mp3_44100_64",
+          "mp3_44100_96",
+          "mp3_44100_128",
+          "mp3_44100_192",
+          "pcm_8000",
+          "pcm_16000",
+          "pcm_22050",
+          "pcm_24000",
+          "pcm_44100",
+          "pcm_48000",
+          "ulaw_8000",
+          "alaw_8000",
+          "opus_48000_32",
+          "opus_48000_64",
+          "opus_48000_96",
+          "opus_48000_128",
+          "opus_48000_192"
+        ],
+        "default": "mp3_44100_128",
+        "order": 400
+      },
+      "stability": {
+        "type": "float",
+        "description": "Voice stability (0-1). Default: 0.5",
+        "default": 0.5,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01,
+        "order": 401
+      },
+      "similarity_boost": {
+        "type": "float",
+        "description": "Similarity boost (0-1). Default: 0.75",
+        "default": 0.75,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01,
+        "order": 402
+      },
+      "style": {
+        "type": "float",
+        "description": "Style exaggeration (0-1).",
+        "default": 0.8,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01,
+        "order": 403
+      },
+      "speaker_boost": {
+        "type": "boolean",
+        "description": "Boosts speaker similarity.",
+        "default": true,
+        "order": 404
+      },
+      "speed": {
+        "type": "float",
+        "description": "Audio speed (0.7-1.2). Default: 1.0",
+        "default": 1.0,
+        "min": 0.7,
+        "max": 1.2,
+        "step": 0.01,
+        "order": 405
+      }
+    }
+  },
+  "outputs": {
+    "audio": {
+      "type": "audio",
+      "description": "Generated audio"
+    },
+    "input_character_count": {
+      "type": "integer",
+      "description": "Output"
+    }
+  }
+}

@@ -121,6 +121,7 @@ def parse_schema_outputs(
 ) -> Tuple[Tuple[str, ...], Tuple[str, ...]]:
     """
     Parse output definitions from schema.
+    Automatically adds audio_path output for audio outputs.
 
     Args:
         schema: The complete schema dictionary
@@ -136,6 +137,7 @@ def parse_schema_outputs(
 
     return_types = []
     return_names = []
+    has_audio = False
 
     # Sort outputs by order if specified
     sorted_outputs = sorted(
@@ -152,6 +154,7 @@ def parse_schema_outputs(
             return_types.append("VIDEO")
         elif output_type == "audio":
             return_types.append("AUDIO")
+            has_audio = True
         elif output_type == "mask":
             return_types.append("MASK")
         elif output_type in ["integer", "int"]:
@@ -164,6 +167,22 @@ def parse_schema_outputs(
             return_types.append("STRING")
 
         return_names.append(name)
+    
+    # Automatically add audio_path output after audio outputs
+    if has_audio:
+        # Find audio outputs and add corresponding path outputs
+        audio_indices = []
+        for i, (name, rtype) in enumerate(zip(return_names, return_types)):
+            if rtype == "AUDIO":
+                audio_indices.append(i)
+        
+        # Insert path outputs after each audio output (in reverse order to maintain indices)
+        for i in reversed(audio_indices):
+            audio_name = return_names[i]
+            path_name = f"{audio_name}_path"
+            # Insert after the audio output
+            return_types.insert(i + 1, "STRING")
+            return_names.insert(i + 1, path_name)
 
     return (tuple(return_types), tuple(return_names))
 

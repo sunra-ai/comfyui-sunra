@@ -1,0 +1,181 @@
+{
+  "model_id": "minimax-speech-02-turbo-text-to-speech",
+  "name": "MiniMax Speech-02 Turbo - Text to Speech",
+  "api_endpoint": "minimax/speech-02-turbo/text-to-speech",
+  "display_name": "MiniMax Speech-02 Turbo - Text to Speech",
+  "description": "Low-latency TTS tuned for chat UIs\u2014realistic emotion, multi-voice, tiny delay.",
+  "category": "Sunra.ai/MiniMax",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "text": {
+        "type": "string",
+        "description": "Text to convert to speech. Every character is 1 token. Maximum 5000 characters. Use <#x#> between words to control pause duration (0.01-99.99s).",
+        "multiline": true,
+        "order": 201
+      }
+    },
+    "optional": {
+      "voice_id": {
+        "type": "audio",
+        "description": "Desired voice ID. Use a voice ID you have trained (https://replicate.com/minimax/voice-cloning), or one of the following system voice IDs: Wise_Woman, Friendly_Person, Inspirational_girl, Deep_Voice_Man, Calm_Woman, Casual_Guy, Lively_Girl, Patient_Man, Young_Knight, Determined_Man, Lovely_Girl, Decent_Boy, Imposing_Manner, Elegant_Man, Abbess, Sweet_Girl_2, Exuberant_Girl",
+        "enum": [
+          "Wise_Woman",
+          "Friendly_Person",
+          "Inspirational_girl",
+          "Deep_Voice_Man",
+          "Calm_Woman",
+          "Casual_Guy",
+          "Lively_Girl",
+          "Patient_Man",
+          "Young_Knight",
+          "Determined_Man",
+          "Lovely_Girl",
+          "Decent_Boy",
+          "Imposing_Manner",
+          "Elegant_Man",
+          "Abbess",
+          "Sweet_Girl_2",
+          "Exuberant_Girl"
+        ],
+        "default": "Wise_Woman",
+        "order": 301
+      },
+      "speed": {
+        "type": "float",
+        "description": "Speech speed",
+        "default": 1,
+        "min": 0.5,
+        "max": 2.0,
+        "step": 0.01,
+        "order": 401
+      },
+      "volume": {
+        "type": "float",
+        "description": "Speech volume",
+        "default": 1,
+        "min": 0.0,
+        "max": 10.0,
+        "step": 0.1,
+        "order": 402
+      },
+      "pitch": {
+        "type": "integer",
+        "description": "Speech pitch",
+        "default": 0,
+        "min": -12.0,
+        "max": 12.0,
+        "step": 1,
+        "order": 403
+      },
+      "emotion": {
+        "type": "string",
+        "description": "Speech emotion",
+        "enum": [
+          "auto",
+          "neutral",
+          "happy",
+          "sad",
+          "angry",
+          "fearful",
+          "disgusted",
+          "surprised"
+        ],
+        "default": "auto",
+        "order": 404
+      },
+      "english_normalization": {
+        "type": "boolean",
+        "description": "Enable English text normalization for better number reading (slightly increases latency)",
+        "default": false,
+        "order": 405
+      },
+      "sample_rate": {
+        "type": "integer",
+        "description": "Sample rate for the generated speech",
+        "enum": [
+          8000,
+          16000,
+          22050,
+          24000,
+          32000,
+          44100
+        ],
+        "default": 32000,
+        "step": 1,
+        "order": 406
+      },
+      "bitrate": {
+        "type": "integer",
+        "description": "Bitrate for the generated speech",
+        "enum": [
+          32000,
+          64000,
+          128000,
+          256000
+        ],
+        "default": 128000,
+        "step": 1,
+        "order": 407
+      },
+      "channel": {
+        "type": "string",
+        "description": "Number of audio channels",
+        "enum": [
+          "mono",
+          "stereo"
+        ],
+        "default": "mono",
+        "order": 408
+      },
+      "language_boost": {
+        "type": "string",
+        "description": "Enhance recognition of specific languages and dialects",
+        "enum": [
+          "None",
+          "Automatic",
+          "Chinese",
+          "Chinese,Yue",
+          "English",
+          "Arabic",
+          "Russian",
+          "Spanish",
+          "French",
+          "Portuguese",
+          "German",
+          "Turkish",
+          "Dutch",
+          "Ukrainian",
+          "Vietnamese",
+          "Indonesian",
+          "Japanese",
+          "Italian",
+          "Korean",
+          "Thai",
+          "Polish",
+          "Romanian",
+          "Greek",
+          "Czech",
+          "Finnish",
+          "Hindi"
+        ],
+        "default": "None",
+        "order": 409
+      }
+    }
+  },
+  "outputs": {
+    "audio": {
+      "type": "audio",
+      "description": "Generated audio"
+    },
+    "input_tokens": {
+      "type": "integer",
+      "description": "Number of input tokens"
+    },
+    "predict_time": {
+      "type": "float",
+      "description": "Time taken to generate the audio"
+    }
+  }
+}

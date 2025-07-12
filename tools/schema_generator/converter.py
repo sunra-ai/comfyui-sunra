@@ -233,10 +233,15 @@ class OpenAPIToSchemaConverter:
                         # Determine output type
                         if "$ref" in item_def and "SunraFile" in item_def["$ref"]:
                             # It's a file output (or array of files)
-                            if "image" in prop_name.lower() or "image" in schema_name.lower():
+                            # Check for 3D models first (before image) to handle cases like "ImageTo3DOutput"
+                            if ("model" in prop_name.lower() or 
+                                "3d" in schema_name.lower() or 
+                                "to3d" in schema_name.lower() or
+                                "3d" in endpoint.lower()):
+                                # Handle 3D model outputs
                                 outputs[prop_name] = {
-                                    "type": "image",
-                                    "description": prop_def.get("description", "Generated images" if is_array else "Generated image")
+                                    "type": "model",
+                                    "description": prop_def.get("description", "Generated 3D model")
                                 }
                             elif "video" in prop_name.lower() or "video" in schema_name.lower():
                                 outputs[prop_name] = {
@@ -247,6 +252,11 @@ class OpenAPIToSchemaConverter:
                                 outputs[prop_name] = {
                                     "type": "audio",
                                     "description": prop_def.get("description", "Generated audio")
+                                }
+                            elif "image" in prop_name.lower() or "image" in schema_name.lower():
+                                outputs[prop_name] = {
+                                    "type": "image",
+                                    "description": prop_def.get("description", "Generated images" if is_array else "Generated image")
                                 }
                         else:
                             # Regular output

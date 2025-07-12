@@ -1,0 +1,74 @@
+{
+  "model_id": "flux.1-depth-dev-image-to-image",
+  "name": "FLUX.1 Depth Dev - Image to Image",
+  "api_endpoint": "black-forest-labs/flux.1-depth-dev/image-to-image",
+  "display_name": "FLUX.1 Depth Dev - Image to Image",
+  "description": "FLUX.1 Depth Dev is a new state-of-the-art text-to-image model that generates images based on depth map conditioning.",
+  "category": "Sunra.ai/FLUX Depth",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for image generation",
+        "multiline": true,
+        "order": 200
+      },
+      "control_image": {
+        "type": "image",
+        "description": "Image used to control the generation. The depth map will be automatically generated.",
+        "order": 301
+      }
+    },
+    "optional": {
+      "number_of_steps": {
+        "type": "integer",
+        "description": "Number of steps for the image generation process",
+        "default": 30,
+        "min": 15.0,
+        "max": 50.0,
+        "step": 1,
+        "order": 201
+      },
+      "guidance_scale": {
+        "type": "float",
+        "description": "Guidance strength for the image generation process",
+        "default": 10,
+        "min": 1.0,
+        "max": 100.0,
+        "step": 0.1,
+        "order": 202
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Optional seed for reproducibility",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 203
+      },
+      "number_of_images": {
+        "type": "image",
+        "description": "Number of outputs to generate.",
+        "default": 1,
+        "order": 401
+      },
+      "output_format": {
+        "type": "string",
+        "description": "Output format for the generated image. Can be 'jpeg' or 'png'.",
+        "enum": [
+          "jpeg",
+          "png"
+        ],
+        "default": "jpeg",
+        "order": 402
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

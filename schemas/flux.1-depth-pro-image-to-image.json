@@ -1,0 +1,88 @@
+{
+  "model_id": "flux.1-depth-pro-image-to-image",
+  "name": "FLUX.1 Depth Pro - Image to Image",
+  "api_endpoint": "black-forest-labs/flux.1-depth-pro/image-to-image",
+  "display_name": "FLUX.1 Depth Pro - Image to Image",
+  "description": "FLUX.1 Depth Pro is a new state-of-the-art text-to-image model that generates images based on depth map conditioning.",
+  "category": "Sunra.ai/FLUX Depth",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for image generation",
+        "multiline": true,
+        "order": 200
+      },
+      "control_image": {
+        "type": "image",
+        "description": "Input image to condition your output on.",
+        "order": 301
+      }
+    },
+    "optional": {
+      "prompt_enhancer": {
+        "type": "boolean",
+        "description": "Whether to perform enhancer on the prompt. If active, automatically modifies the prompt for more creative generation.",
+        "default": false,
+        "order": 201
+      },
+      "number_of_steps": {
+        "type": "integer",
+        "description": "Number of steps for the image generation process",
+        "default": 30,
+        "min": 15.0,
+        "max": 50.0,
+        "step": 1,
+        "order": 202
+      },
+      "guidance_scale": {
+        "type": "float",
+        "description": "Guidance strength for the image generation process",
+        "default": 15,
+        "min": 1.0,
+        "max": 100.0,
+        "step": 0.1,
+        "order": 203
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Seed for reproducibility.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 204
+      },
+      "preprocessed_image": {
+        "type": "image",
+        "description": "Pre-processed image that will bypass the control preprocessing step",
+        "order": 302
+      },
+      "output_format": {
+        "type": "string",
+        "description": "Output format for the generated image. Can be 'jpeg' or 'png'.",
+        "enum": [
+          "jpeg",
+          "png"
+        ],
+        "default": "jpeg",
+        "order": 401
+      },
+      "safety_tolerance": {
+        "type": "integer",
+        "description": "Tolerance level for input and output moderation. Between 0 and 100, 0 being most strict, 100 being no moderation.",
+        "default": 40,
+        "min": 0.0,
+        "max": 100.0,
+        "step": 1,
+        "order": 500
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

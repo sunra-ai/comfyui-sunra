@@ -24,6 +24,14 @@ try:
 except ImportError:
     SUNRA_CLIENT_AVAILABLE = False
 
+# Try to import torchaudio for audio processing
+try:
+    import torchaudio
+
+    TORCHAUDIO_AVAILABLE = True
+except ImportError:
+    TORCHAUDIO_AVAILABLE = False
+
 # Default configurations for different types
 DEFAULT_CONFIGS = {
     "FLOAT": {
@@ -275,6 +283,205 @@ def process_video_output(data: Union[str, Dict]) -> Any:
         video_bytes = f.read()
     video_io = io.BytesIO(video_bytes)
     return VideoFromFile(video_io)
+
+
+# Cache for processed audio data, keyed by URL
+_audio_cache: Dict[str, Dict[str, Any]] = {}
+
+
+def _process_and_cache_audio(audio_url: str) -> Dict[str, Any]:
+    """
+    Helper to download, process, and cache audio data.
+    Avoids redundant downloads and processing for the same URL.
+    """
+    if audio_url in _audio_cache:
+        return _audio_cache[audio_url]
+    
+    from pathlib import Path
+    from datetime import datetime
+    import folder_paths
+    
+    # Create output directory following ComfyUI conventions
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    output_dir = Path(folder_paths.get_output_directory()) / "SunraAudio" / timestamp
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Extract filename from URL or generate one
+    filename = audio_url.split("/")[-1].split("?")[0]
+    if not filename.endswith((".mp3", ".wav", ".m4a", ".ogg", ".flac", ".aac")):
+        filename = f"audio_{hash(audio_url)}.mp3"
+    
+    output_path = output_dir / filename
+    
+    # Download audio
+    try:
+        response = requests.get(audio_url, timeout=60, stream=True)
+        response.raise_for_status()
+        
+        with open(output_path, "wb") as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
+    except requests.RequestException as e:
+        raise RuntimeError(f"Failed to download audio from {audio_url}: {str(e)}")
+    
+    # Get relative path for ComfyUI
+    relative_path = output_path.relative_to(Path(folder_paths.get_output_directory()))
+    
+    # Load audio and return as ComfyUI AUDIO dict
+    waveform, sample_rate = torch.zeros(1, 1, 44100), 44100
+    if TORCHAUDIO_AVAILABLE:
+        try:
+            loaded_waveform, loaded_sample_rate = torchaudio.load(str(output_path))
+            # Add batch dimension if not present
+            if len(loaded_waveform.shape) == 2:
+                loaded_waveform = loaded_waveform.unsqueeze(0)
+            waveform, sample_rate = loaded_waveform, loaded_sample_rate
+        except Exception as e:
+            print(f"Warning: Failed to load audio with torchaudio: {e}")
+    else:
+        print("Warning: torchaudio not available. Audio will be returned with empty waveform.")
+    
+    result = {"waveform": waveform, "sample_rate": sample_rate, "path": str(relative_path)}
+    _audio_cache[audio_url] = result
+    return result
+
+
+def process_audio_output(data: Union[str, Dict]) -> Dict[str, Any]:
+    """
+    Process audio output from Sunra API.
+    Downloads audio and returns it as ComfyUI AUDIO type.
+    """
+    # Extract audio URL from various formats
+    audio_url = data
+    if isinstance(data, dict):
+        audio_url = data.get("url") or data.get("file_url") or data.get("audio") or str(data)
+    
+    if not isinstance(audio_url, str) or not audio_url.startswith(("http://", "https://")):
+        raise ValueError(f"Invalid audio URL: {audio_url}")
+    
+    cached_data = _process_and_cache_audio(audio_url)
+    return {"waveform": cached_data["waveform"], "sample_rate": cached_data["sample_rate"]}
+
+
+def process_audio_path_output(data: Union[str, Dict]) -> str:
+    """
+    Returns the file path of the processed audio.
+    This function is robust and can be called independently.
+    """
+    # Extract audio URL from various formats
+    audio_url = data
+    if isinstance(data, dict):
+        audio_url = data.get("url") or data.get("file_url") or data.get("audio") or str(data)
+    
+    if not isinstance(audio_url, str) or not audio_url.startswith(("http://", "https://")):
+        raise ValueError(f"Invalid audio URL: {audio_url}")
+    
+    cached_data = _process_and_cache_audio(audio_url)
+    return cached_data["path"]
+
+
+def process_3d_output(data: Union[str, Dict]) -> str:
+    """
+    Process 3D model output from Sunra API.
+    Downloads 3D model files and returns path following ComfyUI conventions.
+    """
+    import zipfile
+    import tarfile
+    from pathlib import Path
+    from datetime import datetime
+    import folder_paths
+
+    print(f"Processing 3D model output: {data}")
+    
+    # Extract model URL from various formats
+    model_url = None
+    if isinstance(data, str):
+        model_url = data
+    elif isinstance(data, dict):
+        # First check for direct URL fields
+        model_url = data.get("url") or data.get("file_url")
+        
+        # If not found, check for nested SunraFile structures
+        if not model_url:
+            # Check for model field (Hunyuan3D v2 Turbo and v2.1)
+            if "model" in data and isinstance(data["model"], dict):
+                model_url = data["model"].get("url")
+            # Also check model_archive for v2.1
+            elif "model_archive" in data and isinstance(data["model_archive"], dict):
+                model_url = data["model_archive"].get("url")
+    
+    if not isinstance(model_url, str) or not model_url.startswith(("http://", "https://")):
+        raise ValueError(f"Unable to get model file path. Could not find a valid model URL in the response: {data}")
+    
+    # Create output directory following ComfyUI conventions
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    output_dir = Path(folder_paths.get_output_directory()) / "Sunra3D" / timestamp
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Extract filename from URL
+    filename = model_url.split("/")[-1].split("?")[0]
+    
+    # Check if it's an archive or direct model file
+    is_archive = filename.endswith((".zip", ".tar", ".tar.gz", ".tgz"))
+    
+    if is_archive:
+        # Download archive
+        archive_path = output_dir / filename
+        try:
+            response = requests.get(model_url, timeout=120, stream=True)
+            response.raise_for_status()
+            
+            with open(archive_path, "wb") as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    f.write(chunk)
+        except requests.RequestException as e:
+            raise RuntimeError(f"Failed to download 3D model archive from {model_url}: {str(e)}")
+        
+        # Extract archive
+        extract_dir = output_dir / f"{filename}_extracted"
+        extract_dir.mkdir(exist_ok=True)
+        
+        if filename.endswith(".zip"):
+            with zipfile.ZipFile(archive_path, 'r') as zip_ref:
+                zip_ref.extractall(extract_dir)
+        elif filename.endswith((".tar", ".tar.gz", ".tgz")):
+            with tarfile.open(archive_path, 'r:*') as tar_ref:
+                tar_ref.extractall(extract_dir)
+        
+        # Find 3D model files in extracted directory
+        model_extensions = [".glb", ".gltf", ".obj", ".ply", ".fbx", ".stl"]
+        model_files = []
+        for ext in model_extensions:
+            model_files.extend(extract_dir.rglob(f"*{ext}"))
+        
+        if model_files:
+            # Return the first found model file
+            # Return path relative to ComfyUI output folder  
+            relative_path = model_files[0].relative_to(Path(folder_paths.get_output_directory()))
+            return str(relative_path)
+        else:
+            # No model file found in archive
+            raise RuntimeError(f"No 3D model files found in archive from {model_url}")
+    else:
+        # Direct model file download
+        if not filename.endswith((".glb", ".gltf", ".obj", ".ply", ".fbx", ".stl")):
+            filename = f"model_{hash(model_url)}.glb"
+        
+        output_path = output_dir / filename
+        
+        try:
+            response = requests.get(model_url, timeout=120, stream=True)
+            response.raise_for_status()
+            
+            with open(output_path, "wb") as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    f.write(chunk)
+        except requests.RequestException as e:
+            raise RuntimeError(f"Failed to download 3D model from {model_url}: {str(e)}")
+        
+        # Return path relative to ComfyUI output folder
+        relative_path = output_path.relative_to(Path(folder_paths.get_output_directory()))
+        return str(relative_path)
 
 
 def infer_type_from_name(name: str) -> Optional[str]:

@@ -1,0 +1,57 @@
+{
+  "model_id": "minimax-voice-cloning",
+  "name": "MiniMax Voice Cloning",
+  "api_endpoint": "minimax/voice-cloning/voice-cloning",
+  "display_name": "MiniMax Voice Cloning",
+  "description": "Zero-shot voice clone from 10 s of audio, producing lifelike speech in 32 languages.",
+  "category": "Sunra.ai/MiniMax",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "voice_reference": {
+        "type": "audio",
+        "description": "Voice file to clone. Must be MP3, M4A, or WAV format, 10s to 5min duration, and less than 20MB.",
+        "order": 301
+      }
+    },
+    "optional": {
+      "noise_reduction": {
+        "type": "boolean",
+        "description": "Enable noise reduction. Use this if the voice file has background noise.",
+        "default": false,
+        "order": 302
+      },
+      "model": {
+        "type": "string",
+        "description": "The text-to-speech model to train",
+        "enum": [
+          "speech-02-turbo",
+          "speech-02-hd"
+        ],
+        "default": "speech-02-turbo",
+        "order": 303
+      },
+      "accuracy": {
+        "type": "float",
+        "description": "Text validation accuracy threshold (0-1)",
+        "default": 0.7,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01,
+        "order": 304
+      },
+      "volume_normalization": {
+        "type": "boolean",
+        "description": "Enable volume normalization",
+        "default": false,
+        "order": 401
+      }
+    }
+  },
+  "outputs": {
+    "voice_id": {
+      "type": "string",
+      "description": "The ID of the voice that was cloned"
+    }
+  }
+}
