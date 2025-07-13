@@ -1,0 +1,78 @@
+{
+  "model_id": "flux-1.1-pro-text-to-image",
+  "name": "FLUX 1.1 Pro - Text to Image",
+  "api_endpoint": "black-forest-labs/flux-1.1-pro/text-to-image",
+  "display_name": "FLUX 1.1 Pro - Text to Image",
+  "description": "The best of FLUX, offering state-of-the-art performance image generation at blazing speeds with top of the line prompt following, visual quality, image detail, and output diversity.",
+  "category": "Sunra.ai/FLUX",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for image generation.",
+        "multiline": true,
+        "order": 200
+      }
+    },
+    "optional": {
+      "prompt_enhancer": {
+        "type": "boolean",
+        "description": "Whether to perform enhancer on the prompt. If active, automatically modifies the prompt for more creative generation.",
+        "default": false,
+        "order": 201
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Seed for reproducibility.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 202
+      },
+      "width": {
+        "type": "integer",
+        "description": "Width of the generated image in pixels. Must be a multiple of 32.",
+        "default": 1024,
+        "min": 256.0,
+        "max": 1440.0,
+        "step": 32,
+        "order": 402
+      },
+      "height": {
+        "type": "integer",
+        "description": "Height of the generated image in pixels. Must be a multiple of 32.",
+        "default": 768,
+        "min": 256.0,
+        "max": 1440.0,
+        "step": 32,
+        "order": 403
+      },
+      "output_format": {
+        "type": "string",
+        "description": "Output format for the generated image. Can be 'jpeg' or 'png'.",
+        "enum": [
+          "jpeg",
+          "png"
+        ],
+        "default": "jpeg",
+        "order": 404
+      },
+      "safety_tolerance": {
+        "type": "integer",
+        "description": "Tolerance level for input and output moderation. Between 0 and 100, 0 being most strict, 100 being no moderation.",
+        "default": 40,
+        "min": 0.0,
+        "max": 100.0,
+        "step": 1,
+        "order": 500
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

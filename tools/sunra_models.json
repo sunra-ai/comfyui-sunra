@@ -202,5 +202,65 @@
       "description": "Zero-shot voice clone from 10 s of audio, producing lifelike speech in 32 languages.",
       "category": "Sunra.ai/MiniMax"
     }
+  },
+  {
+    "name": "flux.1-canny-pro-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/black-forest-labs/flux.1-canny-pro/latest.json",
+    "endpoint": "/black-forest-labs/flux.1-canny-pro/image-to-image",
+    "overrides": {
+      "model_id": "flux.1-canny-pro-image-to-image",
+      "name": "FLUX.1 Canny Pro - Image to Image",
+      "display_name": "FLUX.1 Canny Pro - Image to Image",
+      "description": "FLUX.1 Canny Pro generates images using Canny edge maps for precise control over structure and style, ideal for sketch-to-image tasks.",
+      "category": "Sunra.ai/FLUX Canny"
+    }
+  },
+  {
+    "name": "flux.1-fill-pro-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/black-forest-labs/flux.1-fill-pro/latest.json",
+    "endpoint": "/black-forest-labs/flux.1-fill-pro/image-to-image",
+    "overrides": {
+      "model_id": "flux.1-fill-pro-image-to-image",
+      "name": "FLUX.1 Fill Pro - Image to Image",
+      "display_name": "FLUX.1 Fill Pro - Image to Image",
+      "description": "State-of-the-art in-paint and out-paint capabilities, mask out parts of your composition to fine-tune your image to your needs.",
+      "category": "Sunra.ai/FLUX Fill"
+    }
+  },
+  {
+    "name": "flux-1.1-pro-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/black-forest-labs/flux-1.1-pro/latest.json",
+    "endpoint": "/black-forest-labs/flux-1.1-pro/text-to-image",
+    "overrides": {
+      "model_id": "flux-1.1-pro-text-to-image",
+      "name": "FLUX 1.1 Pro - Text to Image",
+      "display_name": "FLUX 1.1 Pro - Text to Image",
+      "description": "The best of FLUX, offering state-of-the-art performance image generation at blazing speeds with top of the line prompt following, visual quality, image detail, and output diversity.",
+      "category": "Sunra.ai/FLUX"
+    }
+  },
+  {
+    "name": "flux-1.1-pro-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/black-forest-labs/flux-1.1-pro/latest.json",
+    "endpoint": "/black-forest-labs/flux-1.1-pro/image-to-image",
+    "overrides": {
+      "model_id": "flux-1.1-pro-image-to-image",
+      "name": "FLUX 1.1 Pro - Image to Image",
+      "display_name": "FLUX 1.1 Pro - Image to Image",
+      "description": "The best of FLUX, offering state-of-the-art performance image generation at blazing speeds with top of the line prompt following, visual quality, image detail, and output diversity.",
+      "category": "Sunra.ai/FLUX"
+    }
+  },
+  {
+    "name": "elevenlabs-scribe-v1-speech-to-text",
+    "openapi_url": "https://openapi.sunra.ai/main/elevenlabs/scribe-v1/latest.json",
+    "endpoint": "/elevenlabs/scribe-v1/speech-to-text",
+    "overrides": {
+      "model_id": "elevenlabs-scribe-v1-speech-to-text",
+      "name": "ElevenLabs Scribe v1 - Speech to Text",
+      "display_name": "ElevenLabs Scribe v1 - Speech to Text",
+      "description": "The fastest, most accurate, and lowest cost speech-to-text on the market, supporting 120 languages.",
+      "category": "Sunra.ai/ElevenLabs"
+    }
   }
 ]

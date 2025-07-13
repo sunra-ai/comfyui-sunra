@@ -1,0 +1,89 @@
+{
+  "model_id": "flux.1-fill-pro-image-to-image",
+  "name": "FLUX.1 Fill Pro - Image to Image",
+  "api_endpoint": "black-forest-labs/flux.1-fill-pro/image-to-image",
+  "display_name": "FLUX.1 Fill Pro - Image to Image",
+  "description": "State-of-the-art in-paint and out-paint capabilities, mask out parts of your composition to fine-tune your image to your needs.",
+  "category": "Sunra.ai/FLUX Fill",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "image": {
+        "type": "image",
+        "description": "The image to inpaint. Can contain alpha mask. If the image width or height are not multiples of 32, they will be scaled to the closest multiple of 32. If the image dimensions don't fit within 1440x1440, it will be scaled down to fit.",
+        "order": 301
+      }
+    },
+    "optional": {
+      "prompt": {
+        "type": "string",
+        "description": "The description of the changes you want to make. This text guides the inpainting process, allowing you to specify features, styles, or modifications for the masked area.",
+        "default": "",
+        "multiline": true,
+        "order": 200
+      },
+      "prompt_enhancer": {
+        "type": "boolean",
+        "description": "Whether to perform enhancer on the prompt. If active, automatically modifies the prompt for more creative generation.",
+        "default": false,
+        "order": 201
+      },
+      "number_of_steps": {
+        "type": "integer",
+        "description": "Number of steps for the image generation process",
+        "default": 30,
+        "min": 15.0,
+        "max": 50.0,
+        "step": 1,
+        "order": 202
+      },
+      "guidance_scale": {
+        "type": "float",
+        "description": "Guidance strength for the image generation process",
+        "default": 60,
+        "min": 2.0,
+        "max": 100.0,
+        "step": 0.1,
+        "order": 203
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Seed for reproducibility.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 204
+      },
+      "mask_image": {
+        "type": "image",
+        "description": "A black-and-white image that describes the part of the image to inpaint. Black areas will be preserved while white areas will be inpainted.",
+        "order": 302
+      },
+      "output_format": {
+        "type": "string",
+        "description": "Output format for the generated image. Can be 'jpeg' or 'png'.",
+        "enum": [
+          "jpeg",
+          "png"
+        ],
+        "default": "jpeg",
+        "order": 401
+      },
+      "safety_tolerance": {
+        "type": "integer",
+        "description": "Tolerance level for input and output moderation. Between 0 and 100, 0 being most strict, 100 being no moderation.",
+        "default": 40,
+        "min": 0.0,
+        "max": 100.0,
+        "step": 1,
+        "order": 500
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

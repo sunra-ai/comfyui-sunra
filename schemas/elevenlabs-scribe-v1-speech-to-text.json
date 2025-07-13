@@ -1,0 +1,82 @@
+{
+  "model_id": "elevenlabs-scribe-v1-speech-to-text",
+  "name": "ElevenLabs Scribe v1 - Speech to Text",
+  "api_endpoint": "elevenlabs/scribe-v1/speech-to-text",
+  "display_name": "ElevenLabs Scribe v1 - Speech to Text",
+  "description": "The fastest, most accurate, and lowest cost speech-to-text on the market, supporting 120 languages.",
+  "category": "Sunra.ai/ElevenLabs",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "audio": {
+        "type": "audio",
+        "description": "Audio file URL.",
+        "order": 301
+      }
+    },
+    "optional": {
+      "language": {
+        "type": "string",
+        "description": "Supported languages from provided_languages.",
+        "enum": [
+          "Arabic",
+          "Chinese",
+          "English",
+          "French",
+          "German",
+          "Hindi",
+          "Italian",
+          "Japanese",
+          "Korean",
+          "Portuguese",
+          "Russian",
+          "Spanish",
+          "Turkish",
+          "Bengali",
+          "Dutch",
+          "Indonesian",
+          "Persian",
+          "Swahili",
+          "Thai",
+          "Vietnamese"
+        ],
+        "default": "English",
+        "order": 401
+      },
+      "tag_audio_events": {
+        "type": "audio",
+        "description": "Tag audio events.",
+        "default": true,
+        "order": 402
+      },
+      "speaker_diarization": {
+        "type": "boolean",
+        "description": "Enable speaker diarization.",
+        "default": false,
+        "order": 403
+      }
+    }
+  },
+  "outputs": {
+    "language_code": {
+      "type": "string",
+      "description": "The detected language code"
+    },
+    "language_probability": {
+      "type": "float",
+      "description": "The confidence score of the language detection (0 to 1)"
+    },
+    "text": {
+      "type": "string",
+      "description": "The raw text of the transcription"
+    },
+    "words": {
+      "type": "string",
+      "description": "List of words with their timing information"
+    },
+    "input_audio_duration": {
+      "type": "integer",
+      "description": "The duration of the input audio in seconds"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "model_id": "flux.1-canny-pro-image-to-image",
+  "name": "FLUX.1 Canny Pro - Image to Image",
+  "api_endpoint": "black-forest-labs/flux.1-canny-pro/image-to-image",
+  "display_name": "FLUX.1 Canny Pro - Image to Image",
+  "description": "FLUX.1 Canny Pro generates images using Canny edge maps for precise control over structure and style, ideal for sketch-to-image tasks.",
+  "category": "Sunra.ai/FLUX Canny",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for image generation",
+        "multiline": true,
+        "order": 200
+      },
+      "control_image": {
+        "type": "image",
+        "description": "Image used to control the generation. The canny edge detection will be automatically generated.",
+        "order": 301
+      }
+    },
+    "optional": {
+      "prompt_enhancer": {
+        "type": "boolean",
+        "description": "Whether to perform enhancer on the prompt. If active, automatically modifies the prompt for more creative generation.",
+        "default": false,
+        "order": 201
+      },
+      "number_of_steps": {
+        "type": "integer",
+        "description": "Number of steps for the image generation process",
+        "default": 30,
+        "min": 15.0,
+        "max": 50.0,
+        "step": 1,
+        "order": 202
+      },
+      "guidance_scale": {
+        "type": "float",
+        "description": "Guidance strength for the image generation process",
+        "default": 30,
+        "min": 1.0,
+        "max": 100.0,
+        "step": 0.1,
+        "order": 203
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Seed for reproducibility.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 204
+      },
+      "preprocessed_image": {
+        "type": "image",
+        "description": "Pre-processed image that will bypass the control preprocessing step",
+        "order": 302
+      },
+      "canny_low_threshold": {
+        "type": "integer",
+        "description": "Low threshold for Canny edge detection",
+        "default": 50,
+        "min": 0.0,
+        "max": 500.0,
+        "step": 10,
+        "order": 303
+      },
+      "canny_high_threshold": {
+        "type": "integer",
+        "description": "High threshold for Canny edge detection",
+        "default": 200,
+        "min": 0.0,
+        "max": 500.0,
+        "step": 10,
+        "order": 304
+      },
+      "output_format": {
+        "type": "string",
+        "description": "Output format for the generated image. Can be 'jpeg' or 'png'.",
+        "enum": [
+          "jpeg",
+          "png"
+        ],
+        "default": "jpeg",
+        "order": 401
+      },
+      "safety_tolerance": {
+        "type": "integer",
+        "description": "Tolerance level for input and output moderation. Between 0 and 100, 0 being most strict, 100 being no moderation.",
+        "default": 40,
+        "min": 0.0,
+        "max": 100.0,
+        "step": 1,
+        "order": 500
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}
