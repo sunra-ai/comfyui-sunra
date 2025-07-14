@@ -13,11 +13,6 @@
         "description": "Text prompt for image generation",
         "multiline": true,
         "order": 200
-      },
-      "control_image": {
-        "type": "image",
-        "description": "Image used to control the generation. The canny edge detection will be automatically generated.",
-        "order": 301
       }
     },
     "optional": {
@@ -52,6 +47,11 @@
         "max": 2147483647.0,
         "step": 1,
         "order": 204
+      },
+      "control_image": {
+        "type": "image",
+        "description": "Image used to control the generation. The canny edge detection will be automatically generated.",
+        "order": 301
       },
       "preprocessed_image": {
         "type": "image",
