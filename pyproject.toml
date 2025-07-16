@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "comfyui-sunra"
-version = "0.0.7"
+version = "0.0.8"
 description = "Official ComfyUI nodes for [Sunra AI](https://sunra.ai) models."
 authors = [
     {name = "Sunra AI", email = "support@sunra.ai"},
@@ -13,7 +13,7 @@ license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
-    "sunra-client>=0.1.2",
+    "sunra-client>=0.2.1",
     "requests>=2.28.0",
     "pillow>=9.0.0",
     "numpy>=1.21.0",
