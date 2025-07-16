@@ -1,0 +1,25 @@
+{
+  "model_id": "recraft-crisp-upscale-upscale-image",
+  "name": "Recraft Crisp Upscale - Upscale Image",
+  "api_endpoint": "recraft/crisp-upscale/upscale-image",
+  "display_name": "Recraft Crisp Upscale - Upscale Image",
+  "description": "One-click sharpness boost that cleans edges, refines small details and readies assets for print or pixel-perfect web delivery\u2014just one credit per job.",
+  "category": "Sunra.ai/Recraft",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "image": {
+        "type": "image",
+        "description": "The URL of the image to be upscaled. Must be in PNG format.",
+        "order": 301
+      }
+    },
+    "optional": {}
+  },
+  "outputs": {
+    "image": {
+      "type": "image",
+      "description": "Generated image"
+    }
+  }
+}

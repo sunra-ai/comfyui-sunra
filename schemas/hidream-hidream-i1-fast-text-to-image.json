@@ -1,0 +1,60 @@
+{
+  "model_id": "hidream-hidream-i1-fast-text-to-image",
+  "name": "HiDream I1 Fast - Text to Image",
+  "api_endpoint": "hidream/hidream-i1-fast/text-to-image",
+  "display_name": "HiDream I1 Fast - Text to Image",
+  "description": "HiDream I1 Fast is a lightweight version with 14 diffusion steps, optimized for fast image generation.",
+  "category": "Sunra.ai/HiDream",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for image generation",
+        "multiline": true,
+        "order": 201
+      }
+    },
+    "optional": {
+      "negative_prompt": {
+        "type": "string",
+        "description": "Negative prompt to avoid certain elements",
+        "multiline": true,
+        "order": 203
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Random seed for generation",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 206
+      },
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Aspect ratio of the generated image",
+        "enum": [
+          "1:1",
+          "2:3",
+          "3:4",
+          "9:16",
+          "3:2",
+          "4:3",
+          "16:9"
+        ],
+        "default": "1:1",
+        "order": 401
+      }
+    }
+  },
+  "outputs": {
+    "image": {
+      "type": "image",
+      "description": "Generated image"
+    },
+    "predict_time": {
+      "type": "float",
+      "description": "Time taken to generate the image"
+    }
+  }
+}

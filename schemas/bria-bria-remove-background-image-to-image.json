@@ -1,0 +1,25 @@
+{
+  "model_id": "bria-bria-remove-background-image-to-image",
+  "name": "Bria Remove Background - Image to Image",
+  "api_endpoint": "bria/bria-remove-background/image-to-image",
+  "display_name": "Bria Remove Background - Image to Image",
+  "description": "Bria Remove Background removes image backgrounds with high precision, ideal for clean and professional results.",
+  "category": "Sunra.ai/Bria",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "image": {
+        "type": "image",
+        "description": "Input Image to erase from",
+        "order": 301
+      }
+    },
+    "optional": {}
+  },
+  "outputs": {
+    "image": {
+      "type": "image",
+      "description": "Generated image"
+    }
+  }
+}

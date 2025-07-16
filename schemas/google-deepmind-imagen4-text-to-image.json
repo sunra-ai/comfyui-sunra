@@ -1,0 +1,40 @@
+{
+  "model_id": "google-deepmind-imagen4-text-to-image",
+  "name": "Google DeepMind Imagen4 - Text to Image",
+  "api_endpoint": "google-deepmind/imagen4/text-to-image",
+  "display_name": "Google DeepMind Imagen4 - Text to Image",
+  "description": "Imagen 4 generates photorealistic 2K images with fine detail, accurate text, and multilingual prompt support.",
+  "category": "Sunra.ai/Google DeepMind",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "The prompt for the image",
+        "multiline": true,
+        "order": 200
+      }
+    },
+    "optional": {
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Aspect ratio of the image",
+        "enum": [
+          "1:1",
+          "16:9",
+          "9:16",
+          "4:3",
+          "3:4"
+        ],
+        "default": "16:9",
+        "order": 401
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

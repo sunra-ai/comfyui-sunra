@@ -1,0 +1,91 @@
+{
+  "model_id": "kling-lip-sync-audio-lip-sync",
+  "name": "Kling Lip Sync - Audio Lip Sync",
+  "api_endpoint": "kling/kling-lip-sync/audio-lip-sync",
+  "display_name": "Kling Lip Sync - Audio Lip Sync",
+  "description": "Kling Lip Sync enables realistic mouth movement synchronization in AI-generated videos using audio or text input, creating realistic 10s clips with clear facial alignment.",
+  "category": "Sunra.ai/Kling",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "video": {
+        "type": "video",
+        "description": "URL of a video for lip syncing. It can be an .mp4 or .mov file, should be less than 100MB, with a duration of 2-10 seconds, and a resolution of 720p-1080p (720-1920px dimensions)",
+        "order": 301
+      },
+      "audio": {
+        "type": "audio",
+        "description": "Audio file for lip sync. Must be .mp3, .wav, .m4a, or .aac and less than 5MB.",
+        "order": 302
+      }
+    },
+    "optional": {
+      "voice_speed": {
+        "type": "audio",
+        "description": "Speech rate (only used if using text and not audio)",
+        "default": 1.0,
+        "order": 401
+      },
+      "voice_id": {
+        "type": "audio",
+        "description": "Voice ID (only used if using text and not audio)",
+        "enum": [
+          "en_AOT",
+          "en_oversea_male1",
+          "en_girlfriend_4_speech02",
+          "en_chat_0407_5-1",
+          "en_uk_boy1",
+          "en_PeppaPig_platform",
+          "en_ai_huangzhong_712",
+          "en_calm_story1",
+          "en_uk_man2",
+          "en_reader_en_m-v1",
+          "en_commercial_lady_en_f-v1",
+          "zh_genshin_vindi2",
+          "zh_zhinen_xuesheng",
+          "zh_tiyuxi_xuedi",
+          "zh_ai_shatang",
+          "zh_genshin_klee2",
+          "zh_genshin_kirara",
+          "zh_ai_kaiya",
+          "zh_tiexin_nanyou",
+          "zh_ai_chenjiahao_712",
+          "zh_girlfriend_1_speech02",
+          "zh_chat1_female_new-3",
+          "zh_girlfriend_2_speech02",
+          "zh_cartoon-boy-07",
+          "zh_cartoon-girl-01",
+          "zh_ai_huangyaoshi_712",
+          "zh_you_pingjing",
+          "zh_ai_laoguowang_712",
+          "zh_chengshu_jiejie",
+          "zh_zhuxi_speech02",
+          "zh_uk_oldman3",
+          "zh_laopopo_speech02",
+          "zh_heainainai_speech02",
+          "zh_dongbeilaotie_speech02",
+          "zh_chongqingxiaohuo_speech02",
+          "zh_chuanmeizi_speech02",
+          "zh_chaoshandashu_speech02",
+          "zh_ai_taiwan_man2_speech02",
+          "zh_xianzhanggui_speech02",
+          "zh_tianjinjiejie_speech02",
+          "zh_diyinnansang_DB_CN_M_04-v2",
+          "zh_yizhipiannan-v1",
+          "zh_guanxiaofang-v2",
+          "zh_tianmeixuemei-v1",
+          "zh_daopianyansang-v1",
+          "zh_mengwa-v1"
+        ],
+        "default": "en_AOT",
+        "order": 402
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

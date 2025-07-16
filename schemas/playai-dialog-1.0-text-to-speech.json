@@ -1,0 +1,50 @@
+{
+  "model_id": "playai-dialog-1.0-text-to-speech",
+  "name": "PlayAI Dialog 1.0 - Text to Speech",
+  "api_endpoint": "playai/dialog-1.0/text-to-speech",
+  "display_name": "PlayAI Dialog 1.0 - Text to Speech",
+  "description": "Emotion-aware voice model preferred 10:1 over competing engines for natural prosody in long-form dialogue.",
+  "category": "Sunra.ai/PlayAI",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "text": {
+        "type": "string",
+        "description": "The dialogue text with turn prefixes to distinguish speakers.",
+        "multiline": true,
+        "order": 201
+      }
+    },
+    "optional": {
+      "voices": {
+        "type": "audio",
+        "description": "Array of voice configurations for dialogue speakers",
+        "default": [
+          {
+            "voice": "Jennifer (English (US)/American)",
+            "turn_prefix": "Speaker 1:"
+          },
+          {
+            "voice": "Furio (English (IT)/Italian)",
+            "turn_prefix": "Speaker 2:"
+          }
+        ],
+        "order": 301
+      },
+      "seed": {
+        "type": "integer",
+        "description": "An integer number greater than or equal to 0. If equal to null or not provided, a random seed will be used. Useful to control the reproducibility of the generated audio. Assuming all other properties didn't change, a fixed seed should always generate the exact same audio file.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 302
+      }
+    }
+  },
+  "outputs": {
+    "audio": {
+      "type": "string",
+      "description": "Output"
+    }
+  }
+}

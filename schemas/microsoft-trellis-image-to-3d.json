@@ -1,0 +1,142 @@
+{
+  "model_id": "microsoft-trellis-image-to-3d",
+  "name": "Microsoft Trellis - Image to 3D",
+  "api_endpoint": "microsoft/trellis/image-to-3d",
+  "display_name": "Microsoft Trellis - Image to 3D",
+  "description": "Unified latent-flow architecture that outputs meshes, Gaussians or NeRFs from a single prompt\u2014built for game-ready assets.",
+  "category": "Sunra.ai/Microsoft",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "images": {
+        "type": "image",
+        "description": "List of input images to generate 3D asset from",
+        "order": 201
+      }
+    },
+    "optional": {
+      "seed": {
+        "type": "integer",
+        "description": "Random seed for generation",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 202
+      },
+      "generate_color": {
+        "type": "boolean",
+        "description": "Generate color video render",
+        "default": false,
+        "order": 401
+      },
+      "generate_normal": {
+        "type": "boolean",
+        "description": "Generate normal video render",
+        "default": false,
+        "order": 402
+      },
+      "generate_model": {
+        "type": "boolean",
+        "description": "Generate 3D model file (GLB)",
+        "default": true,
+        "order": 403
+      },
+      "generate_point_cloud": {
+        "type": "boolean",
+        "description": "Save Gaussian point cloud as PLY file",
+        "default": false,
+        "order": 404
+      },
+      "generate_background_removed_images": {
+        "type": "image",
+        "description": "Return the preprocessed images without background",
+        "default": false,
+        "order": 405
+      },
+      "ss_guidance_strength": {
+        "type": "float",
+        "description": "Stage 1: Sparse Structure Generation - Guidance Strength",
+        "default": 7.5,
+        "min": 0.0,
+        "max": 10.0,
+        "step": 0.01,
+        "order": 406
+      },
+      "ss_sampling_steps": {
+        "type": "integer",
+        "description": "Stage 1: Sparse Structure Generation - Sampling Steps",
+        "default": 12,
+        "min": 1.0,
+        "max": 50.0,
+        "step": 1,
+        "order": 407
+      },
+      "slat_guidance_strength": {
+        "type": "float",
+        "description": "Stage 2: Structured Latent Generation - Guidance Strength",
+        "default": 3,
+        "min": 0.0,
+        "max": 10.0,
+        "step": 0.01,
+        "order": 408
+      },
+      "slat_sampling_steps": {
+        "type": "integer",
+        "description": "Stage 2: Structured Latent Generation - Sampling Steps",
+        "default": 12,
+        "min": 1.0,
+        "max": 50.0,
+        "step": 1,
+        "order": 409
+      },
+      "mesh_simplify": {
+        "type": "float",
+        "description": "GLB Extraction - Mesh Simplification (only used if generate_model=True)",
+        "default": 0.9,
+        "min": 0.9,
+        "max": 0.98,
+        "step": 0.01,
+        "order": 410
+      },
+      "texture_size": {
+        "type": "integer",
+        "description": "GLB Extraction - Texture Size (only used if generate_model=True)",
+        "default": 2048,
+        "min": 512.0,
+        "max": 2048.0,
+        "step": 1,
+        "order": 411
+      }
+    }
+  },
+  "outputs": {
+    "model_mesh": {
+      "type": "string",
+      "description": "Output"
+    },
+    "normal_video": {
+      "type": "string",
+      "description": "Output"
+    },
+    "color_video": {
+      "type": "string",
+      "description": "Output"
+    },
+    "model_ply": {
+      "type": "string",
+      "description": "Output"
+    },
+    "combined_video": {
+      "type": "string",
+      "description": "Output"
+    },
+    "background_removed_images": {
+      "type": "string",
+      "description": "Output"
+    },
+    "predict_time": {
+      "type": "float",
+      "description": "Time taken to generate the 3D model"
+    }
+  }
+}

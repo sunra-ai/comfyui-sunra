@@ -262,5 +262,905 @@
       "description": "The fastest, most accurate, and lowest cost speech-to-text on the market, supporting 120 languages.",
       "category": "Sunra.ai/ElevenLabs"
     }
+  },
+  {
+    "name": "google-deepmind-imagen4-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/google-deepmind/imagen4/latest.json",
+    "endpoint": "/google-deepmind/imagen4/text-to-image",
+    "overrides": {
+      "model_id": "google-deepmind-imagen4-text-to-image",
+      "name": "Google DeepMind Imagen4 - Text to Image",
+      "display_name": "Google DeepMind Imagen4 - Text to Image",
+      "description": "Imagen 4 generates photorealistic 2K images with fine detail, accurate text, and multilingual prompt support.",
+      "category": "Sunra.ai/Google DeepMind"
+    }
+  },
+  {
+    "name": "google-deepmind-imagen4-fast-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/google-deepmind/imagen4-fast/latest.json",
+    "endpoint": "/google-deepmind/imagen4-fast/text-to-image",
+    "overrides": {
+      "model_id": "google-deepmind-imagen4-fast-text-to-image",
+      "name": "Google DeepMind Imagen4 Fast - Text to Image",
+      "display_name": "Google DeepMind Imagen4 Fast - Text to Image",
+      "description": "Imagen 4 Fast is Google DeepMind's upcoming high-speed variant of Imagen 4, delivering up to 10× faster image generation while maintaining sharp 2K resolution and photorealistic quality.",
+      "category": "Sunra.ai/Google DeepMind"
+    }
+  },
+  {
+    "name": "google-deepmind-imagen4-ultra-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/google-deepmind/imagen4-ultra/latest.json",
+    "endpoint": "/google-deepmind/imagen4-ultra/text-to-image",
+    "overrides": {
+      "model_id": "google-deepmind-imagen4-ultra-text-to-image",
+      "name": "Google DeepMind Imagen4 Ultra - Text to Image",
+      "display_name": "Google DeepMind Imagen4 Ultra - Text to Image",
+      "description": "Imagen 4 Ultra is the precision-focused tier of Imagen 4, offering ultra-realistic 2K images with exceptional prompt fidelity, fine detail, and enhanced typography control for professional-grade visuals.",
+      "category": "Sunra.ai/Google DeepMind"
+    }
+  },
+  {
+    "name": "google-deepmind-imagen3-fast-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/google-deepmind/imagen3-fast/latest.json",
+    "endpoint": "/google-deepmind/imagen3-fast/text-to-image",
+    "overrides": {
+      "model_id": "google-deepmind-imagen3-fast-text-to-image",
+      "name": "Google DeepMind Imagen3 Fast - Text to Image",
+      "display_name": "Google DeepMind Imagen3 Fast - Text to Image",
+      "description": "Imagen 3 Fast is a faster version of Imagen 3 for generating high-quality images with rich lighting and reduced latency.",
+      "category": "Sunra.ai/Google DeepMind"
+    }
+  },
+  {
+    "name": "google-deepmind-veo3-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/google-deepmind/veo3/latest.json",
+    "endpoint": "/google-deepmind/veo3/text-to-video",
+    "overrides": {
+      "model_id": "google-deepmind-veo3-text-to-video",
+      "name": "Google DeepMind Veo3 - Text to Video",
+      "display_name": "Google DeepMind Veo3 - Text to Video",
+      "description": "4K-ready video generator with real-world physics and synced ambience sound—unveiled at I/O 2025.",
+      "category": "Sunra.ai/Google DeepMind"
+    }
+  },
+  {
+    "name": "google-deepmind-veo3-fast-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/google-deepmind/veo3-fast/latest.json",
+    "endpoint": "/google-deepmind/veo3-fast/text-to-video",
+    "overrides": {
+      "model_id": "google-deepmind-veo3-fast-text-to-video",
+      "name": "Google DeepMind Veo3 Fast - Text to Video",
+      "display_name": "Google DeepMind Veo3 Fast - Text to Video",
+      "description": "Google Veo 3 Fast is a high-speed variant of Veo 3 that generates cinematic 1080p videos (up to 8s) with native audio, realistic physics, and prompt-accurate outputs.",
+      "category": "Sunra.ai/Google DeepMind"
+    }
+  },
+  {
+    "name": "kling-v2.1-master-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/kling/kling-v2.1-master/latest.json",
+    "endpoint": "/kling/kling-v2.1-master/text-to-video",
+    "overrides": {
+      "model_id": "kling-v2.1-master-text-to-video",
+      "name": "Kling v2.1 Master - Text to Video",
+      "display_name": "Kling v2.1 Master - Text to Video",
+      "description": "Kling 2.1 Master is the flagship model from Kuaishou, released at the end of May 2025. Delivers superb dynamics & prompt adherence, with with 1080p.",
+      "category": "Sunra.ai/Kling"
+    }
+  },
+  {
+    "name": "kling-v2.1-master-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/kling/kling-v2.1-master/latest.json",
+    "endpoint": "/kling/kling-v2.1-master/image-to-video",
+    "overrides": {
+      "model_id": "kling-v2.1-master-image-to-video",
+      "name": "Kling v2.1 Master - Image to Video",
+      "display_name": "Kling v2.1 Master - Image to Video",
+      "description": "Kling 2.1 Master is the flagship model from Kuaishou, released at the end of May 2025. Delivers superb dynamics & prompt adherence, with with 1080p.",
+      "category": "Sunra.ai/Kling"
+    }
+  },
+  {
+    "name": "kling-v2.1-pro-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/kling/kling-v2.1-pro/latest.json",
+    "endpoint": "/kling/kling-v2.1-pro/image-to-video",
+    "overrides": {
+      "model_id": "kling-v2.1-pro-image-to-video",
+      "name": "Kling v2.1 Pro - Image to Video",
+      "display_name": "Kling v2.1 Pro - Image to Video",
+      "description": "Kling 2.1 Pro is a 1080p image-to-video model by Kuaishou, delivering smoother motion, better prompt alignment, and higher visual quality than the Standard version.",
+      "category": "Sunra.ai/Kling"
+    }
+  },
+  {
+    "name": "kling-v2.1-standard-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/kling/kling-v2.1-standard/latest.json",
+    "endpoint": "/kling/kling-v2.1-standard/image-to-video",
+    "overrides": {
+      "model_id": "kling-v2.1-standard-image-to-video",
+      "name": "Kling v2.1 Standard - Image to Video",
+      "display_name": "Kling v2.1 Standard - Image to Video",
+      "description": "Kling 2.1 Standard is a 720p image-to-video model by Kuaishou, offering improved motion realism and prompt adherence with low resource usage.",
+      "category": "Sunra.ai/Kling"
+    }
+  },
+  {
+    "name": "kling-lip-sync-audio-lip-sync",
+    "openapi_url": "https://openapi.sunra.ai/main/kling/kling-lip-sync/latest.json",
+    "endpoint": "/kling/kling-lip-sync/audio-lip-sync",
+    "overrides": {
+      "model_id": "kling-lip-sync-audio-lip-sync",
+      "name": "Kling Lip Sync - Audio Lip Sync",
+      "display_name": "Kling Lip Sync - Audio Lip Sync",
+      "description": "Kling Lip Sync enables realistic mouth movement synchronization in AI-generated videos using audio or text input, creating realistic 10s clips with clear facial alignment.",
+      "category": "Sunra.ai/Kling"
+    }
+  },
+  {
+    "name": "kling-v1.5-standard-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/kling/kling-v1.5-standard/latest.json",
+    "endpoint": "/kling/kling-v1.5-standard/image-to-video",
+    "overrides": {
+      "model_id": "kling-v1.5-standard-image-to-video",
+      "name": "Kling v1.5 Standard - Image to Video",
+      "display_name": "Kling v1.5 Standard - Image to Video",
+      "description": "Kling v1.5 Standard offers fast and affordable 720p video generation, best suited for simple scenes with limited motion and single-character focus.",
+      "category": "Sunra.ai/Kling"
+    }
+  },
+  {
+    "name": "kling-v1.5-pro-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/kling/kling-v1.5-pro/latest.json",
+    "endpoint": "/kling/kling-v1.5-pro/image-to-video",
+    "overrides": {
+      "model_id": "kling-v1.5-pro-image-to-video",
+      "name": "Kling v1.5 Pro - Image to Video",
+      "display_name": "Kling v1.5 Pro - Image to Video",
+      "description": "Kling v1.5 Pro produces cinematic 1080p videos with detailed camera movement, including pan, zoom, and tilt.",
+      "category": "Sunra.ai/Kling"
+    }
+  },
+  {
+    "name": "kling-v1.6-standard-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/kling/kling-v1.6-standard/latest.json",
+    "endpoint": "/kling/kling-v1.6-standard/text-to-video",
+    "overrides": {
+      "model_id": "kling-v1.6-standard-text-to-video",
+      "name": "Kling v1.6 Standard - Text to Video",
+      "display_name": "Kling v1.6 Standard - Text to Video",
+      "description": "An AI video model that generates cinematic 720p videos from text or images",
+      "category": "Sunra.ai/Kling"
+    }
+  },
+  {
+    "name": "kling-v1.6-standard-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/kling/kling-v1.6-standard/latest.json",
+    "endpoint": "/kling/kling-v1.6-standard/image-to-video",
+    "overrides": {
+      "model_id": "kling-v1.6-standard-image-to-video",
+      "name": "Kling v1.6 Standard - Image to Video",
+      "display_name": "Kling v1.6 Standard - Image to Video",
+      "description": "An AI video model that generates cinematic 720p videos from text or images",
+      "category": "Sunra.ai/Kling"
+    }
+  },
+  {
+    "name": "kling-v1.6-pro-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/kling/kling-v1.6-pro/latest.json",
+    "endpoint": "/kling/kling-v1.6-pro/image-to-video",
+    "overrides": {
+      "model_id": "kling-v1.6-pro-image-to-video",
+      "name": "Kling v1.6 Pro - Image to Video",
+      "display_name": "Kling v1.6 Pro - Image to Video",
+      "description": "An AI video model that generates cinematic 1080p videos from text or images",
+      "category": "Sunra.ai/Kling"
+    }
+  },
+  {
+    "name": "minimax-music-01-text-to-music",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/music-01/latest.json",
+    "endpoint": "/minimax/music-01/text-to-music",
+    "overrides": {
+      "model_id": "minimax-music-01-text-to-music",
+      "name": "MiniMax Music-01 - Text to Music",
+      "display_name": "MiniMax Music-01 - Text to Music",
+      "description": "Text-to-music model that writes full arrangements and stems across genres.",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "minimax-image-01-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/image-01/latest.json",
+    "endpoint": "/minimax/image-01/text-to-image",
+    "overrides": {
+      "model_id": "minimax-image-01-text-to-image",
+      "name": "MiniMax Image-01 - Text to Image",
+      "display_name": "MiniMax Image-01 - Text to Image",
+      "description": "Ultra-faithful prompt-to-pixel synthesis with nuanced lighting, rich scene detail, and consistent character rendering—even when you feed a reference portrait.",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "minimax-s2v-01-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/s2v-01/latest.json",
+    "endpoint": "/minimax/s2v-01/image-to-video",
+    "overrides": {
+      "model_id": "minimax-s2v-01-image-to-video",
+      "name": "MiniMax S2V-01 - Image to Video",
+      "display_name": "MiniMax S2V-01 - Image to Video",
+      "description": "An AI video model that generates videos with consistent character identity from a reference image and text prompt",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "minimax-t2v-01-director-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/t2v-01-director/latest.json",
+    "endpoint": "/minimax/t2v-01-director/text-to-video",
+    "overrides": {
+      "model_id": "minimax-t2v-01-director-text-to-video",
+      "name": "MiniMax T2V-01 Director - Text to Video",
+      "display_name": "MiniMax T2V-01 Director - Text to Video",
+      "description": "The \"Camera Control\" model affords users cinematic language with the fluency of a professional director and to exercise meticulous creative control.",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "minimax-i2v-01-live-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/i2v-01-live/latest.json",
+    "endpoint": "/minimax/i2v-01-live/image-to-video",
+    "overrides": {
+      "model_id": "minimax-i2v-01-live-image-to-video",
+      "name": "MiniMax I2V-01 Live - Image to Video",
+      "display_name": "MiniMax I2V-01 Live - Image to Video",
+      "description": "An AI model that animates 2D images into smooth, expressive videos",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "minimax-i2v-01-director-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/i2v-01-director/latest.json",
+    "endpoint": "/minimax/i2v-01-director/image-to-video",
+    "overrides": {
+      "model_id": "minimax-i2v-01-director-image-to-video",
+      "name": "MiniMax I2V-01 Director - Image to Video",
+      "display_name": "MiniMax I2V-01 Director - Image to Video",
+      "description": "The \"Camera Control\" model affords users cinematic language with the fluency of a professional director and to exercise meticulous creative control.",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "minimax-i2v-01-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/i2v-01/latest.json",
+    "endpoint": "/minimax/i2v-01/image-to-video",
+    "overrides": {
+      "model_id": "minimax-i2v-01-image-to-video",
+      "name": "MiniMax I2V-01 - Image to Video",
+      "display_name": "MiniMax I2V-01 - Image to Video",
+      "description": "Generates 6-second HD videos from images and text prompts",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "minimax-t2v-01-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/minimax/t2v-01/latest.json",
+    "endpoint": "/minimax/t2v-01/text-to-video",
+    "overrides": {
+      "model_id": "minimax-t2v-01-text-to-video",
+      "name": "MiniMax T2V-01 - Text to Video",
+      "display_name": "MiniMax T2V-01 - Text to Video",
+      "description": "Generates 6-second HD videos from text prompts",
+      "category": "Sunra.ai/MiniMax"
+    }
+  },
+  {
+    "name": "elevenlabs-voice-isolater-audio-isolation",
+    "openapi_url": "https://openapi.sunra.ai/main/elevenlabs/voice-isolater/latest.json",
+    "endpoint": "/elevenlabs/voice-isolater/audio-isolation",
+    "overrides": {
+      "model_id": "elevenlabs-voice-isolater-audio-isolation",
+      "name": "ElevenLabs Voice Isolater - Audio Isolation",
+      "display_name": "ElevenLabs Voice Isolater - Audio Isolation",
+      "description": "One‐click vocal-only stems—kills street noise, hiss, and hum for crystal-clear dialogue.",
+      "category": "Sunra.ai/ElevenLabs"
+    }
+  },
+  {
+    "name": "elevenlabs-turbo-v2.5-text-to-speech",
+    "openapi_url": "https://openapi.sunra.ai/main/elevenlabs/turbo-v2.5/latest.json",
+    "endpoint": "/elevenlabs/turbo-v2.5/text-to-speech",
+    "overrides": {
+      "model_id": "elevenlabs-turbo-v2.5-text-to-speech",
+      "name": "ElevenLabs Turbo v2.5 - Text to Speech",
+      "display_name": "ElevenLabs Turbo v2.5 - Text to Speech",
+      "description": "High-quality speech in 32 languages, now 3× faster for live use cases.",
+      "category": "Sunra.ai/ElevenLabs"
+    }
+  },
+  {
+    "name": "tencent-hunyuan-text-to-video-with-lora-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/tencent-hunyuan/hunyuan-text-to-video-with-lora/latest.json",
+    "endpoint": "/tencent-hunyuan/hunyuan-text-to-video-with-lora/text-to-video",
+    "overrides": {
+      "model_id": "tencent-hunyuan-text-to-video-with-lora-text-to-video",
+      "name": "Tencent Hunyuan Text to Video with LoRA - Text to Video",
+      "display_name": "Tencent Hunyuan Text to Video with LoRA - Text to Video",
+      "description": "Hunyuan LoRA is a text-to-video model using LoRA adapters to generate 1280×720 videos with consistent characters and customizable styles.",
+      "category": "Sunra.ai/Tencent Hunyuan"
+    }
+  },
+  {
+    "name": "tencent-hunyuan-hunyuan3d-v2-multi-view-turbo-image-to-3d",
+    "openapi_url": "https://openapi.sunra.ai/main/tencent-hunyuan/hunyuan3d-v2-multi-view-turbo/latest.json",
+    "endpoint": "/tencent-hunyuan/hunyuan3d-v2-multi-view-turbo/image-to-3d",
+    "overrides": {
+      "model_id": "tencent-hunyuan-hunyuan3d-v2-multi-view-turbo-image-to-3d",
+      "name": "Tencent Hunyuan3D v2 Multi-View Turbo - Image to 3D",
+      "display_name": "Tencent Hunyuan3D v2 Multi-View Turbo - Image to 3D",
+      "description": "Hunyuan3D V2 Multi-View Turbo speeds up multi-view 3D generation while maintaining model fidelity and structural accuracy.",
+      "category": "Sunra.ai/Hunyuan3D"
+    }
+  },
+  {
+    "name": "tencent-hunyuan-hunyuan3d-v2-mini-turbo-image-to-3d",
+    "openapi_url": "https://openapi.sunra.ai/main/tencent-hunyuan/hunyuan3d-v2-mini-turbo/latest.json",
+    "endpoint": "/tencent-hunyuan/hunyuan3d-v2-mini-turbo/image-to-3d",
+    "overrides": {
+      "model_id": "tencent-hunyuan-hunyuan3d-v2-mini-turbo-image-to-3d",
+      "name": "Tencent Hunyuan3D v2 Mini Turbo - Image to 3D",
+      "display_name": "Tencent Hunyuan3D v2 Mini Turbo - Image to 3D",
+      "description": "Hunyuan3D V2 Mini Turbo combines a lightweight model with accelerated performance for efficient 3D asset creation.",
+      "category": "Sunra.ai/Hunyuan3D"
+    }
+  },
+  {
+    "name": "tencent-hunyuan-hunyuan3d-v2-mini-image-to-3d",
+    "openapi_url": "https://openapi.sunra.ai/main/tencent-hunyuan/hunyuan3d-v2-mini/latest.json",
+    "endpoint": "/tencent-hunyuan/hunyuan3d-v2-mini/image-to-3d",
+    "overrides": {
+      "model_id": "tencent-hunyuan-hunyuan3d-v2-mini-image-to-3d",
+      "name": "Tencent Hunyuan3D v2 Mini - Image to 3D",
+      "display_name": "Tencent Hunyuan3D v2 Mini - Image to 3D",
+      "description": "Hunyuan3D V2 Mini is a compact 0.6B model designed for faster 3D generation on consumer hardware, balancing speed and quality.",
+      "category": "Sunra.ai/Hunyuan3D"
+    }
+  },
+  {
+    "name": "tencent-hunyuan-hunyuan3d-v2-image-to-3d",
+    "openapi_url": "https://openapi.sunra.ai/main/tencent-hunyuan/hunyuan3d-v2/latest.json",
+    "endpoint": "/tencent-hunyuan/hunyuan3d-v2/image-to-3d",
+    "overrides": {
+      "model_id": "tencent-hunyuan-hunyuan3d-v2-image-to-3d",
+      "name": "Tencent Hunyuan3D v2 - Image to 3D",
+      "display_name": "Tencent Hunyuan3D v2 - Image to 3D",
+      "description": "Hunyuan3D V2 is a high-quality text-to-3D model that generates textured 3D assets from text or images, ideal for games, VR, and digital content.",
+      "category": "Sunra.ai/Hunyuan3D"
+    }
+  },
+  {
+    "name": "doubao-seedream-3.0-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/doubao/seedream-3.0/latest.json",
+    "endpoint": "/doubao/seedream-3.0/text-to-image",
+    "overrides": {
+      "model_id": "doubao-seedream-3.0-text-to-image",
+      "name": "Doubao Seedream 3.0 - Text to Image",
+      "display_name": "Doubao Seedream 3.0 - Text to Image",
+      "description": "Seedream 3.0 is a text-to-image model that generates 2K images with sharp text rendering and refined visual style.",
+      "category": "Sunra.ai/Doubao"
+    }
+  },
+  {
+    "name": "doubao-seedance-1.0-lite-i2v-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/doubao/seedance-1.0-lite-i2v/latest.json",
+    "endpoint": "/doubao/seedance-1.0-lite-i2v/image-to-video",
+    "overrides": {
+      "model_id": "doubao-seedance-1.0-lite-i2v-image-to-video",
+      "name": "Doubao Seedance 1.0 Lite I2V - Image to Video",
+      "display_name": "Doubao Seedance 1.0 Lite I2V - Image to Video",
+      "description": "Seedance 1.0 Lite I2V transforms static images into 5–10s videos with smooth motion, multi-subject handling, and professional camera effects.",
+      "category": "Sunra.ai/Seedance"
+    }
+  },
+  {
+    "name": "doubao-seedance-1.0-lite-t2v-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/doubao/seedance-1.0-lite-t2v/latest.json",
+    "endpoint": "/doubao/seedance-1.0-lite-t2v/text-to-video",
+    "overrides": {
+      "model_id": "doubao-seedance-1.0-lite-t2v-text-to-video",
+      "name": "Doubao Seedance 1.0 Lite T2V - Text to Video",
+      "display_name": "Doubao Seedance 1.0 Lite T2V - Text to Video",
+      "description": "Seedance 1.0 Lite T2V generates 5–10s 720p videos from text, with control over character appearance, expressions, and cinematic camera motion.",
+      "category": "Sunra.ai/Seedance"
+    }
+  },
+  {
+    "name": "black-forest-labs-flux-kontext-max-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/black-forest-labs/flux-kontext-max/latest.json",
+    "endpoint": "/black-forest-labs/flux-kontext-max/text-to-image",
+    "overrides": {
+      "model_id": "black-forest-labs-flux-kontext-max-text-to-image",
+      "name": "FLUX Kontext Max - Text to Image",
+      "display_name": "FLUX Kontext Max - Text to Image",
+      "description": "The new premium model from BFL, which brings maximum performance across all aspects – greatly improved prompt adherence and typography generation meet premium consistency for editing without compromise on speed.",
+      "category": "Sunra.ai/FLUX Kontext"
+    }
+  },
+  {
+    "name": "black-forest-labs-flux-kontext-max-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/black-forest-labs/flux-kontext-max/latest.json",
+    "endpoint": "/black-forest-labs/flux-kontext-max/image-to-image",
+    "overrides": {
+      "model_id": "black-forest-labs-flux-kontext-max-image-to-image",
+      "name": "FLUX Kontext Max - Image to Image",
+      "display_name": "FLUX Kontext Max - Image to Image",
+      "description": "The new premium model from BFL, which brings maximum performance across all aspects – greatly improved prompt adherence and typography generation meet premium consistency for editing without compromise on speed.",
+      "category": "Sunra.ai/FLUX Kontext"
+    }
+  },
+  {
+    "name": "wan2.1-vace-14b-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/wan/wan2.1-vace-14b/latest.json",
+    "endpoint": "/wan/wan2.1-vace-14b/text-to-video",
+    "overrides": {
+      "model_id": "wan2.1-vace-14b-text-to-video",
+      "name": "Wan 2.1 VACE 14B - Text to Video",
+      "display_name": "Wan 2.1 VACE 14B - Text to Video",
+      "description": "An all-in-one 14B model for video creation and editing, supporting tasks like text-to-video, image-to-video, and video editing with multimodal inputs and advanced control features.",
+      "category": "Sunra.ai/Wan"
+    }
+  },
+  {
+    "name": "wan2.1-vace-14b-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/wan/wan2.1-vace-14b/latest.json",
+    "endpoint": "/wan/wan2.1-vace-14b/image-to-video",
+    "overrides": {
+      "model_id": "wan2.1-vace-14b-image-to-video",
+      "name": "Wan 2.1 VACE 14B - Image to Video",
+      "display_name": "Wan 2.1 VACE 14B - Image to Video",
+      "description": "An all-in-one 14B model for video creation and editing, supporting tasks like text-to-video, image-to-video, and video editing with multimodal inputs and advanced control features.",
+      "category": "Sunra.ai/Wan"
+    }
+  },
+  {
+    "name": "bria-bria-replace-background-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/bria/bria-replace-background/latest.json",
+    "endpoint": "/bria/bria-replace-background/image-to-image",
+    "overrides": {
+      "model_id": "bria-bria-replace-background-image-to-image",
+      "name": "Bria Replace Background - Image to Image",
+      "display_name": "Bria Replace Background - Image to Image",
+      "description": "Bria Replace Background swaps backgrounds using text or image prompts, enabling natural and creative scene changes.",
+      "category": "Sunra.ai/Bria"
+    }
+  },
+  {
+    "name": "bria-bria-remove-background-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/bria/bria-remove-background/latest.json",
+    "endpoint": "/bria/bria-remove-background/image-to-image",
+    "overrides": {
+      "model_id": "bria-bria-remove-background-image-to-image",
+      "name": "Bria Remove Background - Image to Image",
+      "display_name": "Bria Remove Background - Image to Image",
+      "description": "Bria Remove Background removes image backgrounds with high precision, ideal for clean and professional results.",
+      "category": "Sunra.ai/Bria"
+    }
+  },
+  {
+    "name": "microsoft-trellis-image-to-3d",
+    "openapi_url": "https://openapi.sunra.ai/main/microsoft/trellis/latest.json",
+    "endpoint": "/microsoft/trellis/image-to-3d",
+    "overrides": {
+      "model_id": "microsoft-trellis-image-to-3d",
+      "name": "Microsoft Trellis - Image to 3D",
+      "display_name": "Microsoft Trellis - Image to 3D",
+      "description": "Unified latent-flow architecture that outputs meshes, Gaussians or NeRFs from a single prompt—built for game-ready assets.",
+      "category": "Sunra.ai/Microsoft"
+    }
+  },
+  {
+    "name": "tripo-tripo-sr-image-to-3d",
+    "openapi_url": "https://openapi.sunra.ai/main/tripo/tripo-sr/latest.json",
+    "endpoint": "/tripo/tripo-sr/image-to-3d",
+    "overrides": {
+      "model_id": "tripo-tripo-sr-image-to-3d",
+      "name": "Tripo SR - Image to 3D",
+      "display_name": "Tripo SR - Image to 3D",
+      "description": "Generates a textured 3D mesh from one image in < 0.5 s, outperforming open-source rivals on fidelity and speed.",
+      "category": "Sunra.ai/Tripo"
+    }
+  },
+  {
+    "name": "hexgrad-kokoro-82m-text-to-speech",
+    "openapi_url": "https://openapi.sunra.ai/main/hexgrad/kokoro-82m/latest.json",
+    "endpoint": "/hexgrad/kokoro-82m/text-to-speech",
+    "overrides": {
+      "model_id": "hexgrad-kokoro-82m-text-to-speech",
+      "name": "Hexgrad Kokoro 82M - Text to Speech",
+      "display_name": "Hexgrad Kokoro 82M - Text to Speech",
+      "description": "82 M-param open-weight TTS that rivals larger voices while running in real time on modest hardware.",
+      "category": "Sunra.ai/Hexgrad"
+    }
+  },
+  {
+    "name": "playai-play-3.0-mini-text-to-speech",
+    "openapi_url": "https://openapi.sunra.ai/main/playai/play-3.0-mini/latest.json",
+    "endpoint": "/playai/play-3.0-mini/text-to-speech",
+    "overrides": {
+      "model_id": "playai-play-3.0-mini-text-to-speech",
+      "name": "PlayAI Play 3.0 Mini - Text to Speech",
+      "display_name": "PlayAI Play 3.0 Mini - Text to Speech",
+      "description": "Multilingual mini-TTS that speaks 30+ languages with sub-second latency and slim compute costs.",
+      "category": "Sunra.ai/PlayAI"
+    }
+  },
+  {
+    "name": "playai-dialog-1.0-text-to-speech",
+    "openapi_url": "https://openapi.sunra.ai/main/playai/dialog-1.0/latest.json",
+    "endpoint": "/playai/dialog-1.0/text-to-speech",
+    "overrides": {
+      "model_id": "playai-dialog-1.0-text-to-speech",
+      "name": "PlayAI Dialog 1.0 - Text to Speech",
+      "display_name": "PlayAI Dialog 1.0 - Text to Speech",
+      "description": "Emotion-aware voice model preferred 10:1 over competing engines for natural prosody in long-form dialogue.",
+      "category": "Sunra.ai/PlayAI"
+    }
+  },
+  {
+    "name": "ace-step-v1-3.5b-text-to-music",
+    "openapi_url": "https://openapi.sunra.ai/main/ace-step/v1-3.5b/latest.json",
+    "endpoint": "/ace-step/v1-3.5b/text-to-music",
+    "overrides": {
+      "model_id": "ace-step-v1-3.5b-text-to-music",
+      "name": "Ace Step v1 3.5B - Text to Music",
+      "display_name": "Ace Step v1 3.5B - Text to Music",
+      "description": "Diffusion-plus-DCAE music generator delivering coherent multi-track songs in seconds.",
+      "category": "Sunra.ai/Ace Step"
+    }
+  },
+  {
+    "name": "topazlabs-image-upscaler-image-upscale",
+    "openapi_url": "https://openapi.sunra.ai/main/topazlabs/image-upscaler/latest.json",
+    "endpoint": "/topazlabs/image-upscaler/image-upscale",
+    "overrides": {
+      "model_id": "topazlabs-image-upscaler-image-upscale",
+      "name": "Topaz Labs Image Upscaler - Image Upscale",
+      "display_name": "Topaz Labs Image Upscaler - Image Upscale",
+      "description": "Topaz Photo AI's Upscale filter blows images up by up to 6× while retaining micro-texture and sharp text thanks to diffusion-based super-resolution training on millions of photos.",
+      "category": "Sunra.ai/Topaz Labs"
+    }
+  },
+  {
+    "name": "topazlabs-video-upscaler-video-upscale",
+    "openapi_url": "https://openapi.sunra.ai/main/topazlabs/video-upscaler/latest.json",
+    "endpoint": "/topazlabs/video-upscaler/video-upscale",
+    "overrides": {
+      "model_id": "topazlabs-video-upscaler-video-upscale",
+      "name": "Topaz Labs Video Upscaler - Video Upscale",
+      "display_name": "Topaz Labs Video Upscaler - Video Upscale",
+      "description": "Video AI 7 lifts footage all the way to 16 K, adds frame-interpolation, denoise, stabilise and even SDR-to-HDR in one batch pass—24 purpose-built models you can mix-and-match for broadcast-grade results.",
+      "category": "Sunra.ai/Topaz Labs"
+    }
+  },
+  {
+    "name": "hidream-hidream-e1-full-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/hidream/hidream-e1-full/latest.json",
+    "endpoint": "/hidream/hidream-e1-full/image-to-image",
+    "overrides": {
+      "model_id": "hidream-hidream-e1-full-image-to-image",
+      "name": "HiDream E1 Full - Image to Image",
+      "display_name": "HiDream E1 Full - Image to Image",
+      "description": "HiDream E1 Full enables image editing through natural language, supporting content, style, and object-level changes.",
+      "category": "Sunra.ai/HiDream"
+    }
+  },
+  {
+    "name": "hidream-hidream-i1-dev-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/hidream/hidream-i1-dev/latest.json",
+    "endpoint": "/hidream/hidream-i1-dev/text-to-image",
+    "overrides": {
+      "model_id": "hidream-hidream-i1-dev-text-to-image",
+      "name": "HiDream I1 Dev - Text to Image",
+      "display_name": "HiDream I1 Dev - Text to Image",
+      "description": "HiDream I1 Dev offers a balanced setup with 28 steps, ideal for development and research use.",
+      "category": "Sunra.ai/HiDream"
+    }
+  },
+  {
+    "name": "hidream-hidream-i1-fast-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/hidream/hidream-i1-fast/latest.json",
+    "endpoint": "/hidream/hidream-i1-fast/text-to-image",
+    "overrides": {
+      "model_id": "hidream-hidream-i1-fast-text-to-image",
+      "name": "HiDream I1 Fast - Text to Image",
+      "display_name": "HiDream I1 Fast - Text to Image",
+      "description": "HiDream I1 Fast is a lightweight version with 14 diffusion steps, optimized for fast image generation.",
+      "category": "Sunra.ai/HiDream"
+    }
+  },
+  {
+    "name": "hidream-hidream-i1-full-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/hidream/hidream-i1-full/latest.json",
+    "endpoint": "/hidream/hidream-i1-full/text-to-image",
+    "overrides": {
+      "model_id": "hidream-hidream-i1-full-text-to-image",
+      "name": "HiDream I1 Full - Text to Image",
+      "display_name": "HiDream I1 Full - Text to Image",
+      "description": "HiDream I1 Full is a 17B text-to-image model that delivers high-quality outputs across photo, cartoon, and artistic styles.",
+      "category": "Sunra.ai/HiDream"
+    }
+  },
+  {
+    "name": "openai-gpt-image-1-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/openai/gpt-image-1/latest.json",
+    "endpoint": "/openai/gpt-image-1/text-to-image",
+    "overrides": {
+      "model_id": "openai-gpt-image-1-text-to-image",
+      "name": "OpenAI GPT Image 1 - Text to Image",
+      "display_name": "OpenAI GPT Image 1 - Text to Image",
+      "description": "GPT Image 1 is a natively multimodal language model that accepts both text and image inputs, and produces image outputs.",
+      "category": "Sunra.ai/OpenAI"
+    }
+  },
+  {
+    "name": "openai-gpt-image-1-image-editing",
+    "openapi_url": "https://openapi.sunra.ai/main/openai/gpt-image-1/latest.json",
+    "endpoint": "/openai/gpt-image-1/image-editing",
+    "overrides": {
+      "model_id": "openai-gpt-image-1-image-editing",
+      "name": "OpenAI GPT Image 1 - Image Editing",
+      "display_name": "OpenAI GPT Image 1 - Image Editing",
+      "description": "GPT Image 1 is a natively multimodal language model that accepts both text and image inputs, and produces image outputs.",
+      "category": "Sunra.ai/OpenAI"
+    }
+  },
+  {
+    "name": "recraft-creative-upscale-upscale-image",
+    "openapi_url": "https://openapi.sunra.ai/main/recraft/creative-upscale/latest.json",
+    "endpoint": "/recraft/creative-upscale/upscale-image",
+    "overrides": {
+      "model_id": "recraft-creative-upscale-upscale-image",
+      "name": "Recraft Creative Upscale - Upscale Image",
+      "display_name": "Recraft Creative Upscale - Upscale Image",
+      "description": "Adds artistic depth during up-res: enhances textures, facial nuance and intricate patterns so the final looks \"hand-retouched,\" not merely bigger.",
+      "category": "Sunra.ai/Recraft"
+    }
+  },
+  {
+    "name": "recraft-crisp-upscale-upscale-image",
+    "openapi_url": "https://openapi.sunra.ai/main/recraft/crisp-upscale/latest.json",
+    "endpoint": "/recraft/crisp-upscale/upscale-image",
+    "overrides": {
+      "model_id": "recraft-crisp-upscale-upscale-image",
+      "name": "Recraft Crisp Upscale - Upscale Image",
+      "display_name": "Recraft Crisp Upscale - Upscale Image",
+      "description": "One-click sharpness boost that cleans edges, refines small details and readies assets for print or pixel-perfect web delivery—just one credit per job.",
+      "category": "Sunra.ai/Recraft"
+    }
+  },
+  {
+    "name": "recraft-recraft-v2-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/recraft/recraft-v2/latest.json",
+    "endpoint": "/recraft/recraft-v2/text-to-image",
+    "overrides": {
+      "model_id": "recraft-recraft-v2-text-to-image",
+      "name": "Recraft v2 - Text to Image",
+      "display_name": "Recraft v2 - Text to Image",
+      "description": "A flexible raster + vector generator built for brand workflows: lock-in exact layout positions, keep style libraries consistent, and crank out assets at just ≈ $0.02 per image.",
+      "category": "Sunra.ai/Recraft"
+    }
+  },
+  {
+    "name": "recraft-recraft-v3-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/recraft/recraft-v3/latest.json",
+    "endpoint": "/recraft/recraft-v3/text-to-image",
+    "overrides": {
+      "model_id": "recraft-recraft-v3-text-to-image",
+      "name": "Recraft v3 - Text to Image",
+      "display_name": "Recraft v3 - Text to Image",
+      "description": "Design-native successor that \"thinks in design language,\" adds long-form text support, high-fidelity SVG/logo output, and tops community leaderboards for aesthetics.",
+      "category": "Sunra.ai/Recraft"
+    }
+  },
+  {
+    "name": "recraft-recraft-v3-image-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/recraft/recraft-v3/latest.json",
+    "endpoint": "/recraft/recraft-v3/image-to-image",
+    "overrides": {
+      "model_id": "recraft-recraft-v3-image-to-image",
+      "name": "Recraft v3 - Image to Image",
+      "display_name": "Recraft v3 - Image to Image",
+      "description": "Design-native successor that \"thinks in design language,\" adds long-form text support, high-fidelity SVG/logo output, and tops community leaderboards for aesthetics.",
+      "category": "Sunra.ai/Recraft"
+    }
+  },
+  {
+    "name": "ideogram-upscale-upscale",
+    "openapi_url": "https://openapi.sunra.ai/main/ideogram/upscale/latest.json",
+    "endpoint": "/ideogram/upscale/upscale",
+    "overrides": {
+      "model_id": "ideogram-upscale-upscale",
+      "name": "Ideogram Upscale - Upscale",
+      "display_name": "Ideogram Upscale - Upscale",
+      "description": "One-click 2× super-resolution that sharpens colour, fixes artefacts, and keeps Ideogram's hallmark crisp text intact—perfect final polish for any render.",
+      "category": "Sunra.ai/Ideogram"
+    }
+  },
+  {
+    "name": "ideogram-ideogram-v3-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/ideogram/ideogram-v3/latest.json",
+    "endpoint": "/ideogram/ideogram-v3/text-to-image",
+    "overrides": {
+      "model_id": "ideogram-ideogram-v3-text-to-image",
+      "name": "Ideogram v3 - Text to Image",
+      "display_name": "Ideogram v3 - Text to Image",
+      "description": "Standard version of the three-tier engine (Turbo / Balanced / Quality) delivering photo-realism, stylish illustration modes, and the market's most legible in-image typography—all in one prompt-friendly package.",
+      "category": "Sunra.ai/Ideogram"
+    }
+  },
+  {
+    "name": "pika-pika-1.5-pikaffects",
+    "openapi_url": "https://openapi.sunra.ai/main/pika/pika-1.5/latest.json",
+    "endpoint": "/pika/pika-1.5/pikaffects",
+    "overrides": {
+      "model_id": "pika-pika-1.5-pikaffects",
+      "name": "Pika 1.5 - Pikaffects",
+      "display_name": "Pika 1.5 - Pikaffects",
+      "description": "Pika 1.5 generates hyper-realistic videos with dynamic camera motion and visual effects.",
+      "category": "Sunra.ai/Pika"
+    }
+  },
+  {
+    "name": "pika-pika-2.2-pikascenes",
+    "openapi_url": "https://openapi.sunra.ai/main/pika/pika-2.2/latest.json",
+    "endpoint": "/pika/pika-2.2/pikascenes",
+    "overrides": {
+      "model_id": "pika-pika-2.2-pikascenes",
+      "name": "Pika 2.2 - Pikascenes",
+      "display_name": "Pika 2.2 - Pikascenes",
+      "description": "Pika 2.2 generates 10s 1080p videos with tools like Pikaframes, Pikascenes, and Pikadditions for enhanced control and scene editing.",
+      "category": "Sunra.ai/Pika"
+    }
+  },
+  {
+    "name": "luma-photon-flash-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/luma/photon-flash/latest.json",
+    "endpoint": "/luma/photon-flash/text-to-image",
+    "overrides": {
+      "model_id": "luma-photon-flash-text-to-image",
+      "name": "Luma Photon Flash - Text to Image",
+      "display_name": "Luma Photon Flash - Text to Image",
+      "description": "Photon Flash delivers fast, high-quality 1080p images with strong prompt adherence and support for reference images.",
+      "category": "Sunra.ai/Luma"
+    }
+  },
+  {
+    "name": "luma-photon-text-to-image",
+    "openapi_url": "https://openapi.sunra.ai/main/luma/photon/latest.json",
+    "endpoint": "/luma/photon/text-to-image",
+    "overrides": {
+      "model_id": "luma-photon-text-to-image",
+      "name": "Luma Photon - Text to Image",
+      "display_name": "Luma Photon - Text to Image",
+      "description": "Photon is a powerful text-to-image model that creates high-quality 1080p images with strong prompt adherence and multi-image reference support.",
+      "category": "Sunra.ai/Luma"
+    }
+  },
+  {
+    "name": "luma-ray-flash-2-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/luma/ray-flash-2/latest.json",
+    "endpoint": "/luma/ray-flash-2/text-to-video",
+    "overrides": {
+      "model_id": "luma-ray-flash-2-text-to-video",
+      "name": "Luma Ray Flash 2 - Text to Video",
+      "display_name": "Luma Ray Flash 2 - Text to Video",
+      "description": "Ray Flash 2 is a faster, lower-cost alternative to Ray 2. It generates 5–9 second 720p videos from text prompts, maintaining coherent motion and detailed visuals for quick content creation.",
+      "category": "Sunra.ai/Luma"
+    }
+  },
+  {
+    "name": "luma-ray-flash-2-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/luma/ray-flash-2/latest.json",
+    "endpoint": "/luma/ray-flash-2/image-to-video",
+    "overrides": {
+      "model_id": "luma-ray-flash-2-image-to-video",
+      "name": "Luma Ray Flash 2 - Image to Video",
+      "display_name": "Luma Ray Flash 2 - Image to Video",
+      "description": "Ray Flash 2 is a faster, lower-cost alternative to Ray 2. It generates 5–9 second 720p videos from text prompts, maintaining coherent motion and detailed visuals for quick content creation.",
+      "category": "Sunra.ai/Luma"
+    }
+  },
+  {
+    "name": "luma-ray-2-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/luma/ray-2/latest.json",
+    "endpoint": "/luma/ray-2/text-to-video",
+    "overrides": {
+      "model_id": "luma-ray-2-text-to-video",
+      "name": "Luma Ray 2 - Text to Video",
+      "display_name": "Luma Ray 2 - Text to Video",
+      "description": "Ray 2 is a high-quality video generation model that generates realistic 720p videos up to 10s from text or images, with smooth motion and strong prompt alignment.",
+      "category": "Sunra.ai/Luma"
+    }
+  },
+  {
+    "name": "luma-ray-2-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/luma/ray-2/latest.json",
+    "endpoint": "/luma/ray-2/image-to-video",
+    "overrides": {
+      "model_id": "luma-ray-2-image-to-video",
+      "name": "Luma Ray 2 - Image to Video",
+      "display_name": "Luma Ray 2 - Image to Video",
+      "description": "Ray 2 is a high-quality video generation model that generates realistic 720p videos up to 10s from text or images, with smooth motion and strong prompt alignment.",
+      "category": "Sunra.ai/Luma"
+    }
+  },
+  {
+    "name": "pixverse-pixverse-v3.5-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/pixverse/pixverse-v3.5/latest.json",
+    "endpoint": "/pixverse/pixverse-v3.5/text-to-video",
+    "overrides": {
+      "model_id": "pixverse-pixverse-v3.5-text-to-video",
+      "name": "Pixverse v3.5 - Text to Video",
+      "display_name": "Pixverse v3.5 - Text to Video",
+      "description": "Delivers faster video generation with improved realism and prompt understanding across cartoon and 3D styles.",
+      "category": "Sunra.ai/Pixverse"
+    }
+  },
+  {
+    "name": "pixverse-pixverse-v3.5-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/pixverse/pixverse-v3.5/latest.json",
+    "endpoint": "/pixverse/pixverse-v3.5/image-to-video",
+    "overrides": {
+      "model_id": "pixverse-pixverse-v3.5-image-to-video",
+      "name": "Pixverse v3.5 - Image to Video",
+      "display_name": "Pixverse v3.5 - Image to Video",
+      "description": "Delivers faster video generation with improved realism and prompt understanding across cartoon and 3D styles.",
+      "category": "Sunra.ai/Pixverse"
+    }
+  },
+  {
+    "name": "pixverse-pixverse-v4-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/pixverse/pixverse-v4/latest.json",
+    "endpoint": "/pixverse/pixverse-v4/text-to-video",
+    "overrides": {
+      "model_id": "pixverse-pixverse-v4-text-to-video",
+      "name": "Pixverse v4 - Text to Video",
+      "display_name": "Pixverse v4 - Text to Video",
+      "description": "Generates 5–8s 1080p videos from text or image prompts with natural motion and support for varied visual styles.",
+      "category": "Sunra.ai/Pixverse"
+    }
+  },
+  {
+    "name": "pixverse-pixverse-v4-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/pixverse/pixverse-v4/latest.json",
+    "endpoint": "/pixverse/pixverse-v4/image-to-video",
+    "overrides": {
+      "model_id": "pixverse-pixverse-v4-image-to-video",
+      "name": "Pixverse v4 - Image to Video",
+      "display_name": "Pixverse v4 - Image to Video",
+      "description": "Generates 5–8s 1080p videos from text or image prompts with natural motion and support for varied visual styles.",
+      "category": "Sunra.ai/Pixverse"
+    }
+  },
+  {
+    "name": "pixverse-pixverse-v4.5-text-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/pixverse/pixverse-v4.5/latest.json",
+    "endpoint": "/pixverse/pixverse-v4.5/text-to-video",
+    "overrides": {
+      "model_id": "pixverse-pixverse-v4.5-text-to-video",
+      "name": "Pixverse v4.5 - Text to Video",
+      "display_name": "Pixverse v4.5 - Text to Video",
+      "description": "Produces high-quality videos with smooth motion, complex actions, and cinematic camera controls. Supports multi-image input.",
+      "category": "Sunra.ai/Pixverse"
+    }
+  },
+  {
+    "name": "pixverse-pixverse-v4.5-image-to-video",
+    "openapi_url": "https://openapi.sunra.ai/main/pixverse/pixverse-v4.5/latest.json",
+    "endpoint": "/pixverse/pixverse-v4.5/image-to-video",
+    "overrides": {
+      "model_id": "pixverse-pixverse-v4.5-image-to-video",
+      "name": "Pixverse v4.5 - Image to Video",
+      "display_name": "Pixverse v4.5 - Image to Video",
+      "description": "Produces high-quality videos with smooth motion, complex actions, and cinematic camera controls. Supports multi-image input.",
+      "category": "Sunra.ai/Pixverse"
+    }
   }
 ]

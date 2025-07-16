@@ -1,0 +1,103 @@
+{
+  "model_id": "playai-play-3.0-mini-text-to-speech",
+  "name": "PlayAI Play 3.0 Mini - Text to Speech",
+  "api_endpoint": "playai/play-3.0-mini/text-to-speech",
+  "display_name": "PlayAI Play 3.0 Mini - Text to Speech",
+  "description": "Multilingual mini-TTS that speaks 30+ languages with sub-second latency and slim compute costs.",
+  "category": "Sunra.ai/PlayAI",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "text": {
+        "type": "string",
+        "description": "The text to be converted to speech.",
+        "multiline": true,
+        "order": 201
+      }
+    },
+    "optional": {
+      "voice": {
+        "type": "audio",
+        "description": "The voice to use for the text-to-speech generation.",
+        "enum": [
+          "Jennifer (English (US)/American)",
+          "Dexter (English (US)/American)",
+          "Ava (English (AU)/Australian)",
+          "Tilly (English (AU)/Australian)",
+          "Charlotte (Advertising) (English (CA)/Canadian)",
+          "Charlotte (Meditation) (English (CA)/Canadian)",
+          "Cecil (English (GB)/British)",
+          "Sterling (English (GB)/British)",
+          "Cillian (English (IE)/Irish)",
+          "Madison (English (IE)/Irish)",
+          "Ada (English (ZA)/South african)",
+          "Furio (English (IT)/Italian)",
+          "Alessandro (English (IT)/Italian)",
+          "Carmen (English (MX)/Mexican)",
+          "Sumita (English (IN)/Indian)",
+          "Navya (English (IN)/Indian)",
+          "Baptiste (English (FR)/French)",
+          "Lumi (English (FI)/Finnish)",
+          "Ronel Conversational (Afrikaans/South african)",
+          "Ronel Narrative (Afrikaans/South african)",
+          "Abdo Conversational (Arabic/Arabic)",
+          "Abdo Narrative (Arabic/Arabic)",
+          "Mousmi Conversational (Bengali/Bengali)",
+          "Mousmi Narrative (Bengali/Bengali)",
+          "Caroline Conversational (Portuguese (BR)/Brazilian)",
+          "Caroline Narrative (Portuguese (BR)/Brazilian)",
+          "Ange Conversational (French/French)",
+          "Ange Narrative (French/French)",
+          "Anke Conversational (German/German)",
+          "Anke Narrative (German/German)",
+          "Bora Conversational (Greek/Greek)",
+          "Bora Narrative (Greek/Greek)",
+          "Anuj Conversational (Hindi/Indian)",
+          "Anuj Narrative (Hindi/Indian)",
+          "Alessandro Conversational (Italian/Italian)",
+          "Alessandro Narrative (Italian/Italian)",
+          "Kiriko Conversational (Japanese/Japanese)",
+          "Kiriko Narrative (Japanese/Japanese)",
+          "Dohee Conversational (Korean/Korean)",
+          "Dohee Narrative (Korean/Korean)",
+          "Ignatius Conversational (Malay/Malay)",
+          "Ignatius Narrative (Malay/Malay)",
+          "Adam Conversational (Polish/Polish)",
+          "Adam Narrative (Polish/Polish)",
+          "Andrei Conversational (Russian/Russian)",
+          "Andrei Narrative (Russian/Russian)",
+          "Aleksa Conversational (Serbian/Serbian)",
+          "Aleksa Narrative (Serbian/Serbian)",
+          "Carmen Conversational (Spanish/Spanish)",
+          "Patricia Conversational (Spanish/Spanish)",
+          "Aiken Conversational (Tagalog/Filipino)",
+          "Aiken Narrative (Tagalog/Filipino)",
+          "Katbundit Conversational (Thai/Thai)",
+          "Katbundit Narrative (Thai/Thai)",
+          "Ali Conversational (Turkish/Turkish)",
+          "Ali Narrative (Turkish/Turkish)",
+          "Sahil Conversational (Urdu/Pakistani)",
+          "Sahil Narrative (Urdu/Pakistani)",
+          "Mary Conversational (Hebrew/Israeli)",
+          "Mary Narrative (Hebrew/Israeli)"
+        ],
+        "default": "Jennifer (English (US)/American)",
+        "order": 301
+      },
+      "seed": {
+        "type": "integer",
+        "description": "An integer number greater than or equal to 0. If equal to null or not provided, a random seed will be used. Useful to control the reproducibility of the generated audio. Assuming all other properties didn't change, a fixed seed should always generate the exact same audio file.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 302
+      }
+    }
+  },
+  "outputs": {
+    "audio": {
+      "type": "string",
+      "description": "Output"
+    }
+  }
+}

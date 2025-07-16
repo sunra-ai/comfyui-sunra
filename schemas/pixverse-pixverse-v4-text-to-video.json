@@ -1,0 +1,88 @@
+{
+  "model_id": "pixverse-pixverse-v4-text-to-video",
+  "name": "Pixverse v4 - Text to Video",
+  "api_endpoint": "pixverse/pixverse-v4/text-to-video",
+  "display_name": "Pixverse v4 - Text to Video",
+  "description": "Generates 5\u20138s 1080p videos from text or image prompts with natural motion and support for varied visual styles.",
+  "category": "Sunra.ai/Pixverse",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for video generation",
+        "multiline": true,
+        "order": 201
+      }
+    },
+    "optional": {
+      "negative_prompt": {
+        "type": "string",
+        "description": "Negative prompt to specify what you do not want in the generated video",
+        "multiline": true,
+        "order": 203
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Random seed for controllable generation",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 206
+      },
+      "duration": {
+        "type": "integer",
+        "description": "Duration of the video in seconds (5 or 8)",
+        "enum": [
+          5,
+          8
+        ],
+        "default": 5,
+        "step": 1,
+        "order": 402
+      },
+      "resolution": {
+        "type": "string",
+        "description": "Resolution of the generated video (360p, 540p, 720p, or 1080p)",
+        "enum": [
+          "360p",
+          "540p",
+          "720p",
+          "1080p"
+        ],
+        "default": "540p",
+        "order": 403
+      },
+      "motion": {
+        "type": "string",
+        "description": "Type of motion in the generated video (normal or smooth)",
+        "enum": [
+          "normal",
+          "smooth"
+        ],
+        "default": "normal",
+        "order": 404
+      },
+      "style": {
+        "type": "string",
+        "description": "Style of the generated video (anime, 3d_animation, clay, cyberpunk, comic)",
+        "enum": [
+          "None",
+          "anime",
+          "3d_animation",
+          "clay",
+          "cyberpunk",
+          "comic"
+        ],
+        "default": "None",
+        "order": 405
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

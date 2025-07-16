@@ -1,0 +1,40 @@
+{
+  "model_id": "google-deepmind-imagen3-fast-text-to-image",
+  "name": "Google DeepMind Imagen3 Fast - Text to Image",
+  "api_endpoint": "google-deepmind/imagen3-fast/text-to-image",
+  "display_name": "Google DeepMind Imagen3 Fast - Text to Image",
+  "description": "Imagen 3 Fast is a faster version of Imagen 3 for generating high-quality images with rich lighting and reduced latency.",
+  "category": "Sunra.ai/Google DeepMind",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "The prompt for the image",
+        "multiline": true,
+        "order": 200
+      }
+    },
+    "optional": {
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Aspect ratio of the image",
+        "enum": [
+          "1:1",
+          "16:9",
+          "9:16",
+          "4:3",
+          "3:4"
+        ],
+        "default": "16:9",
+        "order": 401
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

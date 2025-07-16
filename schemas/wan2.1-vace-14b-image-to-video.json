@@ -1,0 +1,102 @@
+{
+  "model_id": "wan2.1-vace-14b-image-to-video",
+  "name": "Wan 2.1 VACE 14B - Image to Video",
+  "api_endpoint": "wan/wan2.1-vace-14b/image-to-video",
+  "display_name": "Wan 2.1 VACE 14B - Image to Video",
+  "description": "An all-in-one 14B model for video creation and editing, supporting tasks like text-to-video, image-to-video, and video editing with multimodal inputs and advanced control features.",
+  "category": "Sunra.ai/Wan",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for video generation.",
+        "multiline": true,
+        "order": 201
+      },
+      "start_image": {
+        "type": "image",
+        "description": "Input reference images to edit. Used for image-to-video mode.",
+        "order": 301
+      }
+    },
+    "optional": {
+      "number_of_steps": {
+        "type": "integer",
+        "description": "Sample steps for generation.",
+        "default": 50,
+        "min": 10.0,
+        "max": 100.0,
+        "step": 1,
+        "order": 204
+      },
+      "guidance_scale": {
+        "type": "float",
+        "description": "Sample guide scale for prompt adherence.",
+        "default": 5.0,
+        "min": 0.0,
+        "max": 20.0,
+        "step": 0.1,
+        "order": 205
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Random seed for reproducibility.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 206
+      },
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Output aspect ratio.",
+        "enum": [
+          "16:9",
+          "9:16"
+        ],
+        "default": "16:9",
+        "order": 400
+      },
+      "resolution": {
+        "type": "string",
+        "description": "Output resolution.",
+        "enum": [
+          "480p",
+          "720p"
+        ],
+        "default": "720p",
+        "order": 401
+      },
+      "motion": {
+        "type": "string",
+        "description": "Speed optimization level. Faster modes may reduce quality.",
+        "enum": [
+          "consistent",
+          "fast",
+          "extra_fast"
+        ],
+        "default": "fast",
+        "order": 402
+      },
+      "number_of_frames": {
+        "type": "integer",
+        "description": "Number of frames to generate.",
+        "default": 81,
+        "min": 81.0,
+        "max": 100.0,
+        "step": 1,
+        "order": 404
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    },
+    "predict_time": {
+      "type": "float",
+      "description": "Time taken to generate the video."
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "model_id": "tencent-hunyuan-text-to-video-with-lora-text-to-video",
+  "name": "Tencent Hunyuan Text to Video with LoRA - Text to Video",
+  "api_endpoint": "tencent-hunyuan/hunyuan-text-to-video-with-lora/text-to-video",
+  "display_name": "Tencent Hunyuan Text to Video with LoRA - Text to Video",
+  "description": "Hunyuan LoRA is a text-to-video model using LoRA adapters to generate 1280\u00d7720 videos with consistent characters and customizable styles.",
+  "category": "Sunra.ai/Tencent Hunyuan",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "The text prompt describing your video scene.",
+        "multiline": true,
+        "order": 201
+      },
+      "lora_url": {
+        "type": "string",
+        "description": "A URL pointing to your LoRA .safetensors file or a Hugging Face repo (e.g. 'user/repo' - uses the first .safetensors file).",
+        "order": 301
+      }
+    },
+    "optional": {
+      "lora_strength": {
+        "type": "float",
+        "description": "Scale/strength for your LoRA.",
+        "default": 1.0,
+        "min": -10.0,
+        "max": 10.0,
+        "step": 0.01,
+        "order": 302
+      },
+      "scheduler": {
+        "type": "string",
+        "description": "Algorithm used to generate the video frames.",
+        "enum": [
+          "FlowMatchDiscreteScheduler",
+          "SDE-DPMSolverMultistepScheduler",
+          "DPMSolverMultistepScheduler",
+          "SASolverScheduler",
+          "UniPCMultistepScheduler"
+        ],
+        "default": "DPMSolverMultistepScheduler",
+        "order": 303
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Set a seed for reproducibility. Random by default.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 304
+      },
+      "guidance_scale": {
+        "type": "float",
+        "description": "Overall influence of text vs. model.",
+        "default": 6.0,
+        "min": 0.0,
+        "max": 30.0,
+        "step": 0.01,
+        "order": 305
+      },
+      "number_of_steps": {
+        "type": "integer",
+        "description": "Number of diffusion steps.",
+        "default": 30,
+        "min": 1.0,
+        "max": 150.0,
+        "step": 1,
+        "order": 306
+      },
+      "width": {
+        "type": "integer",
+        "description": "Width for the generated video.",
+        "default": 640,
+        "min": 64.0,
+        "max": 1536.0,
+        "step": 1,
+        "order": 401
+      },
+      "height": {
+        "type": "integer",
+        "description": "Height for the generated video.",
+        "default": 360,
+        "min": 64.0,
+        "max": 1024.0,
+        "step": 1,
+        "order": 402
+      },
+      "number_of_frames": {
+        "type": "integer",
+        "description": "How many frames (duration) in the resulting video.",
+        "default": 33,
+        "min": 1.0,
+        "max": 1440.0,
+        "step": 1,
+        "order": 403
+      },
+      "frames_per_second": {
+        "type": "integer",
+        "description": "Video frame rate.",
+        "default": 16,
+        "min": 1.0,
+        "max": 60.0,
+        "step": 1,
+        "order": 404
+      },
+      "enhance_weight": {
+        "type": "float",
+        "description": "Strength of the video enhancement effect.",
+        "default": 0.3,
+        "min": 0.0,
+        "max": 2.0,
+        "step": 0.01,
+        "order": 405
+      },
+      "enhance_single": {
+        "type": "boolean",
+        "description": "Apply enhancement to individual frames.",
+        "default": true,
+        "order": 406
+      },
+      "enhance_double": {
+        "type": "boolean",
+        "description": "Apply enhancement across frame pairs.",
+        "default": true,
+        "order": 407
+      },
+      "enhance_start": {
+        "type": "float",
+        "description": "When to start enhancement in the video. Must be less than enhance_end.",
+        "default": 0.0,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01,
+        "order": 408
+      },
+      "enhance_end": {
+        "type": "float",
+        "description": "When to end enhancement in the video. Must be greater than enhance_start.",
+        "default": 1.0,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01,
+        "order": 409
+      },
+      "flow_shift": {
+        "type": "integer",
+        "description": "Video continuity factor (flow).",
+        "default": 9,
+        "min": 0.0,
+        "max": 20.0,
+        "step": 1,
+        "order": 410
+      },
+      "denoise_strength": {
+        "type": "float",
+        "description": "Controls how strongly noise is applied each step.",
+        "default": 1.0,
+        "min": 0.0,
+        "max": 2.0,
+        "step": 0.01,
+        "order": 411
+      },
+      "force_offload": {
+        "type": "boolean",
+        "description": "Whether to force model layers offloaded to CPU.",
+        "default": true,
+        "order": 412
+      },
+      "crf": {
+        "type": "integer",
+        "description": "CRF (quality) for H264 encoding. Lower values = higher quality.",
+        "default": 19,
+        "min": 0.0,
+        "max": 51.0,
+        "step": 1,
+        "order": 413
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "string",
+      "description": "Output"
+    },
+    "predict_time": {
+      "type": "float",
+      "description": "Time taken for prediction in seconds"
+    }
+  }
+}

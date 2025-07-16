@@ -1,0 +1,100 @@
+{
+  "model_id": "recraft-recraft-v2-text-to-image",
+  "name": "Recraft v2 - Text to Image",
+  "api_endpoint": "recraft/recraft-v2/text-to-image",
+  "display_name": "Recraft v2 - Text to Image",
+  "description": "A flexible raster + vector generator built for brand workflows: lock-in exact layout positions, keep style libraries consistent, and crank out assets at just \u2248 $0.02 per image.",
+  "category": "Sunra.ai/Recraft",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "The prompt for the image generation",
+        "multiline": true,
+        "order": 201
+      }
+    },
+    "optional": {
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Aspect ratio of the image",
+        "enum": [
+          "1:1",
+          "4:3",
+          "3:4",
+          "16:9",
+          "9:16"
+        ],
+        "default": "1:1",
+        "order": 401
+      },
+      "style": {
+        "type": "string",
+        "description": "The style of the generated images",
+        "enum": [
+          "any",
+          "realistic_image",
+          "digital_illustration",
+          "vector_illustration",
+          "realistic_image/b_and_w",
+          "realistic_image/enterprise",
+          "realistic_image/hard_flash",
+          "realistic_image/hdr",
+          "realistic_image/motion_blur",
+          "realistic_image/natural_light",
+          "realistic_image/studio_portrait",
+          "digital_illustration/2d_art_poster",
+          "digital_illustration/2d_art_poster_2",
+          "digital_illustration/3d",
+          "digital_illustration/80s",
+          "digital_illustration/engraving_color",
+          "digital_illustration/glow",
+          "digital_illustration/grain",
+          "digital_illustration/hand_drawn",
+          "digital_illustration/hand_drawn_outline",
+          "digital_illustration/handmade_3d",
+          "digital_illustration/infantile_sketch",
+          "digital_illustration/kawaii",
+          "digital_illustration/pixel_art",
+          "digital_illustration/psychedelic",
+          "digital_illustration/seamless",
+          "digital_illustration/voxel",
+          "digital_illustration/watercolor",
+          "vector_illustration/cartoon",
+          "vector_illustration/doodle_line_art",
+          "vector_illustration/engraving",
+          "vector_illustration/flat_2",
+          "vector_illustration/kawaii",
+          "vector_illustration/line_art",
+          "vector_illustration/line_circuit",
+          "vector_illustration/linocut",
+          "vector_illustration/seamless",
+          "icon/broken_line",
+          "icon/colored_outline",
+          "icon/colored_shapes",
+          "icon/colored_shapes_gradient",
+          "icon/doodle_fill",
+          "icon/doodle_offset_fill",
+          "icon/offset_fill",
+          "icon/outline",
+          "icon/outline_gradient",
+          "icon/uneven_fill"
+        ],
+        "default": "realistic_image",
+        "order": 402
+      },
+      "style_id": {
+        "type": "string",
+        "description": "The ID of the custom style reference (optional)",
+        "order": 403
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

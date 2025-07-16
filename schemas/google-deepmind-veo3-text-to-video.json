@@ -1,0 +1,26 @@
+{
+  "model_id": "google-deepmind-veo3-text-to-video",
+  "name": "Google DeepMind Veo3 - Text to Video",
+  "api_endpoint": "google-deepmind/veo3/text-to-video",
+  "display_name": "Google DeepMind Veo3 - Text to Video",
+  "description": "4K-ready video generator with real-world physics and synced ambience sound\u2014unveiled at I/O 2025.",
+  "category": "Sunra.ai/Google DeepMind",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for video generation",
+        "multiline": true,
+        "order": 201
+      }
+    },
+    "optional": {}
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

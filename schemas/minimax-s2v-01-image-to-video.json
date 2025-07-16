@@ -1,0 +1,38 @@
+{
+  "model_id": "minimax-s2v-01-image-to-video",
+  "name": "MiniMax S2V-01 - Image to Video",
+  "api_endpoint": "minimax/s2v-01/image-to-video",
+  "display_name": "MiniMax S2V-01 - Image to Video",
+  "description": "An AI video model that generates videos with consistent character identity from a reference image and text prompt",
+  "category": "Sunra.ai/MiniMax",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "The prompt for the video",
+        "multiline": true,
+        "order": 200
+      },
+      "subject_reference": {
+        "type": "string",
+        "description": "URL of the subject reference image",
+        "order": 301
+      }
+    },
+    "optional": {
+      "prompt_enhancer": {
+        "type": "boolean",
+        "description": "Whether to use the model's prompt optimizer",
+        "default": true,
+        "order": 201
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

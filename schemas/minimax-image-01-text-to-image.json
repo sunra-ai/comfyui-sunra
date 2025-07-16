@@ -1,0 +1,60 @@
+{
+  "model_id": "minimax-image-01-text-to-image",
+  "name": "MiniMax Image-01 - Text to Image",
+  "api_endpoint": "minimax/image-01/text-to-image",
+  "display_name": "MiniMax Image-01 - Text to Image",
+  "description": "Ultra-faithful prompt-to-pixel synthesis with nuanced lighting, rich scene detail, and consistent character rendering\u2014even when you feed a reference portrait.",
+  "category": "Sunra.ai/MiniMax",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "The prompt for the video",
+        "multiline": true,
+        "order": 200
+      }
+    },
+    "optional": {
+      "prompt_enhancer": {
+        "type": "boolean",
+        "description": "Whether to use the model's prompt optimizer",
+        "default": true,
+        "order": 201
+      },
+      "number_of_images": {
+        "type": "image",
+        "description": "Number of images to generate, default is 4",
+        "default": 4,
+        "order": 202
+      },
+      "subject_reference": {
+        "type": "string",
+        "description": "URL of the subject reference image",
+        "order": 301
+      },
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Aspect ratio of the image",
+        "enum": [
+          "1:1",
+          "16:9",
+          "9:16",
+          "4:3",
+          "3:4",
+          "2:3",
+          "3:2",
+          "21:9"
+        ],
+        "default": "1:1",
+        "order": 401
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

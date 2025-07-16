@@ -1,0 +1,141 @@
+{
+  "model_id": "ace-step-v1-3.5b-text-to-music",
+  "name": "Ace Step v1 3.5B - Text to Music",
+  "api_endpoint": "ace-step/v1-3.5b/text-to-music",
+  "display_name": "Ace Step v1 3.5B - Text to Music",
+  "description": "Diffusion-plus-DCAE music generator delivering coherent multi-track songs in seconds.",
+  "category": "Sunra.ai/Ace Step",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "tags": {
+        "type": "string",
+        "description": "Text prompts to guide music generation, support tags, descriptions, and scenes. Use commas to separate different tags. e.g., 'epic,cinematic'",
+        "order": 301
+      }
+    },
+    "optional": {
+      "lyrics": {
+        "type": "string",
+        "description": "Lyrics to music. Use [verse], [chorus], and [bridge] to separate different parts of the lyrics. Use [instrumental] or [inst] to generate instrumental music",
+        "order": 302
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Random seed for reproducibility. If not provided, a random seed will be used.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 304
+      },
+      "duration": {
+        "type": "float",
+        "description": "Duration of the generated audio in seconds",
+        "default": 20,
+        "min": 5.0,
+        "max": 240.0,
+        "step": 1.0,
+        "order": 401
+      },
+      "number_of_steps": {
+        "type": "integer",
+        "description": "Number of steps to generate the audio.",
+        "default": 30,
+        "min": 5.0,
+        "max": 60.0,
+        "step": 1,
+        "order": 410
+      },
+      "scheduler": {
+        "type": "string",
+        "description": "Scheduler to use for the generation process.",
+        "enum": [
+          "euler",
+          "heun"
+        ],
+        "default": "euler",
+        "order": 411
+      },
+      "guidance_type": {
+        "type": "string",
+        "description": "Type of CFG to use for the generation process.",
+        "enum": [
+          "cfg",
+          "apg",
+          "cfg_star"
+        ],
+        "default": "apg",
+        "order": 412
+      },
+      "granularity_scale": {
+        "type": "float",
+        "description": "Granularity scale for the generation process. Higher values can reduce artifacts.",
+        "default": 10,
+        "min": -100.0,
+        "max": 100.0,
+        "step": 1.0,
+        "order": 413
+      },
+      "guidance_interval": {
+        "type": "float",
+        "description": "Guidance interval for the generation. 0.5 means only apply guidance in the middle steps (0.25 * infer_steps to 0.75 * infer_steps)",
+        "default": 0.5,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.1,
+        "order": 414
+      },
+      "guidance_interval_decay": {
+        "type": "float",
+        "description": "Guidance interval decay for the generation. Guidance scale will decay from guidance_scale to min_guidance_scale in the interval. 0.0 means no decay.",
+        "default": 0,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.1,
+        "order": 415
+      },
+      "guidance_scale": {
+        "type": "float",
+        "description": "Guidance scale for the generation.",
+        "default": 15,
+        "min": 0.0,
+        "max": 200.0,
+        "step": 1.0,
+        "order": 416
+      },
+      "minimum_guidance_scale": {
+        "type": "float",
+        "description": "Minimum guidance scale for the generation after the decay.",
+        "default": 3,
+        "min": 0.0,
+        "max": 200.0,
+        "step": 1.0,
+        "order": 417
+      },
+      "tag_guidance_scale": {
+        "type": "float",
+        "description": "Tag guidance scale for the generation.",
+        "default": 5,
+        "min": 0.0,
+        "max": 10.0,
+        "step": 0.1,
+        "order": 418
+      },
+      "lyric_guidance_scale": {
+        "type": "float",
+        "description": "Lyric guidance scale for the generation.",
+        "default": 1.5,
+        "min": 0.0,
+        "max": 10.0,
+        "step": 0.1,
+        "order": 419
+      }
+    }
+  },
+  "outputs": {
+    "audio": {
+      "type": "string",
+      "description": "Output"
+    }
+  }
+}

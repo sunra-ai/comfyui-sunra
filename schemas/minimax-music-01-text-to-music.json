@@ -1,0 +1,67 @@
+{
+  "model_id": "minimax-music-01-text-to-music",
+  "name": "MiniMax Music-01 - Text to Music",
+  "api_endpoint": "minimax/music-01/text-to-music",
+  "display_name": "MiniMax Music-01 - Text to Music",
+  "description": "Text-to-music model that writes full arrangements and stems across genres.",
+  "category": "Sunra.ai/MiniMax",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {},
+    "optional": {
+      "lyrics": {
+        "type": "string",
+        "description": "Lyrics with optional formatting. You can use a newline to separate each line of lyrics. You can use two newlines to add a pause between lines. You can use double hash marks (##) at the beginning and end of the lyrics to add accompaniment. Maximum 350 to 400 characters.",
+        "default": "\n[intro]\n\nUpload my heart to the digital sky\nAlgorithm love, you make me feel so high\nBinary kisses, ones and zeros fly (fly)\nOoooh ooooh\n\n[chorus]\nYour neural network's got me feeling so alive\n        ",
+        "order": 301
+      },
+      "song_reference": {
+        "type": "string",
+        "description": "Reference song, should contain music and vocals. Must be a .wav or .mp3 file longer than 15 seconds.",
+        "order": 302
+      },
+      "voice_reference": {
+        "type": "audio",
+        "description": "Voice reference. Must be a .wav or .mp3 file longer than 15 seconds. If only a voice reference is given, an a cappella vocal hum will be generated.",
+        "order": 303
+      },
+      "instrumental_reference": {
+        "type": "string",
+        "description": "Instrumental reference. Must be a .wav or .mp3 file longer than 15 seconds. If only an instrumental reference is given, a track without vocals will be generated.",
+        "order": 304
+      },
+      "sample_rate": {
+        "type": "integer",
+        "description": "Sample rate for the generated music",
+        "enum": [
+          16000,
+          24000,
+          32000,
+          44100
+        ],
+        "default": 44100,
+        "step": 1,
+        "order": 401
+      },
+      "bitrate": {
+        "type": "integer",
+        "description": "Bitrate for the generated music",
+        "enum": [
+          32000,
+          64000,
+          128000,
+          256000
+        ],
+        "default": 256000,
+        "step": 1,
+        "order": 402
+      }
+    }
+  },
+  "outputs": {
+    "audio": {
+      "type": "audio",
+      "description": "Generated audio"
+    }
+  }
+}

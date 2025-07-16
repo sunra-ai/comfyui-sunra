@@ -1,0 +1,56 @@
+{
+  "model_id": "pika-pika-1.5-pikaffects",
+  "name": "Pika 1.5 - Pikaffects",
+  "api_endpoint": "pika/pika-1.5/pikaffects",
+  "display_name": "Pika 1.5 - Pikaffects",
+  "description": "Pika 1.5 generates hyper-realistic videos with dynamic camera motion and visual effects.",
+  "category": "Sunra.ai/Pika",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt describing the desired video effect.",
+        "multiline": true,
+        "order": 201
+      },
+      "image": {
+        "type": "image",
+        "description": "URL of the image to use for video generation.",
+        "order": 301
+      }
+    },
+    "optional": {
+      "pikaffect": {
+        "type": "string",
+        "description": "The effect to apply to the image.",
+        "enum": [
+          "Melt",
+          "Cake-ify",
+          "Crumble",
+          "Crush",
+          "Decapitate",
+          "Deflate",
+          "Dissolve",
+          "Explode",
+          "Eye-pop",
+          "Inflate",
+          "Levitate",
+          "Peel",
+          "Poke",
+          "Squish",
+          "Ta-da",
+          "Tear"
+        ],
+        "default": "Melt",
+        "order": 302
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

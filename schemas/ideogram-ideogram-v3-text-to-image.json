@@ -1,0 +1,91 @@
+{
+  "model_id": "ideogram-ideogram-v3-text-to-image",
+  "name": "Ideogram v3 - Text to Image",
+  "api_endpoint": "ideogram/ideogram-v3/text-to-image",
+  "display_name": "Ideogram v3 - Text to Image",
+  "description": "Standard version of the three-tier engine (Turbo / Balanced / Quality) delivering photo-realism, stylish illustration modes, and the market's most legible in-image typography\u2014all in one prompt-friendly package.",
+  "category": "Sunra.ai/Ideogram",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for image generation",
+        "multiline": true,
+        "order": 201
+      }
+    },
+    "optional": {
+      "prompt_enhancer": {
+        "type": "boolean",
+        "description": "Whether to enhance the prompt automatically",
+        "default": true,
+        "order": 202
+      },
+      "negative_prompt": {
+        "type": "string",
+        "description": "Description of what to exclude from an image.",
+        "multiline": true,
+        "order": 203
+      },
+      "number_of_images": {
+        "type": "image",
+        "description": "Number of images to generate",
+        "default": 1,
+        "order": 205
+      },
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Aspect ratio for the generated image",
+        "enum": [
+          "1:1",
+          "4:3",
+          "3:4",
+          "16:9",
+          "9:16"
+        ],
+        "default": "16:9",
+        "order": 401
+      },
+      "rendering_speed": {
+        "type": "string",
+        "description": "Rendering speed mode",
+        "enum": [
+          "turbo",
+          "default",
+          "quality"
+        ],
+        "default": "default",
+        "order": 402
+      },
+      "style_codes": {
+        "type": "string",
+        "description": "A list of 8 character hexadecimal codes representing the style of the image. Cannot be used in conjunction with style_reference_images or style_type",
+        "order": 405
+      },
+      "style_type": {
+        "type": "string",
+        "description": "Type of style to apply",
+        "enum": [
+          "auto",
+          "general",
+          "realistic",
+          "design"
+        ],
+        "default": "general",
+        "order": 406
+      },
+      "style_reference_images": {
+        "type": "image",
+        "description": "Reference images for style transfer",
+        "order": 407
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

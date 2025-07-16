@@ -1,0 +1,71 @@
+{
+  "model_id": "doubao-seedance-1.0-lite-t2v-text-to-video",
+  "name": "Doubao Seedance 1.0 Lite T2V - Text to Video",
+  "api_endpoint": "doubao/seedance-1.0-lite-t2v/text-to-video",
+  "display_name": "Doubao Seedance 1.0 Lite T2V - Text to Video",
+  "description": "Seedance 1.0 Lite T2V generates 5\u201310s 720p videos from text, with control over character appearance, expressions, and cinematic camera motion.",
+  "category": "Sunra.ai/Seedance",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for video generation",
+        "multiline": true,
+        "order": 200
+      }
+    },
+    "optional": {
+      "resolution": {
+        "type": "string",
+        "description": "Video resolution",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ],
+        "default": "720p",
+        "order": 401
+      },
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Aspect ratio of the video",
+        "enum": [
+          "16:9",
+          "9:16",
+          "1:1",
+          "4:3",
+          "3:4",
+          "21:9"
+        ],
+        "default": "16:9",
+        "order": 402
+      },
+      "duration": {
+        "type": "integer",
+        "description": "Duration of the video in seconds",
+        "enum": [
+          5,
+          10
+        ],
+        "default": 5,
+        "step": 1,
+        "order": 403
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Seed of the video generation",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 404
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

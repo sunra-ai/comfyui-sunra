@@ -1,0 +1,74 @@
+{
+  "model_id": "hidream-hidream-e1-full-image-to-image",
+  "name": "HiDream E1 Full - Image to Image",
+  "api_endpoint": "hidream/hidream-e1-full/image-to-image",
+  "display_name": "HiDream E1 Full - Image to Image",
+  "description": "HiDream E1 Full enables image editing through natural language, supporting content, style, and object-level changes.",
+  "category": "Sunra.ai/HiDream",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for image generation",
+        "multiline": true,
+        "order": 201
+      },
+      "image": {
+        "type": "image",
+        "description": "Input image to edit. Supports URL or base64 format",
+        "order": 301
+      }
+    },
+    "optional": {
+      "negative_prompt": {
+        "type": "string",
+        "description": "Negative prompt to avoid certain elements",
+        "multiline": true,
+        "order": 203
+      },
+      "number_of_steps": {
+        "type": "integer",
+        "description": "Number of inference steps",
+        "default": 30,
+        "min": 10.0,
+        "max": 100.0,
+        "step": 1,
+        "order": 204
+      },
+      "guidance_scale": {
+        "type": "float",
+        "description": "Guidance scale for generation",
+        "default": 5.0,
+        "min": 0.0,
+        "max": 10.0,
+        "step": 0.1,
+        "order": 205
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Random seed for generation",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 206
+      },
+      "image_guidance_scale": {
+        "type": "image",
+        "description": "Image guidance scale",
+        "default": 4.0,
+        "order": 501
+      }
+    }
+  },
+  "outputs": {
+    "image": {
+      "type": "image",
+      "description": "Generated image"
+    },
+    "predict_time": {
+      "type": "float",
+      "description": "Time taken to generate the image"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "model_id": "recraft-creative-upscale-upscale-image",
+  "name": "Recraft Creative Upscale - Upscale Image",
+  "api_endpoint": "recraft/creative-upscale/upscale-image",
+  "display_name": "Recraft Creative Upscale - Upscale Image",
+  "description": "Adds artistic depth during up-res: enhances textures, facial nuance and intricate patterns so the final looks \"hand-retouched,\" not merely bigger.",
+  "category": "Sunra.ai/Recraft",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "image": {
+        "type": "image",
+        "description": "The URL of the image to be upscaled. Must be in PNG format.",
+        "order": 301
+      }
+    },
+    "optional": {}
+  },
+  "outputs": {
+    "image": {
+      "type": "image",
+      "description": "Generated image"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "model_id": "topazlabs-video-upscaler-video-upscale",
+  "name": "Topaz Labs Video Upscaler - Video Upscale",
+  "api_endpoint": "topazlabs/video-upscaler/video-upscale",
+  "display_name": "Topaz Labs Video Upscaler - Video Upscale",
+  "description": "Video AI 7 lifts footage all the way to 16 K, adds frame-interpolation, denoise, stabilise and even SDR-to-HDR in one batch pass\u201424 purpose-built models you can mix-and-match for broadcast-grade results.",
+  "category": "Sunra.ai/Topaz Labs",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "video": {
+        "type": "video",
+        "description": "Video file to upscale",
+        "order": 201
+      }
+    },
+    "optional": {
+      "target_resolution": {
+        "type": "string",
+        "description": "Target resolution",
+        "enum": [
+          "720p",
+          "1080p",
+          "4k"
+        ],
+        "default": "1080p",
+        "order": 401
+      },
+      "target_fps": {
+        "type": "integer",
+        "description": "Target FPS (choose from 15fps to 60fps)",
+        "default": 30,
+        "min": 15.0,
+        "max": 60.0,
+        "step": 1,
+        "order": 402
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    },
+    "output_pixel_count": {
+      "type": "integer",
+      "description": "Output"
+    },
+    "units_used": {
+      "type": "integer",
+      "description": "Output"
+    }
+  }
+}

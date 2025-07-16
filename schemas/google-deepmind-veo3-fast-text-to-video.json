@@ -1,0 +1,26 @@
+{
+  "model_id": "google-deepmind-veo3-fast-text-to-video",
+  "name": "Google DeepMind Veo3 Fast - Text to Video",
+  "api_endpoint": "google-deepmind/veo3-fast/text-to-video",
+  "display_name": "Google DeepMind Veo3 Fast - Text to Video",
+  "description": "Google Veo 3 Fast is a high-speed variant of Veo 3 that generates cinematic 1080p videos (up to 8s) with native audio, realistic physics, and prompt-accurate outputs.",
+  "category": "Sunra.ai/Google DeepMind",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for video generation",
+        "multiline": true,
+        "order": 201
+      }
+    },
+    "optional": {}
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

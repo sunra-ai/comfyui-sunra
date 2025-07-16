@@ -1,0 +1,40 @@
+{
+  "model_id": "google-deepmind-imagen4-fast-text-to-image",
+  "name": "Google DeepMind Imagen4 Fast - Text to Image",
+  "api_endpoint": "google-deepmind/imagen4-fast/text-to-image",
+  "display_name": "Google DeepMind Imagen4 Fast - Text to Image",
+  "description": "Imagen 4 Fast is Google DeepMind's upcoming high-speed variant of Imagen 4, delivering up to 10\u00d7 faster image generation while maintaining sharp 2K resolution and photorealistic quality.",
+  "category": "Sunra.ai/Google DeepMind",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "The prompt for the image",
+        "multiline": true,
+        "order": 200
+      }
+    },
+    "optional": {
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Aspect ratio of the image",
+        "enum": [
+          "1:1",
+          "16:9",
+          "9:16",
+          "4:3",
+          "3:4"
+        ],
+        "default": "16:9",
+        "order": 401
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

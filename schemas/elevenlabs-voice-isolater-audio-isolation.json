@@ -1,0 +1,29 @@
+{
+  "model_id": "elevenlabs-voice-isolater-audio-isolation",
+  "name": "ElevenLabs Voice Isolater - Audio Isolation",
+  "api_endpoint": "elevenlabs/voice-isolater/audio-isolation",
+  "display_name": "ElevenLabs Voice Isolater - Audio Isolation",
+  "description": "One\u2010click vocal-only stems\u2014kills street noise, hiss, and hum for crystal-clear dialogue.",
+  "category": "Sunra.ai/ElevenLabs",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "audio": {
+        "type": "audio",
+        "description": "Audio file URL.",
+        "order": 301
+      }
+    },
+    "optional": {}
+  },
+  "outputs": {
+    "audio": {
+      "type": "audio",
+      "description": "Generated audio"
+    },
+    "input_audio_duration": {
+      "type": "integer",
+      "description": "Output"
+    }
+  }
+}

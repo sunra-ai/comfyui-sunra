@@ -1,0 +1,99 @@
+{
+  "model_id": "topazlabs-image-upscaler-image-upscale",
+  "name": "Topaz Labs Image Upscaler - Image Upscale",
+  "api_endpoint": "topazlabs/image-upscaler/image-upscale",
+  "display_name": "Topaz Labs Image Upscaler - Image Upscale",
+  "description": "Topaz Photo AI's Upscale filter blows images up by up to 6\u00d7 while retaining micro-texture and sharp text thanks to diffusion-based super-resolution training on millions of photos.",
+  "category": "Sunra.ai/Topaz Labs",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "image": {
+        "type": "image",
+        "description": "Image to enhance",
+        "order": 201
+      }
+    },
+    "optional": {
+      "enhance_model": {
+        "type": "string",
+        "description": "Model to use: Standard V2 (general purpose), Low Resolution V2 (for low-res images), CGI (for digital art), High Fidelity V2 (preserves details), Text Refine (optimized for text)",
+        "enum": [
+          "Standard V2",
+          "Low Resolution V2",
+          "CGI",
+          "High Fidelity V2",
+          "Text Refine"
+        ],
+        "default": "Standard V2",
+        "order": 301
+      },
+      "upscale_factor": {
+        "type": "string",
+        "description": "How much to upscale the image",
+        "enum": [
+          "None",
+          "2x",
+          "4x",
+          "6x"
+        ],
+        "default": "None",
+        "order": 302
+      },
+      "subject_detecting": {
+        "type": "string",
+        "description": "Subject detection",
+        "enum": [
+          "None",
+          "All",
+          "Foreground",
+          "Background"
+        ],
+        "default": "None",
+        "order": 303
+      },
+      "face_enhancement_creativity": {
+        "type": "float",
+        "description": "Choose the level of creativity for face enhancement from 0 to 1. Defaults to 0, and is ignored if face_enhancement is false.",
+        "default": 0,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01,
+        "order": 304
+      },
+      "face_enhancement_strength": {
+        "type": "float",
+        "description": "Control how sharp the enhanced faces are relative to the background from 0 to 1. Defaults to 0.8, and is ignored if face_enhancement is false.",
+        "default": 0.8,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01,
+        "order": 305
+      },
+      "output_format": {
+        "type": "string",
+        "description": "Output format",
+        "enum": [
+          "jpeg",
+          "png"
+        ],
+        "default": "jpeg",
+        "order": 402
+      }
+    }
+  },
+  "outputs": {
+    "image": {
+      "type": "image",
+      "description": "Generated image"
+    },
+    "output_pixel_count": {
+      "type": "integer",
+      "description": "Output"
+    },
+    "units_used": {
+      "type": "integer",
+      "description": "Output"
+    }
+  }
+}

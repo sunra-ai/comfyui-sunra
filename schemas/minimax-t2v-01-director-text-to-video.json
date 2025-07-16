@@ -1,0 +1,33 @@
+{
+  "model_id": "minimax-t2v-01-director-text-to-video",
+  "name": "MiniMax T2V-01 Director - Text to Video",
+  "api_endpoint": "minimax/t2v-01-director/text-to-video",
+  "display_name": "MiniMax T2V-01 Director - Text to Video",
+  "description": "The \"Camera Control\" model affords users cinematic language with the fluency of a professional director and to exercise meticulous creative control.",
+  "category": "Sunra.ai/MiniMax",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "The prompt for the video",
+        "multiline": true,
+        "order": 200
+      }
+    },
+    "optional": {
+      "prompt_enhancer": {
+        "type": "boolean",
+        "description": "Whether to use the model's prompt optimizer",
+        "default": true,
+        "order": 201
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "model_id": "luma-ray-2-image-to-video",
+  "name": "Luma Ray 2 - Image to Video",
+  "api_endpoint": "luma/ray-2/image-to-video",
+  "display_name": "Luma Ray 2 - Image to Video",
+  "description": "Ray 2 is a high-quality video generation model that generates realistic 720p videos up to 10s from text or images, with smooth motion and strong prompt alignment.",
+  "category": "Sunra.ai/Luma",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for video generation",
+        "multiline": true,
+        "order": 201
+      },
+      "start_image": {
+        "type": "image",
+        "description": "URL of an image to use as the starting frame",
+        "order": 301
+      }
+    },
+    "optional": {
+      "end_image": {
+        "type": "image",
+        "description": "URL of an image to use as the ending frame",
+        "order": 302
+      },
+      "duration": {
+        "type": "integer",
+        "description": "Duration of the video in seconds (5 or 9)",
+        "enum": [
+          5,
+          9
+        ],
+        "default": 5,
+        "step": 1,
+        "order": 401
+      },
+      "resolution": {
+        "type": "string",
+        "description": "Resolution of the generated video (540p or 720p)",
+        "enum": [
+          "540p",
+          "720p"
+        ],
+        "default": "720p",
+        "order": 403
+      },
+      "loop": {
+        "type": "boolean",
+        "description": "Whether the video should loop, with the last frame matching the first frame for smooth, continuous playback",
+        "default": false,
+        "order": 405
+      },
+      "concepts": {
+        "type": "string",
+        "description": "List of camera concepts to apply to the video generation (truck_left, pan_right, pedestal_down, low_angle, pedestal_up, selfie, pan_left, roll_right, zoom_in, over_the_shoulder, orbit_right, orbit_left, static, tiny_planet, high_angle, bolt_cam, dolly_zoom, overhead, zoom_out, handheld, roll_left, pov, aerial_drone, push_in, crane_down, truck_right, tilt_down, elevator_doors, tilt_up, ground_level, pull_out, aerial, crane_up, eye_level)",
+        "order": 406
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

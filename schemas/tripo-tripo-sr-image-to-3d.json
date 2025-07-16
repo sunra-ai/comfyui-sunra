@@ -1,0 +1,45 @@
+{
+  "model_id": "tripo-tripo-sr-image-to-3d",
+  "name": "Tripo SR - Image to 3D",
+  "api_endpoint": "tripo/tripo-sr/image-to-3d",
+  "display_name": "Tripo SR - Image to 3D",
+  "description": "Generates a textured 3D mesh from one image in < 0.5 s, outperforming open-source rivals on fidelity and speed.",
+  "category": "Sunra.ai/Tripo",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "image": {
+        "type": "image",
+        "description": "Input Image",
+        "order": 201
+      }
+    },
+    "optional": {
+      "remove_background": {
+        "type": "boolean",
+        "description": "remove_background parameter",
+        "default": true,
+        "order": 301
+      },
+      "foreground_ratio": {
+        "type": "float",
+        "description": "foreground_ratio parameter",
+        "default": 0.85,
+        "min": 0.5,
+        "max": 1.0,
+        "step": 0.01,
+        "order": 302
+      }
+    }
+  },
+  "outputs": {
+    "model": {
+      "type": "model",
+      "description": "Generated 3D model"
+    },
+    "predict_time": {
+      "type": "float",
+      "description": "Time taken to generate the 3D model"
+    }
+  }
+}

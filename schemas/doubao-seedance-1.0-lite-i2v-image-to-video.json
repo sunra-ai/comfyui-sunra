@@ -1,0 +1,62 @@
+{
+  "model_id": "doubao-seedance-1.0-lite-i2v-image-to-video",
+  "name": "Doubao Seedance 1.0 Lite I2V - Image to Video",
+  "api_endpoint": "doubao/seedance-1.0-lite-i2v/image-to-video",
+  "display_name": "Doubao Seedance 1.0 Lite I2V - Image to Video",
+  "description": "Seedance 1.0 Lite I2V transforms static images into 5\u201310s videos with smooth motion, multi-subject handling, and professional camera effects.",
+  "category": "Sunra.ai/Seedance",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for video generation",
+        "multiline": true,
+        "order": 200
+      },
+      "start_image": {
+        "type": "image",
+        "description": "URL of the image to use as the first frame",
+        "order": 301
+      }
+    },
+    "optional": {
+      "resolution": {
+        "type": "string",
+        "description": "Video resolution",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ],
+        "default": "720p",
+        "order": 401
+      },
+      "duration": {
+        "type": "integer",
+        "description": "Duration of the video in seconds",
+        "enum": [
+          5,
+          10
+        ],
+        "default": 5,
+        "step": 1,
+        "order": 403
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Seed of the video generation",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 404
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "model_id": "black-forest-labs-flux-kontext-max-text-to-image",
+  "name": "FLUX Kontext Max - Text to Image",
+  "api_endpoint": "black-forest-labs/flux-kontext-max/text-to-image",
+  "display_name": "FLUX Kontext Max - Text to Image",
+  "description": "The new premium model from BFL, which brings maximum performance across all aspects \u2013 greatly improved prompt adherence and typography generation meet premium consistency for editing without compromise on speed.",
+  "category": "Sunra.ai/FLUX Kontext",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for image generation.",
+        "multiline": true,
+        "order": 200
+      }
+    },
+    "optional": {
+      "prompt_enhancer": {
+        "type": "boolean",
+        "description": "Whether to perform enhancer on the prompt. If active, automatically modifies the prompt for more creative generation.",
+        "default": false,
+        "order": 201
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Seed for reproducibility.",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 202
+      },
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Aspect ratio of the image between 21:9 and 9:21.",
+        "enum": [
+          "1:1",
+          "16:9",
+          "9:16",
+          "4:3",
+          "3:4",
+          "21:9",
+          "9:21"
+        ],
+        "default": "16:9",
+        "order": 401
+      },
+      "output_format": {
+        "type": "string",
+        "description": "Output format for the generated image. Can be 'jpeg' or 'png'.",
+        "enum": [
+          "jpeg",
+          "png"
+        ],
+        "default": "jpeg",
+        "order": 404
+      },
+      "safety_tolerance": {
+        "type": "integer",
+        "description": "Tolerance level for input and output moderation. Between 0 and 100, 0 being most strict, 100 being no moderation.",
+        "default": 40,
+        "min": 0.0,
+        "max": 100.0,
+        "step": 1,
+        "order": 500
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "model_id": "doubao-seedream-3.0-text-to-image",
+  "name": "Doubao Seedream 3.0 - Text to Image",
+  "api_endpoint": "doubao/seedream-3.0/text-to-image",
+  "display_name": "Doubao Seedream 3.0 - Text to Image",
+  "description": "Seedream 3.0 is a text-to-image model that generates 2K images with sharp text rendering and refined visual style.",
+  "category": "Sunra.ai/Doubao",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for image generation",
+        "multiline": true,
+        "order": 200
+      }
+    },
+    "optional": {
+      "guidance_scale": {
+        "type": "float",
+        "description": "Guidance scale for prompt adherence",
+        "default": 2.5,
+        "min": 1.0,
+        "max": 10.0,
+        "step": 0.1,
+        "order": 201
+      },
+      "aspect_ratio": {
+        "type": "string",
+        "description": "Image size and aspect ratio",
+        "enum": [
+          "1:1",
+          "4:3",
+          "3:4",
+          "16:9",
+          "9:16",
+          "3:2",
+          "2:3",
+          "21:9"
+        ],
+        "default": "1:1",
+        "order": 401
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Seed of the image generation",
+        "min": 0.0,
+        "max": 2147483647.0,
+        "step": 1,
+        "order": 404
+      }
+    }
+  },
+  "outputs": {
+    "images": {
+      "type": "image",
+      "description": "Generated images"
+    }
+  }
+}

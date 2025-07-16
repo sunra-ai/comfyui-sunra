@@ -1,0 +1,58 @@
+{
+  "model_id": "kling-v2.1-standard-image-to-video",
+  "name": "Kling v2.1 Standard - Image to Video",
+  "api_endpoint": "kling/kling-v2.1-standard/image-to-video",
+  "display_name": "Kling v2.1 Standard - Image to Video",
+  "description": "Kling 2.1 Standard is a 720p image-to-video model by Kuaishou, offering improved motion realism and prompt adherence with low resource usage.",
+  "category": "Sunra.ai/Kling",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt for video generation",
+        "multiline": true,
+        "order": 201
+      },
+      "start_image": {
+        "type": "image",
+        "description": "URL of an image file or base64 to use as the starting frame",
+        "order": 301
+      }
+    },
+    "optional": {
+      "negative_prompt": {
+        "type": "string",
+        "description": "Negative prompt to specify what you do not want in the generated video",
+        "multiline": true,
+        "order": 203
+      },
+      "guidance_scale": {
+        "type": "float",
+        "description": "Guidance scale for controlling how closely the model follows the prompt (CFG)",
+        "default": 0.5,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01,
+        "order": 205
+      },
+      "duration": {
+        "type": "integer",
+        "description": "Duration of the video in seconds (5 or 10)",
+        "enum": [
+          5,
+          10
+        ],
+        "default": 5,
+        "step": 1,
+        "order": 402
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

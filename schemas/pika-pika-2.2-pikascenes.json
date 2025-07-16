@@ -1,0 +1,73 @@
+{
+  "model_id": "pika-pika-2.2-pikascenes",
+  "name": "Pika 2.2 - Pikascenes",
+  "api_endpoint": "pika/pika-2.2/pikascenes",
+  "display_name": "Pika 2.2 - Pikascenes",
+  "description": "Pika 2.2 generates 10s 1080p videos with tools like Pikaframes, Pikascenes, and Pikadditions for enhanced control and scene editing.",
+  "category": "Sunra.ai/Pika",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt describing the desired video.",
+        "multiline": true,
+        "order": 201
+      },
+      "images": {
+        "type": "image",
+        "description": "List of images to use for video generation.",
+        "order": 301
+      }
+    },
+    "optional": {
+      "negative_prompt": {
+        "type": "string",
+        "description": "Negative prompt to guide the video generation.",
+        "multiline": true,
+        "order": 203
+      },
+      "aspect_ratio": {
+        "type": "string",
+        "description": "The aspect ratio of the generated video.",
+        "enum": [
+          "16:9",
+          "9:16",
+          "1:1",
+          "4:5",
+          "5:4",
+          "3:2",
+          "2:3"
+        ],
+        "default": "16:9",
+        "order": 401
+      },
+      "resolution": {
+        "type": "string",
+        "description": "The resolution of the generated video.",
+        "enum": [
+          "720p",
+          "1080p"
+        ],
+        "default": "720p",
+        "order": 402
+      },
+      "ingredients_mode": {
+        "type": "string",
+        "description": "Mode for integrating multiple images. 'creative' for more artistic freedom, 'precise' for more exact interpretation.",
+        "enum": [
+          "creative",
+          "precise"
+        ],
+        "default": "creative",
+        "order": 501
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}

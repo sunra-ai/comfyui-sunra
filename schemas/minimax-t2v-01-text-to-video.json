@@ -1,0 +1,33 @@
+{
+  "model_id": "minimax-t2v-01-text-to-video",
+  "name": "MiniMax T2V-01 - Text to Video",
+  "api_endpoint": "minimax/t2v-01/text-to-video",
+  "display_name": "MiniMax T2V-01 - Text to Video",
+  "description": "Generates 6-second HD videos from text prompts",
+  "category": "Sunra.ai/MiniMax",
+  "version": "1.0.0",
+  "inputs": {
+    "required": {
+      "prompt": {
+        "type": "string",
+        "description": "The prompt for the video",
+        "multiline": true,
+        "order": 200
+      }
+    },
+    "optional": {
+      "prompt_enhancer": {
+        "type": "boolean",
+        "description": "Whether to use the model's prompt optimizer",
+        "default": true,
+        "order": 201
+      }
+    }
+  },
+  "outputs": {
+    "video": {
+      "type": "video",
+      "description": "Generated video"
+    }
+  }
+}
