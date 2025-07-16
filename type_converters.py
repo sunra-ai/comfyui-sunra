@@ -203,7 +203,7 @@ def process_image_input(value: Any) -> Optional[str]:
     # Try to upload image to get URL, fall back to base64
     if SUNRA_CLIENT_AVAILABLE:
         try:
-            return sunra_client.upload_image(value, format="png")
+            return sunra_client.upload_image(value, image_format="png")
         except Exception as e:
             print(f"Warning: Failed to upload image with sunra_client: {e}")
 
