@@ -125,6 +125,31 @@ class SunraBaseNode:
                 content = json.dumps(hashable_inputs, sort_keys=True)
                 return hashlib.sha256(content.encode()).hexdigest()[:16]
 
+            @classmethod
+            def VALIDATE_INPUTS(cls, **kwargs):
+                """
+                Validate inputs according to their type definitions.
+                """
+                # Get all input definitions
+                all_inputs = {}
+                input_types = cls.INPUT_TYPES()
+                all_inputs.update(input_types.get("required", {}))
+                all_inputs.update(input_types.get("optional", {}))
+                
+                for name, value in kwargs.items():
+                    # Skip internal parameters and override inputs
+                    if name == "force_rerun" or name.endswith("_override"):
+                        continue
+                        
+                    if name in all_inputs:
+                        input_def = all_inputs[name]
+                        
+                        # Check if this is an enum field
+                        if isinstance(input_def[0], list) and value not in input_def[0]:
+                            return f"Value '{value}' not in allowed values for {name}"
+                
+                return True
+
         # Return the class itself, not an instance
         return DynamicSunraNode
 
@@ -197,10 +222,25 @@ class SunraBaseNode:
             **self.schema["inputs"].get("optional", {}),
         }
 
+        # First, handle override values for enum fields with custom value support
+        override_map = {}
         for name, value in inputs.items():
+            if name.endswith("_override") and value is not None and value != "None":
+                base_name = name[:-9]  # Remove "_override" suffix
+                override_map[base_name] = value
+
+        for name, value in inputs.items():
+            # Skip override inputs - they're handled above
+            if name.endswith("_override"):
+                continue
+                
             # Skip None values and special "None" strings
             if value is None or (isinstance(value, str) and value == "None"):
                 continue
+
+            # Check if this field has an override value
+            if name in override_map:
+                value = override_map[name]
 
             input_config = all_inputs.get(name, {})
             input_type = input_config.get("type", "string")

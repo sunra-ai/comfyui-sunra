@@ -152,10 +152,14 @@ def convert_schema_type_to_comfyui(
     """
     # Handle enum types
     if "enum" in schema_config:
-        return (
-            schema_config["enum"],
-            {"default": schema_config.get("default", schema_config["enum"][0])},
-        )
+        # Return enum list as a normal dropdown
+        config = {"default": schema_config.get("default", schema_config["enum"][0])}
+        
+        # Add tooltip for allow_custom_enum fields
+        if schema_config.get("allow_custom_enum", False):
+            config["tooltip"] = f"Select from list (or use {schema_config.get('name', 'field')}_override for custom values)"
+        
+        return (schema_config["enum"], config)
 
     # Get base type
     base_type = SCHEMA_TO_COMFY_TYPE_MAP.get(schema_type, "STRING")
@@ -714,11 +718,12 @@ def validate_value(value: Any, schema_type: str, schema_config: Dict[str, Any]) 
     """
     Validate and convert a value according to schema definition.
     """
-    # Check enum values
-    if "enum" in schema_config and value not in schema_config["enum"]:
-        raise ValueError(
-            f"Value {value} not in allowed values: {schema_config['enum']}"
-        )
+    # Check enum values (skip for allow_custom_enum fields)
+    if "enum" in schema_config and not schema_config.get("allow_custom_enum", False):
+        if value not in schema_config["enum"]:
+            raise ValueError(
+                f"Value {value} not in allowed values: {schema_config['enum']}"
+            )
 
     # Check min/max constraints
     if "min" in schema_config and value < schema_config["min"]:

@@ -29,11 +29,29 @@ def parse_schema_inputs(schema: Dict[str, Any]) -> Dict[str, Dict]:
     for name, config in inputs.get("required", {}).items():
         input_type, type_config = convert_schema_input(name, config)
         input_types["required"][name] = (input_type, type_config)
+        
+        # Add override input for allow_custom_enum fields
+        if config.get("allow_custom_enum", False) and "enum" in config:
+            override_name = f"{name}_override"
+            override_config = {
+                "tooltip": f"Optional: Connect a custom value to override {name} selection",
+                "forceInput": True,  # Only accept connections
+            }
+            input_types["optional"][override_name] = ("STRING", override_config)
 
     # Process optional inputs
     for name, config in inputs.get("optional", {}).items():
         input_type, type_config = convert_schema_input(name, config)
         input_types["optional"][name] = (input_type, type_config)
+        
+        # Add override input for allow_custom_enum fields
+        if config.get("allow_custom_enum", False) and "enum" in config:
+            override_name = f"{name}_override"
+            override_config = {
+                "tooltip": f"Optional: Connect a custom value to override {name} selection",
+                "forceInput": True,  # Only accept connections
+            }
+            input_types["optional"][override_name] = ("STRING", override_config)
 
     # Add force_rerun for caching control (like in replicate)
     input_types["optional"]["force_rerun"] = ("BOOLEAN", {"default": False})

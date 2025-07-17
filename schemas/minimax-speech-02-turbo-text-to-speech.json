@@ -39,6 +39,7 @@
           "Exuberant_Girl"
         ],
         "default": "Wise_Woman",
+        "allow_custom_enum": true,
         "order": 301
       },
       "speed": {

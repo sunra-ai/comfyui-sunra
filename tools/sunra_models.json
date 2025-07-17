@@ -176,7 +176,8 @@
       "name": "MiniMax Speech-02 HD - Text to Speech",
       "display_name": "MiniMax Speech-02 HD - Text to Speech",
       "description": "Audiobook-grade speech synthesis with higher bitrate and richer expressiveness.",
-      "category": "Sunra.ai/MiniMax"
+      "category": "Sunra.ai/MiniMax",
+      "allow_custom_enum_fields": ["voice_id"]
     }
   },
   {
@@ -188,7 +189,8 @@
       "name": "MiniMax Speech-02 Turbo - Text to Speech",
       "display_name": "MiniMax Speech-02 Turbo - Text to Speech",
       "description": "Low-latency TTS tuned for chat UIs—realistic emotion, multi-voice, tiny delay.",
-      "category": "Sunra.ai/MiniMax"
+      "category": "Sunra.ai/MiniMax",
+      "allow_custom_enum_fields": ["voice_id"]
     }
   },
   {
@@ -392,7 +394,8 @@
       "name": "Kling Lip Sync - Audio Lip Sync",
       "display_name": "Kling Lip Sync - Audio Lip Sync",
       "description": "Kling Lip Sync enables realistic mouth movement synchronization in AI-generated videos using audio or text input, creating realistic 10s clips with clear facial alignment.",
-      "category": "Sunra.ai/Kling"
+      "category": "Sunra.ai/Kling",
+      "allow_custom_enum_fields": ["voice_id"]
     }
   },
   {

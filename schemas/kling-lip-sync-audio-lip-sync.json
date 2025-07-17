@@ -81,6 +81,7 @@
           "zh_mengwa-v1"
         ],
         "default": "en_AOT",
+        "allow_custom_enum": true,
         "order": 402
       }
     }

@@ -155,9 +155,12 @@ class OpenAPIToSchemaConverter:
         
         return result
     
-    def extract_inputs(self, openapi_schema: Dict[str, Any], endpoint: str) -> Dict[str, Any]:
+    def extract_inputs(self, openapi_schema: Dict[str, Any], endpoint: str, 
+                      allow_custom_enum_fields: List[str] = None) -> Dict[str, Any]:
         """Extract input parameters from OpenAPI schema."""
         inputs = {"required": {}, "optional": {}}
+        if allow_custom_enum_fields is None:
+            allow_custom_enum_fields = []
         
         # Find the endpoint definition
         paths = openapi_schema.get("paths", {})
@@ -199,6 +202,10 @@ class OpenAPIToSchemaConverter:
         
         for idx, (prop_name, prop_schema) in enumerate(sorted_props):
             converted = self.convert_parameter(prop_name, prop_schema)
+            
+            # Check if this field should be allow_custom_enum
+            if prop_name in allow_custom_enum_fields and "enum" in converted:
+                converted["allow_custom_enum"] = True
             
             # Set order if not already set
             if "order" not in converted:
@@ -302,8 +309,13 @@ class OpenAPIToSchemaConverter:
         # Extract model info
         model_info = self.extract_model_info(openapi_schema, endpoint)
         
+        # Get allow_custom_enum_fields from overrides
+        allow_custom_enum_fields = []
+        if custom_overrides and "allow_custom_enum_fields" in custom_overrides:
+            allow_custom_enum_fields = custom_overrides["allow_custom_enum_fields"]
+        
         # Extract inputs and outputs
-        inputs = self.extract_inputs(openapi_schema, endpoint)
+        inputs = self.extract_inputs(openapi_schema, endpoint, allow_custom_enum_fields)
         outputs = self.extract_outputs(openapi_schema, endpoint)
         
         # Build final schema
