@@ -22,9 +22,12 @@
     },
     "optional": {
       "image_strength": {
-        "type": "image",
+        "type": "float",
         "description": "Defines the difference with the original image, should lie in [0, 1], where 0 means almost identical, and 1 means miserable similarity",
         "default": 0.5,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01,
         "order": 302
       },
       "style": {

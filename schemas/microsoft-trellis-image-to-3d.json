@@ -48,7 +48,7 @@
         "order": 404
       },
       "generate_background_removed_images": {
-        "type": "image",
+        "type": "boolean",
         "description": "Return the preprocessed images without background",
         "default": false,
         "order": 405

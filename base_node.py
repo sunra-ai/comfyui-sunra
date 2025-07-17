@@ -12,7 +12,17 @@ import io
 from typing import Dict, Any, Tuple, List
 import torch
 
-from .type_converters import process_image_input, process_image_output, process_video_output, process_audio_output, process_audio_path_output, process_3d_output, validate_value
+from .type_converters import (
+    process_image_input,
+    process_image_output,
+    process_video_input,
+    process_video_output,
+    process_audio_input,
+    process_audio_output,
+    process_audio_path_output,
+    process_3d_output,
+    validate_value,
+)
 
 
 class SunraBaseNode:
@@ -199,6 +209,10 @@ class SunraBaseNode:
             # Process based on type
             if input_type in ("image", "mask"):
                 processed[api_name] = process_image_input(value)
+            elif input_type == "video":
+                processed[api_name] = process_video_input(value)
+            elif input_type == "audio":
+                processed[api_name] = process_audio_input(value)
             elif input_type == "boolean":
                 processed[api_name] = bool(value)
             else:

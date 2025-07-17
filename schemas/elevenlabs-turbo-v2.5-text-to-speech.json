@@ -45,7 +45,7 @@
         "order": 200
       },
       "voice": {
-        "type": "audio",
+        "type": "string",
         "description": "Voice from provided_voices",
         "enum": [
           "Rachel (american accent, young, female)",

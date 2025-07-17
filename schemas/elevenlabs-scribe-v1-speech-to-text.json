@@ -44,7 +44,7 @@
         "order": 401
       },
       "tag_audio_events": {
-        "type": "audio",
+        "type": "boolean",
         "description": "Tag audio events.",
         "default": true,
         "order": 402

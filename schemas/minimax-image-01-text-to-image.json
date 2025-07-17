@@ -23,9 +23,12 @@
         "order": 201
       },
       "number_of_images": {
-        "type": "image",
+        "type": "integer",
         "description": "Number of images to generate, default is 4",
         "default": 4,
+        "min": 1.0,
+        "max": 9.0,
+        "step": 1,
         "order": 202
       },
       "subject_reference": {

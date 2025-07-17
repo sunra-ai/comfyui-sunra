@@ -78,8 +78,32 @@ class OpenAPIToSchemaConverter:
         return model_info
     
     def get_parameter_type(self, param_name: str, param_schema: Dict[str, Any]) -> str:
-        """Determine parameter type from schema and name."""
-        # Check if it's an image/media parameter by name
+        """Determine parameter type from schema and name, prioritizing schema definitions."""
+        
+        openapi_type = param_schema.get("type")
+        param_format = param_schema.get("format")
+
+        # 1. Handle explicit non-string primitive types first.
+        if openapi_type in ["integer", "number", "boolean"]:
+            return OPENAPI_TYPE_MAP[openapi_type]
+
+        # 2. Handle strings, which could be regular strings, enums, or file URIs.
+        if openapi_type == "string":
+            # If it's a URI, it's a media file. Use hints to determine which kind.
+            if param_format == "uri":
+                description = param_schema.get("description", "").lower()
+                param_lower = param_name.lower()
+                if any(img in param_lower for img in IMAGE_PARAMS) or 'image' in description:
+                    return "image"
+                if any(vid in param_lower for vid in VIDEO_PARAMS) or 'video' in description:
+                    return "video"
+                if any(aud in param_lower for aud in AUDIO_PARAMS) or 'audio' in description:
+                    return "audio"
+            
+            # If it's not a URI, it's just a string (or an enum, handled later).
+            return "string"
+            
+        # 3. Fallback for undefined or object types - use name hints.
         param_lower = param_name.lower()
         if any(img in param_lower for img in IMAGE_PARAMS):
             return "image"
@@ -87,14 +111,9 @@ class OpenAPIToSchemaConverter:
             return "video"
         if any(aud in param_lower for aud in AUDIO_PARAMS):
             return "audio"
-        
-        # Check format hints
-        if param_schema.get("format") == "uri":
-            if "image" in param_schema.get("description", "").lower():
-                return "image"
-        
-        # Map basic types
-        return OPENAPI_TYPE_MAP.get(param_schema.get("type", "string"), "string")
+            
+        # Default to string if we can't figure it out.
+        return "string"
     
     def convert_parameter(self, name: str, param_schema: Dict[str, Any]) -> Dict[str, Any]:
         """Convert OpenAPI parameter to our schema format."""

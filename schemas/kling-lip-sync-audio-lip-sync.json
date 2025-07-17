@@ -21,13 +21,16 @@
     },
     "optional": {
       "voice_speed": {
-        "type": "audio",
+        "type": "float",
         "description": "Speech rate (only used if using text and not audio)",
         "default": 1.0,
+        "min": 0.8,
+        "max": 2.0,
+        "step": 0.1,
         "order": 401
       },
       "voice_id": {
-        "type": "audio",
+        "type": "string",
         "description": "Voice ID (only used if using text and not audio)",
         "enum": [
           "en_AOT",

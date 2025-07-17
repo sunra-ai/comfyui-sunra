@@ -29,9 +29,12 @@
         "order": 203
       },
       "number_of_images": {
-        "type": "image",
+        "type": "integer",
         "description": "Number of images to generate",
         "default": 1,
+        "min": 1.0,
+        "max": 8.0,
+        "step": 1,
         "order": 205
       },
       "aspect_ratio": {

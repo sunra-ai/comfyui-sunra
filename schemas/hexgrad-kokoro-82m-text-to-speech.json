@@ -17,7 +17,7 @@
     },
     "optional": {
       "voice": {
-        "type": "audio",
+        "type": "string",
         "description": "Voice to use for synthesis",
         "enum": [
           "af_alloy",

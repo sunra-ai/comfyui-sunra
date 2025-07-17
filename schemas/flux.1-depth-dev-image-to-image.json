@@ -48,9 +48,12 @@
         "order": 203
       },
       "number_of_images": {
-        "type": "image",
+        "type": "integer",
         "description": "Number of outputs to generate.",
         "default": 1,
+        "min": 1.0,
+        "max": 4.0,
+        "step": 1,
         "order": 401
       },
       "output_format": {

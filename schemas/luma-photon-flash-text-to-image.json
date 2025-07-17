@@ -22,9 +22,12 @@
         "order": 301
       },
       "image_reference_weight": {
-        "type": "image",
+        "type": "float",
         "description": "Weight of the reference image. Larger values will make the reference image have a stronger influence on the generated image.",
         "default": 0.85,
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01,
         "order": 302
       },
       "style_reference": {
