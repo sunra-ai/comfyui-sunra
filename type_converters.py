@@ -415,32 +415,39 @@ def process_audio_input(value: Any) -> Optional[str]:
         else:
             # Convert waveform tensor to audio file
             if TORCHAUDIO_AVAILABLE and value["waveform"] is not None:
+                audio_path = None
                 try:
                     waveform = value["waveform"]
                     sample_rate = value.get("sample_rate", 44100)
                     
                     # Create temporary audio file
-                    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp_file:
-                        torchaudio.save(tmp_file.name, waveform.squeeze(0), sample_rate)
-                        audio_path = tmp_file.name
-                        
-                        # Read and upload
-                        with open(audio_path, "rb") as f:
-                            audio_data = f.read()
-                        
-                        url = _upload_to_sunra(audio_data, "audio/wav", "audio.wav")
-                        
-                        # Clean up temp file
-                        os.unlink(audio_path)
-                        
-                        if url:
-                            return url
-                        
-                        # Fallback to base64
-                        audio_base64 = base64.b64encode(audio_data).decode("utf-8")
-                        return f"data:audio/wav;base64,{audio_base64}"
+                    tmp_file = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
+                    audio_path = tmp_file.name
+                    tmp_file.close()  # Close the file handle, we only need the path
+
+                    torchaudio.save(audio_path, waveform.squeeze(0), sample_rate)
+                    
+                    # Read and upload
+                    with open(audio_path, "rb") as f:
+                        audio_data = f.read()
+                    
+                    url = _upload_to_sunra(audio_data, "audio/wav", "audio.wav")
+                    
+                    if url:
+                        return url
+                    
+                    # Fallback to base64
+                    audio_base64 = base64.b64encode(audio_data).decode("utf-8")
+                    return f"data:audio/wav;base64,{audio_base64}"
                 except Exception as e:
                     raise ValueError(f"Failed to process audio waveform: {e}")
+                finally:
+                    # Clean up temp file
+                    if audio_path and os.path.exists(audio_path):
+                        try:
+                            os.unlink(audio_path)
+                        except OSError as e:
+                            print(f"Warning: Failed to delete temporary audio file {audio_path}: {e}")
             else:
                 raise ValueError("Cannot process AUDIO dict without path or waveform data")
     elif isinstance(value, str):
