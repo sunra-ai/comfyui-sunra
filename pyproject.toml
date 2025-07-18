@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "comfyui-sunra"
-version = "0.0.13"
+version = "0.0.14"
 description = "Official ComfyUI nodes for [Sunra AI](https://sunra.ai) models."
 authors = [
     {name = "Sunra AI", email = "support@sunra.ai"},
